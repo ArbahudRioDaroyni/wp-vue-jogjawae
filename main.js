@@ -7,9 +7,7 @@ import Homepage from './home.component.js'
 
 
 
-export const app = createApp({
-  
-})
+export const app = createApp({})
 
 app.use(router)
 app.component('Home', Home)

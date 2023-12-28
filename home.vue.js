@@ -8,7 +8,7 @@ const Home = {
             </div>
         </div>
     </section>
-    <Homepage />
+    <Home />
   `
 }
 

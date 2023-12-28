@@ -1,8 +1,8 @@
 const { watchEffect } = Vue
 const API_URL = `https://jogjawae.com/wp-json/wp/v2/posts?_fields=slug,title,content,yoast_head_json,excerpt,modified_gmt`
 
-const Homepage = {
-  name: 'Homepage',
+const Home = {
+  name: 'Home',
   template: `
   <main class="container">
     <section class="articles">
@@ -71,4 +71,4 @@ const Homepage = {
   },
 }
 
-export default Homepage
+export default Home

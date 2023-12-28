@@ -17,4 +17,3 @@ app.component('Navigation', Navigation)
 app.component('Post', Post)
 app.component('Homepage', Homepage)
 app.mount('#app')
-// git

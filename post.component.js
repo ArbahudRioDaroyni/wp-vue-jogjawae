@@ -25,15 +25,7 @@ const Post = {
                 </div>
               </div>
               <div class="content-single-footer">
-                <h3 class="text-center">Artikel Terkait</h3>
-                <div v-if="relatedPosts.length">
-                  <h2>Artikel Terkait</h2>
-                  <ul>
-                    <li v-for="relatedPost in relatedPosts" :key="relatedPost.id">
-                      <router-link :to="'/post/' + relatedPost.slug">{{ relatedPost.title.rendered }}</router-link>
-                    </li>
-                  </ul>
-                </div>
+                <h3 class="text-center">Artikel Terkait {{ relatedPosts.length }}</h3>
                 <div class="terkait">
                   <div class="col">
                     <img src="img/news/038321800_1523380452-IMG-20180410-WA0031.jpg"> <br><br>

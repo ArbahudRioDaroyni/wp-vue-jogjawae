@@ -10,8 +10,8 @@ const Navigation = {
             <a href="index.html" class="navbar-title">Bali Travel Time</a>
           </div>
           <div class="navbar-item">
-            <img src="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png" alt="Jogjawae">
-            <a href="index.html" class="navbar-title">Bali Travel Time</a>
+            <!-- <img src="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png" alt="Jogjawae"> -->
+            <a href="index.html" class="navbar-title">Jogja Wae</a>
             <ul>
               <li><a href="destination.html">Destination</a></li>
               <li><a href="gallery.html">Gallery</a></li>

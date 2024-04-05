@@ -83,8 +83,9 @@ const Post = {
                 <div >
                 <div class="content-body" v-for="post in relatedPosts" :key="post.id">
                   <ul style="padding: 0;list-style: none;">
-                    <li>
-                    <router-link :to="'/' + category.name.toLowerCase()">{{ post.title.rendered }}</router-link>
+                    <li><a href="single-news.html">
+                      {{ post.title.rendered }}
+                    </a></li>
                   </ul>
                 </div>
               </div>

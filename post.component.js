@@ -25,7 +25,7 @@ const Post = {
                 </div>
               </div>
               <div class="content-single-footer">
-                <h3 class="text-center">Artikel Terkait {{ post[0].tags.length }}</h3>
+                <h3 class="text-center">{{ relatedPosts.length }}Artikel Terkait</h3>
                 <div class="terkait">
                   <div class="col">
                     <img src="img/news/038321800_1523380452-IMG-20180410-WA0031.jpg"> <br><br>
@@ -126,6 +126,7 @@ const Post = {
           if (this.$route.params.slug !== undefined && this.$route.params.slug !== null) {
             this.fetchDataPost();
             this.fetchCategories();
+            this.fetchRelatedPosts();
           }
         },
         { immediate: true }

@@ -69,7 +69,7 @@ const Post = {
                 <div class="content-body">
                   <div v-if="categories.length">
                     <ul style="padding: 0;list-style: none;" v-for="category in categories" :key="category.id">
-                      <router-link :to="category.name">{{ category.name }}</router-link>
+                      <router-link :to="'/category.name'">{{ category.name }}</router-link>
                     </ul>
                   </div>
                   <div v-else>

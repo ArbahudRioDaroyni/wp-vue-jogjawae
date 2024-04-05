@@ -76,23 +76,15 @@ const Post = {
                   </div>
                 </div>
               </div>
-              <div class="aside-content">
+              <div class="aside-content" v-if="latestposts && latestposts.length">
                 <div class="content-title">
-                  <b>REKOMENDASI</b>
+                  <h3>Artikel Terbaru</h3>
                 </div>
-                <div class="content-body">
+                <div >
+                <div class="content-body" v-for="latestpost in latestposts" :key="latestpost.id">
                   <ul style="padding: 0;list-style: none;">
                     <li><a href="single-news.html">
-                      Keistimewaan Bali di Kaca Internasional
-                    </a></li>
-                    <li><a href="single-news.html">
-                      Ini Dia! 5 Rekomendasi Wisata Asik di Bali
-                    </a></li>
-                    <li><a href="single-news.html">
-                      Krumunan Gajah yang Tertawa di Kebun Binatang Bali
-                    </a></li>
-                    <li><a href="single-news.html">
-                      Tempat Paling Wajib Dikunjungi Jika Kamu Main ke Bali
+                      {{ latestpost.title.rendered }}
                     </a></li>
                   </ul>
                 </div>
@@ -108,6 +100,7 @@ const Post = {
       loading: false,
       post: null,
       categories: [],
+      latestposts: [],
       error: null,
     }
   },
@@ -125,6 +118,7 @@ const Post = {
           if (this.$route.params.slug !== undefined && this.$route.params.slug !== null) {
             this.fetchDataPost();
             this.fetchCategories();
+            this.fetchLatestPosts();
           }
         },
         { immediate: true }
@@ -176,6 +170,18 @@ const Post = {
         // Handle error
       }
     },
+    async fetchLatestPosts() {
+      try {
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?per_page=3&_embed`);
+        if (response.ok) {
+          this.latestposts = await response.json();
+        } else {
+          console.error('Failed to fetch related posts');
+        }
+      } catch (error) {
+        console.error('Error fetching related posts:', error);
+      }
+    }
   },
 }
 

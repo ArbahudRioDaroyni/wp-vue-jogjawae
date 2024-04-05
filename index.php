@@ -46,8 +46,8 @@
     <div id="app">
       <router-view></router-view>
     </div>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/swipe.js"></script>
+    <script type="text/javascript" src="js/swipe.js"></script> -->
   </body>
 </html>

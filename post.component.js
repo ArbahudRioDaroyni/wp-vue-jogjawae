@@ -4,59 +4,103 @@ const API_URL = `https://jogjawae.com/wp-json/wp/v2/posts?slug=`
 const Post = {
   name: 'Post',
   template: `
-    <section class="hero post" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id">
-      <div class="hero-body">
-        <div class="container">
-          
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-              <figure class="image is-16by9">
-                <img :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
-              </figure>
-            </div>
+    <section class="section section-archive" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id">
+      <div class="container" style="margin-top: 80px;">
+
+        <div class="row">
+          <div class="content">
+            <main class="content-single">
+              <div class="content-single-title">
+                <h1 v-html="title.rendered"></h1>
+                <p class=""><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
+                <figure>
+                  <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+                </figure>
+              </div>
+              <div>
+                <div class="content-single-body" v-html="content.rendered"></div>
+                <div class="label">
+                  <a href=""><span class="ion-pricetags"></span> &nbsp; News</a>
+                  <a href=""><span class="ion-android-share-alt"></span> &nbsp; Share</a>
+                  <a href=""><span class="ion-heart"></span> &nbsp; Like</a>
+                </div>
+              </div>
+              <div class="content-single-footer">
+                <h3 class="text-center">Artikel Terkait</h3>
+                <div class="terkait">
+                  <div class="col">
+                    <img src="img/news/038321800_1523380452-IMG-20180410-WA0031.jpg"> <br><br>
+                    <a href="#"><h3 class="text-center">
+                      Keistimewaan Bali di Mata Dubes Mesir
+                    </h3></a>
+                  </div>
+                  <div class="col">
+                    <img src="img/news/023053600_1523534851-IMG-20180412-WA0034.jpg"> <br><br>
+                    <a href="#"><h3 class="text-center">
+                      Aksi Polres Badung Tangkal Hoaks
+                    </h3></a>
+                  </div>
+                  <div class="col">
+                    <img src="img/news/gunung.jpg"> <br><br>
+                    <a href="#"><h3 class="text-center">
+                      Gunung Agung Meletus Lagi
+                    </h3></a>
+                  </div>
+                </div>
+              </div>
+            </main>
           </div>
-
-          <main class="section">
-            <div class="columns">
-              <div class="column is-8 is-offset-2">
-                <div class="content is-medium">
-                  <p class="subtitle is-4"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
-                  <div class="control"><span class="tag is-info is-uppercase ">story</span></div>
-
-                  <h1 class="title" v-html="title.rendered"></h1>
-                  <div v-html="content.rendered"></div>
+          <div class="aside">
+            <div class="row">
+              <div class="aside-content">
+                <form method="POST">
+                  <div class="content-input">
+                    <input type="text" name="cari" class="form-control" placeholder="Search ...">
+                  </div>
+                  <div class="content-btn">
+                    <button type="submit" class="btn-search"><i class="ion-search"></i></button>
+                  </div>
+                </form>
+              </div>
+              <div class="aside-content">
+                <div class="content-title">
+                  <b>KATEGORI</b>
+                </div>
+                <div class="content-body">
+                  <ul style="padding: 0;list-style: none;">
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="news.html">Culture</a></li>
+                    <li><a href="news.html">Event</a></li>
+                    <li><a href="news.html">Adventure</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="aside-content">
+                <div class="content-title">
+                  <b>REKOMENDASI</b>
+                </div>
+                <div class="content-body">
+                  <ul style="padding: 0;list-style: none;">
+                    <li><a href="single-news.html">
+                      Keistimewaan Bali di Kaca Internasional
+                    </a></li>
+                    <li><a href="single-news.html">
+                      Ini Dia! 5 Rekomendasi Wisata Asik di Bali
+                    </a></li>
+                    <li><a href="single-news.html">
+                      Krumunan Gajah yang Tertawa di Kebun Binatang Bali
+                    </a></li>
+                    <li><a href="single-news.html">
+                      Tempat Paling Wajib Dikunjungi Jika Kamu Main ke Bali
+                    </a></li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </main>
-
-          <div class="is-divider"></div>
-
-          <div class="container">
-            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-
-              <a class="button bd-fat-button is-info is-light bd-pagination-prev" href="#" title="previous article">
-                <span class="icon is-left">
-                  <i class="fa fa-arrow-left"></i>
-                </span>
-                <span>
-                  <strong>Previous Article</strong>
-                </span>
-              </a>
-
-              <a class="button bd-fat-button is-info is-light bd-pagination-prev" href="#" title="next article">
-                <strong>Next Article</strong>
-                <span class="icon is-left">
-                  <i class="fa fa-arrow-right"></i>
-                </span>
-                <span>
-                </span>
-              </a>
-            </nav>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
+  </section>
   `,
   data() {
     return {

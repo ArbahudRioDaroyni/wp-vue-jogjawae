@@ -25,7 +25,7 @@ const Post = {
                 </div>
               </div>
               <div class="content-single-footer">
-                <h3 class="text-center">{{ relatedPosts.length }}Artikel Terkait</h3>
+                <h3 class="text-center">{{ relatedPosts }}Artikel Terkait</h3>
                 <div class="terkait">
                   <div class="col">
                     <img src="img/news/038321800_1523380452-IMG-20180410-WA0031.jpg"> <br><br>
@@ -108,7 +108,7 @@ const Post = {
       loading: false,
       post: null,
       categories: [],
-      relatedPosts: [],
+      relatedPosts: null,
       error: null,
     }
   },
@@ -178,16 +178,8 @@ const Post = {
         // Handle error
       }
     },
-    async fetchRelatedPosts() {
-      if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
-        const tagIds = this.post[0].tags.map(tag => tag.id).join(',');
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
-        if (response.ok) {
-          this.relatedPosts = await response.json();
-        } else {
-          console.error('Failed to fetch related posts');
-        }
-      }
+    fetchRelatedPosts() {
+      this.relatedPosts = this.post[0].tags.length;
     }
   },
 }

@@ -17,14 +17,14 @@ const Post = {
                   <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
                 </figure>
               </div>
-              <div>
-                <div class="content-single-body" v-html="content.rendered"></div>
+              <div class="content-single-body" v-html="content.rendered"></div>
+              <!-- <div>
                 <div class="label">
                   <a href=""><span class="ion-pricetags"></span> &nbsp; News</a>
                   <a href=""><span class="ion-android-share-alt"></span> &nbsp; Share</a>
                   <a href=""><span class="ion-heart"></span> &nbsp; Like</a>
                 </div>
-              </div>
+              </div> -->
               <div class="content-single-footer">
                 <h3 class="text-center">Artikel Terkait</h3>
                 <div class="terkait">

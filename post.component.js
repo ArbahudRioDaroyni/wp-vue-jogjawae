@@ -26,6 +26,14 @@ const Post = {
               </div>
               <div class="content-single-footer">
                 <h3 class="text-center">Artikel Terkait</h3>
+                <div v-if="relatedPosts.length">
+                  <h2>Artikel Terkait</h2>
+                  <ul>
+                    <li v-for="relatedPost in relatedPosts" :key="relatedPost.id">
+                      <router-link :to="'/post/' + relatedPost.slug">{{ relatedPost.title.rendered }}</router-link>
+                    </li>
+                  </ul>
+                </div>
                 <div class="terkait">
                   <div class="col">
                     <img src="img/news/038321800_1523380452-IMG-20180410-WA0031.jpg"> <br><br>
@@ -108,6 +116,7 @@ const Post = {
       loading: false,
       post: null,
       categories: [],
+      relatedPosts: [],
       error: null,
     }
   },
@@ -142,7 +151,7 @@ const Post = {
       try {
         const url = `https://jogjawae.com/wp-json/wp/v2/posts?slug=${this.$route.params.slug}`;
         const postData = await (await fetch(url)).json();
-  
+        
         // Memformat tanggal modified_gmt
         for (let index = 0; index < postData.length; index++) {
           // const element = array[index];
@@ -176,6 +185,17 @@ const Post = {
         // Handle error
       }
     },
+    async fetchRelatedPosts() {
+      if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
+        const tagIds = this.post[0].tags.map(tag => tag.id).join(',');
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
+        if (response.ok) {
+          this.relatedPosts = await response.json();
+        } else {
+          console.error('Failed to fetch related posts');
+        }
+      }
+    }
   },
 }
 

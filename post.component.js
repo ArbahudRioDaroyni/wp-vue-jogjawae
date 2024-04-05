@@ -67,12 +67,14 @@ const Post = {
                   <b>KATEGORI</b>
                 </div>
                 <div class="content-body">
-                  <ul style="padding: 0;list-style: none;">
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="news.html">Culture</a></li>
-                    <li><a href="news.html">Event</a></li>
-                    <li><a href="news.html">Adventure</a></li>
-                  </ul>
+                  <div v-if="categories.length">
+                    <ul style="padding: 0;list-style: none;" v-for="category in categories" :key="category.id">
+                      <li><a href="news.html">{{ category.name }}</a></li>
+                    </ul>
+                  </div>
+                  <div v-else>
+                    No categories found.
+                  </div>
                 </div>
               </div>
               <div class="aside-content">
@@ -106,6 +108,7 @@ const Post = {
     return {
       loading: false,
       post: null,
+      categories: [],
       error: null,
     }
   },
@@ -122,6 +125,7 @@ const Post = {
         function() {
           if (this.$route.params.slug !== undefined && this.$route.params.slug !== null) {
             this.fetchData();
+            this.fetchCategories();
           }
         },
         { immediate: true }
@@ -156,6 +160,21 @@ const Post = {
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
+      }
+    },
+    async fetchCategories() {
+      try {
+        const url = 'https://jogjawae.com/wp-json/wp/v2/categories';
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch categories');
+        }
+        const categories = await response.json();
+        // Lakukan sesuatu dengan data kategori, misalnya simpan dalam properti di komponen
+        this.categories = categories;
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        // Handle error
       }
     },
   },

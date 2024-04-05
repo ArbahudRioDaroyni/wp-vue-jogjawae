@@ -1,5 +1,4 @@
 const { watchEffect } = Vue
-const API_URL = `https://jogjawae.com/wp-json/wp/v2/posts?slug=`
 
 const Post = {
   name: 'Post',
@@ -69,7 +68,7 @@ const Post = {
                 <div class="content-body">
                   <div v-if="categories.length">
                     <ul style="padding: 0;list-style: none;" v-for="category in categories" :key="category.id">
-                      <router-link :to="'/' + category.name">{{ category.name }}</router-link>
+                      <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
                     </ul>
                   </div>
                   <div v-else>
@@ -141,7 +140,7 @@ const Post = {
       // const url = `${API_URL}${this.$route.params.slug}`
       // this.post = await (await fetch(url)).json()
       try {
-        const url = `${API_URL}${this.$route.params.slug}`;
+        const url = `https://jogjawae.com/wp-json/wp/v2/posts?slug=${this.$route.params.slug}`;
         const postData = await (await fetch(url)).json();
   
         // Memformat tanggal modified_gmt

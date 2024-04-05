@@ -69,7 +69,7 @@ const Post = {
                 <div class="content-body">
                   <div v-if="categories.length">
                     <ul style="padding: 0;list-style: none;" v-for="category in categories" :key="category.id">
-                      <li><a href="news.html">{{ category.name }}</a></li>
+                      <router-link :to="category.name">{{ category.name }}</router-link>
                     </ul>
                   </div>
                   <div v-else>
@@ -124,7 +124,7 @@ const Post = {
         },
         function() {
           if (this.$route.params.slug !== undefined && this.$route.params.slug !== null) {
-            this.fetchData();
+            this.fetchDataPost();
             this.fetchCategories();
           }
         },
@@ -135,7 +135,7 @@ const Post = {
     }
   },
   methods: {
-    async fetchData() {
+    async fetchDataPost() {
       this.error = this.post = null
       this.loading = true
       // const url = `${API_URL}${this.$route.params.slug}`

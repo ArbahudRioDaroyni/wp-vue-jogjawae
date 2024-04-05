@@ -81,11 +81,10 @@ const Post = {
                   <h3>Artikel Terbaru</h3>
                 </div>
                 <div >
-                <div class="content-body" v-for="latestpost in latestposts" :key="latestpost.id">
+                <div class="content-body" v-for="post in relatedPosts" :key="post.id">
                   <ul style="padding: 0;list-style: none;">
                     <li>
-                      <router-link :to="'/' + post.slug.toLowerCase()" v-html="post.title.rendered"></router-link>
-                    </li>
+                    <router-link :to="'/' + category.name.toLowerCase()">{{ post.title.rendered }}</router-link>
                   </ul>
                 </div>
               </div>

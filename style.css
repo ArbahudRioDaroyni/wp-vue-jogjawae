@@ -1,6 +1,9 @@
-.content-single-body img {
+.content-single-body img, .content-single-body iframe {
   width: 100%;
   height: auto;
+}
+.content-single-body figure, .content-single-title figure {
+  margin: 0;
 }
 /* html,body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;

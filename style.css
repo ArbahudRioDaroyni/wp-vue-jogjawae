@@ -1,5 +1,5 @@
 .content-single-body img, .content-single-body iframe {
-  width: 100%;
+  width: 100% !important;
   height: auto;
 }
 .content-single-body figure, .content-single-title figure {

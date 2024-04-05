@@ -81,10 +81,10 @@ const Post = {
                   <h3>Artikel Terbaru</h3>
                 </div>
                 <div >
-                <div class="content-body" v-for="post in relatedPosts" :key="post.id">
+                <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
                   <ul style="padding: 0;list-style: none;">
                     <li><a href="single-news.html">
-                      {{ post.title.rendered }}
+                      {{ latestposts.title.rendered }}
                     </a></li>
                   </ul>
                 </div>

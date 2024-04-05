@@ -9,7 +9,7 @@ const Post = {
 
         <div class="row">
           <div class="content">
-            <main class="content-single">
+            <div class="content-single">
               <div class="content-single-title">
                 <h1 v-html="title.rendered"></h1>
                 <p class=""><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
@@ -48,7 +48,7 @@ const Post = {
                   </div>
                 </div>
               </div>
-            </main>
+            </div>
           </div>
           <div class="aside">
             <div class="row">

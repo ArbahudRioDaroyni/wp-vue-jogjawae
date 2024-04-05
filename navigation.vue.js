@@ -5,28 +5,20 @@ const Navigation = {
       <!-- START NAV -->
       <nav class="navbar">
         <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="../">
-              <img src="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png" alt="Jogjawae">
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
+          <div class="navbar-bars">
+            <a href="#" class="navbar-title sidebar-toggle" style="padding: 0;"><i class="ion-navicon-round"></i></a>
+            <a href="index.html" class="navbar-title">Bali Travel Time</a>
           </div>
-          <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-              <router-link class="navbar-item is-active" to="/">Home</router-link>
-              <div class=" navbar-item">
-                <div class="control has-icons-left">
-                  <input class="input is-rounded" type="email" placeholder="Search">
-                  <span class="icon is-left">
-                    <i class="fa fa-search"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div class="navbar-item">
+            <img src="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png" alt="Jogjawae">
+            <a href="index.html" class="navbar-title">Bali Travel Time</a>
+            <ul>
+              <li><a href="destination.html">Destination</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a data-slide="slides" data-slide-target="#discover">Discover</a></li>
+              <li><a href="news.html"> News</a></li>
+              <li><button class="btn-login" id="openLogin">LOGIN</button></li>
+            </ul>
           </div>
         </div>
       </nav>

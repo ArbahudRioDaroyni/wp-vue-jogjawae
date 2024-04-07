@@ -16,32 +16,34 @@ const Post = {
         </div>
       </section>
       <div class="content content-single columns">
-        <div v-html="content.rendered" class="is-8 is-offset-2"></div>
-        <aside>
-          <div>
-            <h3>Kategori</h3>
-            <div v-if="categories.length">
-              <ul v-for="category in categories" :key="category.id">
-                <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
-              </ul>
+        <div class=" column is-8 is-offset-2">
+          <div v-html="content.rendered"></div>
+          <aside>
+            <div>
+              <h3>Kategori</h3>
+              <div v-if="categories.length">
+                <ul v-for="category in categories" :key="category.id">
+                  <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
+                </ul>
+              </div>
+              <div v-else>
+                No categories found.
+              </div>
             </div>
-            <div v-else>
-              No categories found.
+            <div v-if="latestposts && latestposts.length">
+              <h3>Artikel Terbaru</h3>
+              <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
+                <ul style="padding: 0;list-style: none;">
+                  <li>
+                    <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                      <span v-html="latestpost.title.rendered"></span>
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div v-if="latestposts && latestposts.length">
-            <h3>Artikel Terbaru</h3>
-            <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
-              <ul style="padding: 0;list-style: none;">
-                <li>
-                  <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                    <span v-html="latestpost.title.rendered"></span>
-                  </router-link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </aside>
+          </aside>
+        </div>
       </div>
     </main>
     <div v-else class="container is-max-desktop is-fluid">

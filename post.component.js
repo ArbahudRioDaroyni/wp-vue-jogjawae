@@ -3,7 +3,7 @@ const { watchEffect } = Vue
 const Post = {
   name: 'Post',
   template: `
-    <main v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-max-desktop">
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-max-desktop">
       <section class="hero">
         <div class="hero-body">
           <h1 v-html="title.rendered" class="title"></h1>
@@ -42,6 +42,9 @@ const Post = {
         </aside>
       </div>
     </main>
+    <div v-else class="container is-max-desktop has-text-centered">
+      <p>Loading...</p>
+    </div>
   `,
   data() {
     return {
@@ -64,6 +67,7 @@ const Post = {
         },
         function() {
           if (this.$route.params.slug !== undefined && this.$route.params.slug !== null) {
+            this.loading = true;
             this.fetchDataPost();
             this.fetchCategories();
             this.fetchLatestPosts();
@@ -97,7 +101,7 @@ const Post = {
   
         this.post = postData;
       } catch (error) {
-        console.error('Error fetching data:', error);
+        // console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;

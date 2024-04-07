@@ -3,7 +3,7 @@ const { watchEffect } = Vue
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-max-desktop">
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-max-desktop is-fluid">
       <section class="hero">
         <div class="hero-body">
           <h1 v-html="title.rendered" class="title"></h1>
@@ -11,7 +11,7 @@ const Post = {
         </div>
       </section>
       <div class="content content-single">
-        <figure>
+        <figure class="size-full">
           <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
         </figure>
         <div v-html="content.rendered"></div>
@@ -42,7 +42,7 @@ const Post = {
         </aside>
       </div>
     </main>
-    <div v-else class="container is-max-desktop">
+    <div v-else class="container is-max-desktop is-fluid">
       <section class="hero">
         <div class="hero-body">
           <h1 class="title is-skeleton">Title</h1>
@@ -56,7 +56,6 @@ const Post = {
         <div></div>
         <div></div>
       </div>
-      <figure class="image is-128x128 is-skeleton"></figure>
     </div>
   `,
   data() {

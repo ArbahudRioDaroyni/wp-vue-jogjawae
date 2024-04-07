@@ -43,7 +43,20 @@ const Post = {
       </div>
     </main>
     <div v-else class="container is-max-desktop has-text-centered">
-      <p>Loading...</p>
+      <h1 class="title is-skeleton">
+        Title
+      </h1>
+      <h2 class="subtitle is-skeleton">
+        Subtitle
+      </h2>
+      <div class="skeleton-lines">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <figure class="image is-128x128 is-skeleton"></figure>
     </div>
   `,
   data() {

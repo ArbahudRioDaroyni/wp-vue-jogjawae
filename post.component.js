@@ -42,13 +42,13 @@ const Post = {
         </aside>
       </div>
     </main>
-    <div v-else class="container is-max-desktop has-text-centered">
-      <h1 class="title is-skeleton">
-        Title
-      </h1>
-      <h2 class="subtitle is-skeleton">
-        Subtitle
-      </h2>
+    <div v-else class="container is-max-desktop">
+      <section class="hero">
+        <div class="hero-body">
+          <h1 class="title is-skeleton">Title</h1>
+          <p class="subtitle is-skeleton">Subtitle</p>
+        </div>
+      </section>
       <div class="skeleton-lines">
         <div></div>
         <div></div>

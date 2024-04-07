@@ -19,9 +19,9 @@ const Post = {
               <div>
                 <div class="content-single-body" v-html="content.rendered"></div>
                 <div class="label">
-                  <a href=""><span class="ion-pricetags"></span> &nbsp; News</a>
-                  <a href=""><span class="ion-android-share-alt"></span> &nbsp; Share</a>
-                  <a href=""><span class="ion-heart"></span> &nbsp; Like</a>
+                  <a href=""><span class="ion-pricetags"></span>&nbsp;News</a>
+                  <a href=""><span class="ion-android-share-alt"></span>&nbsp;Share</a>
+                  <a href=""><span class="ion-heart"></span>&nbsp;Like</a>
                 </div>
               </div>
               <div class="content-single-footer">
@@ -84,7 +84,9 @@ const Post = {
                 <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
                   <ul style="padding: 0;list-style: none;">
                     <li>
-                      <router-link :to="'/' + latestpost.slug.toLowerCase()">{{ latestpost.title.rendered }}</router-link>
+                      <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                        <span v-html="latestpost.title.rendered"></span>
+                      </router-link>
                     </li>
                   </ul>
                 </div>
@@ -181,6 +183,19 @@ const Post = {
       } catch (error) {
         console.error('Error fetching related posts:', error);
       }
+    },
+    async fetchRelatedPosts() {
+      // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
+      //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');
+      //   const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
+        // if (response.ok) {
+        if (this.post) {
+          // this.relatedPosts = await response.json();
+          console.error(this.post.tags[0]);
+        } else {
+          console.error('Failed to fetch related posts');
+        }
+      // }
     }
   },
 }

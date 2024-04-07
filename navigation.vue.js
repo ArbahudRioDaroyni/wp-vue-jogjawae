@@ -5,9 +5,10 @@ const Navigation = {
       <!-- Start Nav -->
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
+          <router-link class="navbar-item" :to="/">
             <img src="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png" alt="Jogjawae">
-          </a>
+          </router-link>
+
 
           <a role="button" class="navbar-burger" @click="toggleNavbar" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>

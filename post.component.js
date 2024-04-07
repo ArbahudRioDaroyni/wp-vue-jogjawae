@@ -15,8 +15,8 @@ const Post = {
           <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
         </div>
       </section>
-      <div class="content content-single is-8 is-offset-2">
-        <div v-html="content.rendered"></div>
+      <div class="content content-single columns">
+        <div v-html="content.rendered" class="is-8 is-offset-2"></div>
         <aside>
           <div>
             <h3>Kategori</h3>

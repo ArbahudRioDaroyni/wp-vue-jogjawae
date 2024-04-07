@@ -3,7 +3,7 @@ const { watchEffect } = Vue
 const Post = {
   name: 'Post',
   template: `
-    <main v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container">
+    <main v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-fluid">
       <section class="hero">
         <div class="hero-body">
           <h1 v-html="title.rendered" class="title"></h1>

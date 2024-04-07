@@ -7,6 +7,5 @@ iframe {
   height: 350px;
 }
 figure {
-  margin-bottom: var(--bulma-content-block-margin-bottom);
-  margin: 0;
+  margin: 0 0 var(--bulma-content-block-margin-bottom) 0;
 }

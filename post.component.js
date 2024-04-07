@@ -10,7 +10,7 @@ const Post = {
           <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
         </div>
       </section>
-      <div class="container">
+      <div class="content content-single">
         <figure>
           <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
         </figure>

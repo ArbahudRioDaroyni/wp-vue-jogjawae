@@ -3,17 +3,19 @@ const { watchEffect } = Vue
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-max-desktop is-fluid">
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-fluid">
+      <section>
+        <figure class="image is-16by9">
+          <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+        </figure>
+      </section>
       <section class="hero">
         <div class="hero-body">
           <h1 v-html="title.rendered" class="title"></h1>
           <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
         </div>
       </section>
-      <div class="content content-single">
-        <figure class="size-full">
-          <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
-        </figure>
+      <div class="content content-single is-8 is-offset-2">
         <div v-html="content.rendered"></div>
         <aside>
           <div>

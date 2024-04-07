@@ -20,8 +20,8 @@
     <noscript><link rel="stylesheet" href="<?= get_template_directory_uri() . '/bulma/css/bulma.css?ver=0.0.1' ?>"></noscript>
     <!-- <link rel="preload" media="screen" href="<?php // get_template_directory_uri() . '/css/main.css?ver=0.0.2' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="<?php // get_template_directory_uri() . '/css/main.css?ver=0.0.2' ?>"></noscript>
-    <link rel="preload" media="screen" href="<?php // get_template_directory_uri() . '/style.css?ver=0.0.2' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="<?php // get_template_directory_uri() . '/style.css?ver=0.0.2' ?>"></noscript> -->
+    <!-- <link rel="preload" media="screen" href="<?= get_template_directory_uri() . '/style.css?ver=0.0.2' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="<?= get_template_directory_uri() . '/style.css?ver=0.0.2' ?>"></noscript> --> -->
 
     <?php wp_head(); ?>
     

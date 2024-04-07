@@ -83,9 +83,9 @@ const Post = {
                 <div >
                 <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
                   <ul style="padding: 0;list-style: none;">
-                    <li><a href="single-news.html">
-                      {{ latestpost.title.rendered }}
-                    </a></li>
+                    <li>
+                      <router-link :to="'/' + latestpost.slug.toLowerCase()">{{ latestpost.title.rendered }}</router-link>
+                    </li>
                   </ul>
                 </div>
               </div>

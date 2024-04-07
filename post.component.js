@@ -14,38 +14,32 @@ const Post = {
         <figure>
           <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
         </figure>
-        <div class="columns">
-          <div class="column">
-            <div v-html="content.rendered"></div>
+        <div v-html="content.rendered"></div>
+        <aside>
+          <div>
+            <h3>Kategori</h3>
+            <div v-if="categories.length">
+              <ul v-for="category in categories" :key="category.id">
+                <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
+              </ul>
+            </div>
+            <div v-else>
+              No categories found.
+            </div>
           </div>
-          <div class="column">
-            <aside>
-              <div>
-                <h3>Kategori</h3>
-                <div v-if="categories.length">
-                  <ul v-for="category in categories" :key="category.id">
-                    <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
-                  </ul>
-                </div>
-                <div v-else>
-                  No categories found.
-                </div>
-              </div>
-              <div v-if="latestposts && latestposts.length">
-                <h3>Artikel Terbaru</h3>
-                <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
-                  <ul style="padding: 0;list-style: none;">
-                    <li>
-                      <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                        <span v-html="latestpost.title.rendered"></span>
-                      </router-link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </aside>
+          <div v-if="latestposts && latestposts.length">
+            <h3>Artikel Terbaru</h3>
+            <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
+              <ul style="padding: 0;list-style: none;">
+                <li>
+                  <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                    <span v-html="latestpost.title.rendered"></span>
+                  </router-link>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
     </main>
   `,

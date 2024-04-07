@@ -184,19 +184,19 @@ const Post = {
         console.error('Error fetching related posts:', error);
       }
     },
-    async fetchRelatedPosts() {
+    // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
       //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');
       //   const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
         // if (response.ok) {
-        if (this.post) {
+        // if (this.post) {
           // this.relatedPosts = await response.json();
-          console.error(this.post.tags[0]);
-        } else {
-          console.error('Failed to fetch related posts');
-        }
+        //   console.error(this.post.tags[0]);
+        // } else {
+        //   console.error('Failed to fetch related posts');
+        // }
       // }
-    }
+    // }
   },
 }
 

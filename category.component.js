@@ -11,14 +11,23 @@ const Category = {
           </div>
         </div>
         <div v-for="post in posts" :key="post.id" class="columns is-multiline">
+          <div class="column is-8 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor sit amet consectutar domor at elis</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
+            <a href="#">Read More</a>
+          </div>
           <div class="column is-4 mb-5">
             <div class="mb-4 is-flex">
-              
+              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="">
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
             <p v-html="post.excerpt.rendered" class="subtitle has-text-grey"></p>
-            <a href="#">{{ post.link }}</a>
+            <a :href="post.link">Selengkapnya</a>
           </div>
         </div>
       </div>

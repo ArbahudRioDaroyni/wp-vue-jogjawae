@@ -57,13 +57,6 @@ const Post = {
           <p class="subtitle is-skeleton">Subtitle</p>
         </div>
       </section>
-      <section class="hero">
-        <div class="hero-body">
-          <figure class="image is-16by9 is-skeleton">
-            <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
-          </figure>
-        </div>
-      </section>
       <div class="skeleton-lines">
         <div></div>
         <div></div>

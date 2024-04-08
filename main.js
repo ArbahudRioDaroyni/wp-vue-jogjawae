@@ -3,10 +3,10 @@ const { createApp } = Vue
 // import { createApp, ref, watchEffect } from 'vue'
 import router from './router.js'
 import Navigation from './navigation.vue.js'
-import Footer from './footer.vue.js'
 import Home from './home.component.js'
 import Post from './post.component.js'
 import Category from './category.component.js'
+import Footer from './footer.vue.js'
 
 
 

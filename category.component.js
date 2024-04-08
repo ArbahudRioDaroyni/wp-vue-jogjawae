@@ -1,12 +1,7 @@
-const { watchEffect } = Vue
-
 const Category = {
   name: 'Category',
   template: `
-    <h1>Post by Category: {{ categoryName }}</h1>
-    <ul>
-      <li v-for="post in posts" :key="post.id">{{ post.title.rendered }}</li>
-    </ul>
+    <h1>Post by Category:</h1>
   `,
   data() {
     return {

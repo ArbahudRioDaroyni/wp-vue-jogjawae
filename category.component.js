@@ -32,7 +32,7 @@ const Category = {
       posts: []
     }
   },
-  mounted() {
+  created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
     // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
@@ -61,20 +61,19 @@ const Category = {
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
-    }
-  },
-  filters: {
-    truncateHTML(text, length) {
+    },
+    truncateText(text, maxLength) {
       const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
-      if (withoutTags.length <= length) {
-        return text;
+      if (withoutTags.length <= maxLength) {
+        return withoutTags;
       } else {
-        const truncatedText = withoutTags.substring(0, length).trim() + '...';
-        return truncatedText;
+        // Menghapus spasi ekstra jika kata terakhir terputus
+        let truncatedText = withoutTags.substr(0, maxLength);
+        truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
+        return truncatedText + '';
       }
     }
   }
-  
 }
 
 export default Category

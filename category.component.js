@@ -33,12 +33,13 @@ const Category = {
       categoryId: null,
       posts: [],
       page: 1,
-      perPage: 5
+      perPage: 5,
+      totalPosts: null
     }
   },
   computed: {
     showLoadMoreButton() {
-      return this.posts.length >= this.perPage;
+      return this.posts.length >= this.perPage && this.posts.length < this.totalPosts;
     }
   },
   created() {
@@ -64,6 +65,8 @@ const Category = {
         const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}`);
         const newPosts = await response.json();
         this.posts = [...this.posts, ...newPosts];
+        // Update totalPosts setelah menerima data
+        this.totalPosts = response.headers.get('X-WP-Total');
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }

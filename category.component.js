@@ -6,7 +6,7 @@ const Category = {
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
             <span class="has-text-grey-dark">Lorem ipsum</span>
-            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold" v-html"categoryName"></h2>
+            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Lorem</h2>
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
           </div>
         </div>
@@ -17,7 +17,7 @@ const Category = {
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
-            <p v-html="post.excerpt.rendered | truncateHTML(50)" class="subtitle has-text-grey"></p>
+            <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 50) }}</p>
             <a :href="post.link">Selengkapnya</a>
           </div>
         </article>
@@ -61,19 +61,18 @@ const Category = {
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
-    }
-  },
-  filters: {
-    truncateHTML(text, length) {
-      const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
-      if (withoutTags.length <= length) {
+    },
+    truncateText(text, maxLength) {
+      if (text.length <= maxLength) {
         return text;
       } else {
-        const truncatedText = withoutTags.substring(0, length).trim() + '...';
-        return truncatedText;
+        // Menghapus spasi ekstra jika kata terakhir terputus
+        let truncatedText = text.substr(0, maxLength);
+        truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
+        return truncatedText + '...';
       }
     }
-  }  
+  }
 }
 
 export default Category

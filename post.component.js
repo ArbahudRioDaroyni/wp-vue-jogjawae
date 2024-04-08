@@ -1,9 +1,7 @@
-const { watchEffect } = Vue
-
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="mt-5">
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="mt-6">
       <article>
         <section class="hero">
           <div class="hero-body">

@@ -1,7 +1,7 @@
 const Category = {
   name: 'Category',
   template: `
-    <section class="section">
+    <section class="section mt-6">
       <div class="container">
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
@@ -17,7 +17,7 @@ const Category = {
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
-            <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 50) }}</p>
+            <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
             <a :href="post.link">Selengkapnya</a>
           </div>
         </article>
@@ -61,19 +61,20 @@ const Category = {
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
-    },
-    truncateText(text, maxLength) {
+    }
+  },
+  filters: {
+    truncateHTML(text, length) {
       const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
-      if (text.length <= maxLength) {
+      if (withoutTags.length <= length) {
         return text;
       } else {
-        // Menghapus spasi ekstra jika kata terakhir terputus
-        let truncatedText = text.substr(0, maxLength);
-        truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
-        return truncatedText + '';
+        const truncatedText = withoutTags.substring(0, length).trim() + '...';
+        return truncatedText;
       }
     }
   }
+  
 }
 
 export default Category

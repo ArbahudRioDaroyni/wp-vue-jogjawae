@@ -3,13 +3,13 @@ const Navigation = {
   template: /*html*/`
     <header>
       <!-- Start Nav -->
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item">
             <div v-html="svgIcon"></div>
           </router-link>
 
-          <a role="button" class="navbar-burger has-text-primary-dark" @click="toggleNavbar" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <a role="button" :class="['navbar-burger has-text-primary-dark', isOpen ? 'is-active' : '']" @click="toggleNavbar" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

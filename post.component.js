@@ -3,48 +3,52 @@ const { watchEffect } = Vue
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="container is-fluid">
-      <section>
-        <figure class="image is-16by9">
-          <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
-        </figure>
-      </section>
-      <section class="hero">
-        <div class="hero-body">
-          <h1 v-html="title.rendered" class="title"></h1>
-          <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
-        </div>
-      </section>
-      <div class="content content-single columns">
-        <div class=" column is-8 is-offset-2">
-          <div v-html="content.rendered"></div>
-          <aside>
-            <div>
-              <h3>Kategori</h3>
-              <div v-if="categories.length">
-                <ul v-for="category in categories" :key="category.id">
-                  <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
-                </ul>
-              </div>
-              <div v-else>
-                No categories found.
-              </div>
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id">
+      <article>
+        <section class="hero">
+          <div class="hero-body">
+            <h1 v-html="title.rendered" class="title"></h1>
+            <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
+          </div>
+        </section>
+        <section>
+          <figure class="image is-16by9">
+            <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+          </figure>
+        </section>
+        <section class="container">
+          <div class="content content-single columns">
+            <div class=" column is-8 is-offset-2">
+              <div v-html="content.rendered"></div>
+              <aside>
+                <div>
+                  <h3>Kategori</h3>
+                  <div v-if="categories.length">
+                    <ul v-for="category in categories" :key="category.id">
+                      <router-link :to="'/' + category.name.toLowerCase()">{{ category.name }}</router-link>
+                    </ul>
+                  </div>
+                  <div v-else>
+                    No categories found.
+                  </div>
+                </div>
+                <div v-if="latestposts && latestposts.length">
+                  <h3>Artikel Terbaru</h3>
+                  <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
+                    <ul style="padding: 0;list-style: none;">
+                      <li>
+                        <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                          <span v-html="latestpost.title.rendered"></span>
+                        </router-link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </aside>
             </div>
-            <div v-if="latestposts && latestposts.length">
-              <h3>Artikel Terbaru</h3>
-              <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
-                <ul style="padding: 0;list-style: none;">
-                  <li>
-                    <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                      <span v-html="latestpost.title.rendered"></span>
-                    </router-link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
+          </div>
+        </section>
+      </article>
     </main>
     <div v-else class="container is-max-desktop is-fluid">
       <section class="hero">

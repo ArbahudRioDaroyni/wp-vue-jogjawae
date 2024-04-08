@@ -15,6 +15,10 @@ const routes = [
     path: '/post/:id',
     component: () => import("./post.vue.js")
   }, {
+  }, {
+    path: '/category/:category',
+    component: () => import("./category.vue.js")
+  }, {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: { template: '<Navigation /><div>Not Found</div>' }

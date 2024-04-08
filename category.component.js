@@ -6,7 +6,7 @@ const Category = {
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
             <span class="has-text-grey-dark">Lorem ipsum</span>
-            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Lorem ipsum dolor sit amet consectutar domor at elis</h2>
+            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold" v-html"categoryName"></h2>
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
           </div>
         </div>
@@ -57,6 +57,9 @@ const Category = {
             <a href="#">Read More</a>
           </div>
         </div>
+        <ul>
+          <li v-for="post in posts" :key="post.id">{{ post.title.rendered }}</li>
+        </ul>
       </div>
     </section>
   `,
@@ -82,7 +85,7 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const response = await fetch(`https://yourwordpresssite.com/wp-json/wp/v2/categories?search=${this.categoryName}`);
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/categories?search=${this.categoryName}`);
         const data = await response.json();
         if (data.length > 0) {
           this.categoryId = data[0].id;
@@ -93,7 +96,7 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
-        const response = await fetch(`https://yourwordpresssite.com/wp-json/wp/v2/posts?categories=${this.categoryId}`);
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=3`);
         this.posts = await response.json();
       } catch (error) {
         console.error('Error fetching posts by category:', error);

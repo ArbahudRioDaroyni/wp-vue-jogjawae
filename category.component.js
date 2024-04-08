@@ -20,6 +20,9 @@ const Category = {
             <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
           </div>
         </article>
+        <div v-if="showLoadMoreButton" class="has-text-centered">
+          <button @click="loadMorePosts" class="button is-primary">Load More</button>
+        </div>
       </div>
     </section>
   `,
@@ -28,18 +31,19 @@ const Category = {
       loading: false,
       categoryName: this.$route.params.category, // Nama kategori yang ingin Anda dapatkan
       categoryId: null,
-      posts: []
+      posts: [],
+      page: 1,
+      perPage: 5
+    }
+  },
+  computed: {
+    showLoadMoreButton() {
+      return this.posts.length >= this.perPage;
     }
   },
   created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
-    // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
-    this.$watch('categoryId', () => {
-      if (this.categoryId !== null) {
-        this.getPostsByCategory();
-      }
-    });
   },
   methods: {
     async getCategoryId() {
@@ -48,6 +52,8 @@ const Category = {
         const data = await response.json();
         if (data.length > 0) {
           this.categoryId = data[0].id;
+          // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
+          this.getPostsByCategory();
         }
       } catch (error) {
         console.error('Error fetching category ID:', error);
@@ -55,8 +61,9 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=5`);
-        this.posts = await response.json();
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}`);
+        const newPosts = await response.json();
+        this.posts = [...this.posts, ...newPosts];
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
@@ -74,6 +81,10 @@ const Category = {
     },
     goToLink(route) {
       this.$router.push('/' + route);
+    },
+    async loadMorePosts() {
+      this.page++;
+      await this.getPostsByCategory();
     }
   }
 }

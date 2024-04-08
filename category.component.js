@@ -11,7 +11,7 @@ const Category = {
           </div>
         </div>
         <article class="columns is-multiline">
-          <div v-for="(post, index) in visiblePosts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
+          <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
             <div class="mb-4 is-flex">
               <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
             </div>
@@ -20,25 +20,21 @@ const Category = {
             <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
           </div>
         </article>
-        <div class="has-text-centered">
-          <button v-if="posts.length > visiblePosts.length" class="button is-primary" @click="loadMore">Load More</button>
-        </div>
       </div>
     </section>
   `,
   data() {
     return {
       loading: false,
-      categoryName: this.$route.params.category,
+      categoryName: this.$route.params.category, // Nama kategori yang ingin Anda dapatkan
       categoryId: null,
-      posts: [],
-      visiblePosts: [],
-      perPage: 5,
-      currentPage: 1
+      posts: []
     }
   },
   created() {
+    // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
+    // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
     this.$watch('categoryId', () => {
       if (this.categoryId !== null) {
         this.getPostsByCategory();
@@ -59,21 +55,11 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=7`);
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=5`);
         this.posts = await response.json();
-        this.updateVisiblePosts();
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
-    },
-    loadMore() {
-      this.currentPage++; // Menambahkan halaman
-      this.updateVisiblePosts();
-    },
-    updateVisiblePosts() {
-      const startIndex = (this.currentPage - 1) * this.perPage;
-      const endIndex = this.currentPage * this.perPage;
-      this.visiblePosts = this.posts.slice(0, endIndex);
     },
     truncateText(text, maxLength) {
       const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML

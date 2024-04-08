@@ -5,7 +5,7 @@ const Footer = {
       <div class="container">
         <div class="pb-5 is-flex is-flex-wrap-wrap is-justify-content-between is-align-items-center">
           <div class="mr-auto mb-2">
-            <router-link :to="/" class="is-inline-block">
+            <router-link to="/" class="is-inline-block">
               <div v-html="svgIcon"></div>
             </router-link>
           </div>

@@ -23,6 +23,9 @@ const Category = {
         <div v-if="showLoadMoreButton" class="has-text-centered">
           <button @click="loadMorePosts" class="button is-primary">Load More</button>
         </div>
+        <div v-if="loading" class="has-text-centered mt-4">
+          <i class="fas fa-spinner fa-spin"></i> Loading...
+        </div>
       </div>
     </section>
   `,
@@ -62,6 +65,7 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
+        this.loading = true;
         const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}`);
         const newPosts = await response.json();
         this.posts = [...this.posts, ...newPosts];
@@ -69,6 +73,8 @@ const Category = {
         this.totalPosts = response.headers.get('X-WP-Total');
       } catch (error) {
         console.error('Error fetching posts by category:', error);
+      } finally {
+        this.loading = false;
       }
     },
     truncateText(text, maxLength) {

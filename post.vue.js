@@ -2,6 +2,7 @@ const Single = {
   template: /*html*/`
     <Navigation />
     <Post />
+    <Footer />
   `
 }
 

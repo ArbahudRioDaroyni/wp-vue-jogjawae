@@ -10,17 +10,17 @@ const Category = {
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
           </div>
         </div>
-        <div class="columns is-multiline">
+        <article class="columns is-multiline">
           <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'">
             <div class="mb-4 is-flex">
-              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="">
+              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" style="max-height: 200px;">
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
-            <p v-html="post.excerpt.rendered" class="subtitle has-text-grey"></p>
+            <p v-html="post.excerpt.rendered | truncateHTML(50)" class="subtitle has-text-grey"></p>
             <a :href="post.link">Selengkapnya</a>
-          </div>      
-        </div>
+          </div>
+        </article>
       </div>
     </section>
   `,
@@ -56,13 +56,24 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=4`);
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=5`);
         this.posts = await response.json();
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       }
     }
-  }
+  },
+  filters: {
+    truncateHTML(text, length) {
+      const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
+      if (withoutTags.length <= length) {
+        return text;
+      } else {
+        const truncatedText = withoutTags.substring(0, length).trim() + '...';
+        return truncatedText;
+      }
+    }
+  }  
 }
 
 export default Category

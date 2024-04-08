@@ -59,7 +59,7 @@ const Category = {
     },
     async getPostsByCategory() {
       try {
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=100`);
+        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=7`);
         this.posts = await response.json();
         this.updateVisiblePosts();
       } catch (error) {

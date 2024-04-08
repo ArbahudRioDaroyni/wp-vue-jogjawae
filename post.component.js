@@ -18,7 +18,7 @@ const Post = {
             </figure>
           </div>
         </section>
-        <section class="container">
+        <section class="container is-fluid">
           <div class="content content-single columns">
             <div class=" column is-8 is-offset-2">
               <div v-html="content.rendered"></div>

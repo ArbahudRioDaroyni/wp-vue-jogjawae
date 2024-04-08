@@ -66,7 +66,7 @@ const Category = {
   data() {
     return {
       loading: false,
-      categoryName: null, // Nama kategori yang ingin Anda dapatkan
+      categoryName: this.$route.params.category, // Nama kategori yang ingin Anda dapatkan
       categoryId: null,
       posts: []
     }
@@ -74,7 +74,6 @@ const Category = {
   mounted() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
-    this.categoryName = this.$route.params.category;
     // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
     this.$watch('categoryId', () => {
       if (this.categoryId !== null) {

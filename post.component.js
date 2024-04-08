@@ -1,8 +1,9 @@
 const { watchEffect } = Vue
+import singlePost from './single-post.html';
 
 const Post = {
   name: 'Post',
-  template: ``,
+  template: singlePost,
   data() {
     return {
       loading: false,

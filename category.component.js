@@ -6,7 +6,7 @@ const Category = {
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
             <span class="has-text-grey-dark">Lorem ipsum</span>
-            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Lorem</h2>
+            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">{{ $route.params.category }}</h2>
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
           </div>
         </div>

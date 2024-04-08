@@ -10,7 +10,7 @@ const Post = {
           </div>
         </section>
         <section class="hero">
-          <div class="hero-body">
+          <div class="hero-body pt-0">
             <figure class="image is-16by9">
               <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
             </figure>

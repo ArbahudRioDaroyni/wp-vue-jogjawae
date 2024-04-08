@@ -1,7 +1,64 @@
 const Category = {
   name: 'Category',
   template: `
-    <h1>Post by Category:</h1>
+    <section class="section">
+      <div class="container">
+        <div class="mb-6 columns is-multiline is-centered">
+          <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
+            <span class="has-text-grey-dark">Lorem ipsum</span>
+            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Lorem ipsum dolor sit amet consectutar domor at elis</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
+          </div>
+        </div>
+        <div class="columns is-multiline">
+          <div class="column is-8 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor sit amet consectutar domor at elis</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
+            <a href="#">Read More</a>
+          </div>
+          <div class="column is-4 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">Read More</a>
+          </div>
+          <div class="column is-4 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">Read More</a>
+          </div>
+          <div class="column is-4 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">Read More</a>
+          </div>
+          <div class="column is-4 mb-5">
+            <div class="mb-4 is-flex">
+              <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
+            </div>
+            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <h2 class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold">Lorem ipsum dolor</h2>
+            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
   `,
   data() {
     return {

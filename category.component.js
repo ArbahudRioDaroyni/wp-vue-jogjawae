@@ -10,8 +10,8 @@ const Category = {
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
           </div>
         </div>
-        <div v-for="post in posts" :key="post.id" class="columns is-multiline">
-          <div class="column is-8 mb-5">
+        <div v-for="(post, index) in posts" :key="post.id" class="columns is-multiline">
+          <div v-if="index === 0" class="column is-8 mb-5"> <!-- Tampilkan sekali -->
             <div class="mb-4 is-flex">
               <img class="image" src="bulma-plain-assets/images/green-400-horizontal.png" alt="">
             </div>
@@ -20,7 +20,7 @@ const Category = {
             <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
             <a href="#">Read More</a>
           </div>
-          <div class="column is-4 mb-5">
+          <div v-else class="column is-4 mb-5"> <!-- Tampilkan 4x -->
             <div class="mb-4 is-flex">
               <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="">
             </div>

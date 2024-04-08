@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-theme="light>
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <link rel="profile" href="https://gmpg.org/xfn/11" />

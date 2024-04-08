@@ -5,7 +5,7 @@ const Navigation = {
       <!-- Start Nav -->
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="#">
+          <router-link :to="/" class="navbar-item">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
             <metadata>Created by potrace 1.10, written by Peter Selinger 2001-2011</metadata>
             <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -35,8 +35,8 @@ const Navigation = {
             <path d="M1500 1153 c-40 -74 -48 -98 -38 -104 23 -15 50 -10 55 12 4 15 11 19 27 15 11 -3 29 -6 39 -6 11 0 17 -8 17 -24 0 -19 6 -25 30 -28 20 -3 29 -1 27 7 -3 6 -11 53 -18 105 -7 52 -15 98 -18 101 -3 4 -20 9 -38 12 -31 6 -32 5 -83 -90z m90 12 c0 -46 -2 -51 -20 -47 -20 5 -20 3 -7 45 15 47 27 48 27 2z"/>
             <path d="M1701 1129 c-7 -51 -15 -98 -18 -105 -2 -7 11 -14 34 -18 21 -4 50 -9 64 -12 22 -4 27 -1 31 20 4 22 1 26 -18 26 -38 0 -52 10 -47 31 5 17 11 20 39 14 31 -5 34 -4 34 20 0 21 -4 25 -31 25 -24 0 -30 4 -27 18 4 18 7 18 51 8 24 -6 27 -4 27 18 0 25 -2 26 -90 41 l-36 6 -13 -92z"/>
             <path d="M1650 952 c16 -11 296 -57 440 -74 47 -5 102 -13 123 -18 20 -4 39 -4 42 0 7 12 -44 29 -110 36 -33 3 -134 17 -225 31 -202 30 -291 38 -270 25z"/> </g>
-            </svg>          
-          </a>
+            </svg>
+          </router-link>
 
           <a role="button" class="navbar-burger has-text-primary-dark" @click="toggleNavbar" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>

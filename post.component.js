@@ -52,7 +52,7 @@ const Post = {
         </section>
       </article>
     </main>
-    <div v-else class="container is-max-desktop is-fluid">
+    <div v-else class="container is-fluid">
       <section class="hero">
         <div class="hero-body">
           <h1 class="title is-skeleton">Title</h1>

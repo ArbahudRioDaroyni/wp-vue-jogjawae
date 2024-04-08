@@ -71,9 +71,26 @@ const Navigation = {
       isOpen: false
     };
   },
+  mounted() {
+    this.checkTime();
+  },
   methods: {
     toggleNavbar() {
       this.isOpen = !this.isOpen;
+    },
+    checkTime() {
+      const now = new Date();
+      const hour = now.getHours();
+
+      // Tentukan batas waktu untuk mengubah tema
+      const startTime = 6; // Pukul 6 pagi
+      const endTime = 18; // Pukul 6 sore
+
+      // Periksa apakah waktu saat ini berada di antara batas waktu
+      if (hour >= startTime && hour < endTime) {
+        // Jika tema saat ini adalah mode terang, tambahkan atribut data-theme ke tag html
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
     }
   }
 }

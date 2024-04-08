@@ -15,7 +15,6 @@ const routes = [
     path: '/post/:id',
     component: () => import("./post.vue.js")
   }, {
-  }, {
     path: '/category/:category',
     component: () => import("./category.vue.js")
   }, {

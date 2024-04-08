@@ -13,7 +13,7 @@ const Category = {
         <div v-for="post in posts" :key="post.id" class="columns is-multiline">
           <div class="column is-4 mb-5">
             <div class="mb-4 is-flex">
-              <img class="image" :src="yoast_head_json.og_image[0].url" alt="">
+              
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
@@ -32,7 +32,7 @@ const Category = {
       posts: []
     }
   },
-  created() {
+  mounted() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
     // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori

@@ -50,14 +50,21 @@ const Post = {
         </section>
       </article>
     </main>
-    <div v-else class="container is-fluid">
+    <div v-else class="container is-fluid mt-6">
       <section class="hero">
         <div class="hero-body">
           <h1 class="title is-skeleton">Title</h1>
           <p class="subtitle is-skeleton">Subtitle</p>
         </div>
       </section>
-      <div class="skeleton-lines">
+      <section class="hero">
+        <div class="hero-body">
+          <figure class="image is-16by9 is-skeleton">
+            <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+          </figure>
+        </div>
+      </section>
+      <div class="container is-fluid skeleton-lines">
         <div></div>
         <div></div>
         <div></div>

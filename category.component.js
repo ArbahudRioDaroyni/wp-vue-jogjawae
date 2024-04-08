@@ -11,7 +11,7 @@ const Category = {
           </div>
         </div>
         <article class="columns is-multiline">
-          <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'">
+          <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.link)>
             <div class="mb-4 is-flex">
               <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
             </div>
@@ -72,6 +72,9 @@ const Category = {
         truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
         return truncatedText + '';
       }
+    },
+    goToLink(route) {
+      this.$router.push(route);
     }
   }
 }

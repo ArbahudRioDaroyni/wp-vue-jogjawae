@@ -64,6 +64,13 @@ const Post = {
         <div></div>
         <div></div>
       </div>
+      <div class="skeleton-lines">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   `,
   data() {

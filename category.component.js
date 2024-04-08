@@ -13,7 +13,7 @@ const Category = {
         <article class="columns is-multiline">
           <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'">
             <div class="mb-4 is-flex">
-              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" style="max-height: 200px;">
+              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
@@ -63,13 +63,14 @@ const Category = {
       }
     },
     truncateText(text, maxLength) {
+      const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
       if (text.length <= maxLength) {
         return text;
       } else {
         // Menghapus spasi ekstra jika kata terakhir terputus
         let truncatedText = text.substr(0, maxLength);
         truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
-        return truncatedText + '...';
+        return truncatedText + '';
       }
     }
   }

@@ -6,6 +6,7 @@ import Navigation from './navigation.vue.js'
 import Footer from './footer.vue.js'
 import Home from './home.component.js'
 import Post from './post.component.js'
+import Category from './category.component.js'
 
 
 
@@ -17,5 +18,6 @@ app.use(router)
 app.component('Navigation', Navigation)
 app.component('Home', Home)
 app.component('Post', Post)
+app.component('Category', Category)
 app.component('Footer', Footer)
 app.mount('#app')

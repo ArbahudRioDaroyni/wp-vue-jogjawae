@@ -1,6 +1,6 @@
 const { watchEffect } = Vue
 
-const Post = {
+const Category = {
   name: 'Category',
   template: `
     <h1>Post by Category: {{ categoryName }}</h1>

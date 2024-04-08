@@ -11,10 +11,12 @@ const Post = {
             <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
           </div>
         </section>
-        <section>
-          <figure class="image is-16by9">
-            <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
-          </figure>
+        <section class="hero">
+          <div class="hero-body">
+            <figure class="image is-16by9">
+              <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+            </figure>
+          </div>
         </section>
         <section class="container">
           <div class="content content-single columns">

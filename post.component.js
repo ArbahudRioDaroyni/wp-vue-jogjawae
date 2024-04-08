@@ -32,6 +32,7 @@ const Post = {
       })
       .then(html => {
         // Lakukan sesuatu dengan isi file test.html yang berhasil dimuat
+        this.template = html;
         console.log(html);
       })
       .catch(error => {

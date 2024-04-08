@@ -64,7 +64,7 @@ const Post = {
           </figure>
         </div>
       </section>
-      <div class="container is-fluid skeleton-lines">
+      <div class="skeleton-lines">
         <div></div>
         <div></div>
         <div></div>

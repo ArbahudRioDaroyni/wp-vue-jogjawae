@@ -1,9 +1,8 @@
 const { watchEffect } = Vue
-import singlePost from './single-post.html';
 
 const Post = {
   name: 'Post',
-  template: singlePost,
+  template: '',
   data() {
     return {
       loading: false,
@@ -15,7 +14,7 @@ const Post = {
   },
   created() {
     // Menggunakan Fetch API untuk memuat file test.html
-    fetch('//' + window.location.hostname + '/single-post.html')
+    fetch('//' + window.location.hostname + '/wp-content/themes/wp-vue-jogjawae/single-post.html')
       .then(response => response.text()) // Mengambil teks dari respons
       .then(html => {
         // Menyimpan isi file test.html dalam properti template

@@ -64,7 +64,7 @@ const Post = {
         <div></div>
         <div></div>
       </div>
-      <div class="skeleton-lines">
+      <div class="skeleton-lines mt-3">
         <div></div>
         <div></div>
         <div></div>

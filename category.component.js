@@ -16,9 +16,8 @@ const Category = {
               <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
             </div>
             <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
-            <h2 v-html="post.title.rendered" class="mb-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
+            <h2 v-html="post.title.rendered" class="my-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
             <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
-            <a :href="post.link">Selengkapnya</a>
           </div>
         </article>
       </div>

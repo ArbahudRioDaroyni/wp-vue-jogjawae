@@ -5,7 +5,7 @@ const Navigation = {
       <!-- Start Nav -->
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <router-link :to="/" class="navbar-item">
+          <router-link to="/" class="navbar-item">
             <div v-html="svgIcon"></div>
           </router-link>
 

@@ -32,7 +32,7 @@ const Category = {
       posts: []
     }
   },
-  mounted() {
+  created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
     // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori

@@ -15,12 +15,40 @@ const Category = {
       <div class="container">
         <div class="columns is-multiline">
           <article v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
-            <div class="mb-4 is-flex">
-              <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img
+                    :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}"
+                    :style="index === 0 ? '' : 'max-height: 200px;'"
+                    alt="{{ post.title.rendered }}"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img
+                        src="https://bulma.io/assets/images/placeholders/96x96.png"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <h2 class="title is-4">{{ post.title.rendered }}</h2>
+                    <p class="subtitle is-6">{{ post.yoast_head_json.author }}</p>
+                  </div>
+                </div>
+
+                <div class="content">
+                  {{ truncateText(post.excerpt.rendered, 200) }}<a>@bulmaio</a>. <a href="#">#css</a>
+                  <a href="#">#responsive</a>
+                  <br />
+                  <time datetime="2016-1-1">{{post.yoast_head_json.article_published_time}}</time>
+                </div>
+              </div>
             </div>
-            <span><small>10 jun 2021 19:40</small></span>
-            <h2 v-html="post.title.rendered" class="my-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
-            <p class="has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
           </article>
         </div>
         <div v-if="showLoadMoreButton" class="has-text-centered">

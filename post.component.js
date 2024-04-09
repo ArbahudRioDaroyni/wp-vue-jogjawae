@@ -19,7 +19,7 @@ const Post = {
         <section class="container is-fluid">
           <div class="content content-single columns">
             <div class=" column is-8 is-offset-2">
-              <div class="has-text-grey" v-html="content.rendered"></div>
+              <div v-html="content.rendered"></div>
               <aside>
                 <div>
                   <h3>Kategori</h3>

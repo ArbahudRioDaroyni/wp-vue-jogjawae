@@ -20,7 +20,6 @@ const Category = {
                 <figure class="image is-4by3">
                   <img
                     :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}"
-                    :style="index === 0 ? '' : 'max-height: 200px;'"
                     alt="{{ post.title.rendered }}"
                   />
                 </figure>
@@ -36,8 +35,8 @@ const Category = {
                     </figure>
                   </div>
                   <div class="media-content">
-                    <h2 class="title is-4">{{ post.title.rendered }}</h2>
-                    <p class="subtitle is-6">{{ post.yoast_head_json.author }}</p>
+                    <h2 v-html="post.title.rendered" class="title is-4"></h2>
+                    <p class="subtitle is-6">{{ post.yoast_head_json.author }}.</p>
                   </div>
                 </div>
 

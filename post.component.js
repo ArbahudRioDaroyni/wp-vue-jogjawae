@@ -131,14 +131,14 @@ const Post = {
             //modifiedDate.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
           }
         }
-  
+        
+        this.scrollToTop();
         this.post = postData;
       } catch (error) {
         // console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
-        this.scrollToTop();
       }
     },
     async fetchCategories() {

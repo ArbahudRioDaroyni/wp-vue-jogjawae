@@ -172,7 +172,6 @@ const Post = {
     scrollToTop() {
       // Pastikan this.$refs.scrollContainer telah diinisialisasi
       if (this.$refs.scrollContainer) {
-        console.log(this.$refs.scrollContainer);
         // Panggil scrollIntoView() pada elemen referensi scrollContainer
         this.$refs.scrollContainer.scrollIntoView({
           behavior: 'smooth',

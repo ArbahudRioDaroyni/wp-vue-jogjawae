@@ -5,9 +5,8 @@ const Category = {
       <div class="container">
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
-            <span class="has-text-grey-dark">Lorem ipsum</span>
             <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">{{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }}</h2>
-            <p class="subtitle has-text-grey">Dapatkan informasi wisata {{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }} yang menarik di {{ window.location.hostname }}.</p>
+            <p class="subtitle has-text-grey">Dapatkan informasi wisata {{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }} yang menarik di JogjaWae.com.</p>
           </div>
         </div>
         <article class="columns is-multiline">

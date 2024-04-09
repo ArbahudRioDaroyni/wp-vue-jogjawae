@@ -20,6 +20,7 @@ const Post = {
           <div class="content content-single columns">
             <div class=" column is-8 is-offset-2">
               <div v-html="content.rendered"></div>
+              <button @click="scrollToTop" class="button is-primary">Muat lainnya</button>
               <aside>
                 <div>
                   <h3>Kategori</h3>

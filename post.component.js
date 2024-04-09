@@ -1,8 +1,8 @@
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="mt-6">
-      <article ref="scrollContainer">
+    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="mt-6" ref="scrollContainer">
+      <article>
         <section class="hero">
           <div class="hero-body">
             <h1 v-html="title.rendered" class="title mb-1"></h1>

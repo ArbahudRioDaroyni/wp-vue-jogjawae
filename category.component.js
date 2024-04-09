@@ -7,7 +7,7 @@ const Category = {
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
             <span class="has-text-grey-dark">Lorem ipsum</span>
             <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">{{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }}</h2>
-            <p class="subtitle has-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
+            <p class="subtitle has-text-grey">Dapatkan informasi wisata {{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }} yang menarik di {{ window.location.hostname }}.</p>
           </div>
         </div>
         <article class="columns is-multiline">
@@ -21,7 +21,7 @@ const Category = {
           </div>
         </article>
         <div v-if="showLoadMoreButton" class="has-text-centered">
-          <button @click="loadMorePosts" class="button is-primary">Load More</button>
+          <button @click="loadMorePosts" class="button is-primary">Muat lainnya</button>
         </div>
         <div v-if="loading" class="has-text-centered mt-4">
           <i class="fas fa-spinner fa-spin"></i> Loading...

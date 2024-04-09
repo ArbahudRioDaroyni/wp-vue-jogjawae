@@ -5,7 +5,7 @@ const Post = {
       <article>
         <section class="hero">
           <div class="hero-body">
-            <h1 v-html="title.rendered" class="title"></h1>
+            <h1 v-html="title.rendered" class="title mb-1"></h1>
             <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
           </div>
         </section>
@@ -53,8 +53,14 @@ const Post = {
     <div v-else class="container is-fluid mt-6">
       <section class="hero">
         <div class="hero-body">
-          <h1 class="title is-skeleton">Title</h1>
-          <p class="subtitle is-skeleton">Subtitle</p>
+          <h1 class="title mb-1 is-skeleton">----- ----- ----- --------- ---, ----, - ------</h1>
+          <p class="subtitle is-skeleton">-- ----- ----</p>
+        </div>
+      </section>
+      <section class="hero">
+        <div class="hero-body pt-0">
+          <figure class="image is-16by9 is-skeleton">
+          </figure>
         </div>
       </section>
       <div class="skeleton-lines">

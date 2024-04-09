@@ -11,7 +11,7 @@ const Category = {
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section pt-0">
       <div class="container">
         <div class="columns is-multiline">
           <article v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">

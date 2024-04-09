@@ -21,9 +21,11 @@ const Post = {
           <div class="hero-body pt-0">
             <figure class="image is-16by9">
               <img
-                class="image"
                 :src="yoast_head_json.og_image[0].url"
-                :alt="title.rendered">
+                :alt="title.rendered"
+                class="image"
+                loading="lazy"
+                decoding="async">
             </figure>
           </div>
         </section>

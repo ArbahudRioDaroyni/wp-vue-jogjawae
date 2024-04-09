@@ -21,10 +21,12 @@ const Category = {
             @click="goToLink(post.slug)">
             <div class="card">
               <div class="card-image">
-                <figure :class="['image', index === 0 ? 'is-6by3' : 'is-4by3']">
+                <figure class="image is-6by3">
                   <img
                     :src="post.yoast_head_json.og_image[0].url"
                     :alt="post.title.rendered"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </figure>
               </div>
@@ -35,6 +37,8 @@ const Category = {
                       <img
                         src="post.yoast_head_json.schema.@graph[last].image.contentUrl"
                         :alt="post.yoast_head_json.author"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </figure>
                   </div>

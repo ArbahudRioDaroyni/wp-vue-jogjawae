@@ -19,7 +19,7 @@ const Post = {
         <section class="container is-fluid">
           <div class="content content-single columns">
             <div class=" column is-8 is-offset-2">
-              <div v-html="content.rendered"></div>
+              <div class="has-text-grey" v-html="content.rendered"></div>
               <aside>
                 <div>
                   <h3>Kategori</h3>
@@ -114,6 +114,7 @@ const Post = {
   },
   methods: {
     async fetchDataPost() {
+      this.scrollToTop();
       this.error = this.post = null
       this.loading = true
       // const url = `${API_URL}${this.$route.params.slug}`
@@ -133,7 +134,6 @@ const Post = {
         }
         
         this.post = postData;
-        this.scrollToTop();
       } catch (error) {
         // console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';

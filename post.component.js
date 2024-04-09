@@ -132,8 +132,8 @@ const Post = {
           }
         }
         
-        this.scrollToTop();
         this.post = postData;
+        this.scrollToTop();
       } catch (error) {
         // console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';

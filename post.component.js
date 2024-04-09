@@ -169,12 +169,14 @@ const Post = {
       }
     },
     scrollToTop() {
-      // Scroll ke atas dengan menggunakan metode scrollIntoView()
-      // yang diberikan pada elemen referensi scrollContainer
-      this.$refs.scrollContainer.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      // Pastikan this.$refs.scrollContainer telah diinisialisasi
+      if (this.$refs.scrollContainer) {
+        // Panggil scrollIntoView() pada elemen referensi scrollContainer
+        this.$refs.scrollContainer.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     }
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {

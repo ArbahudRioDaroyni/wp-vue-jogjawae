@@ -20,7 +20,7 @@ const Category = {
           </div>
         </article>
         <div v-if="showLoadMoreButton" class="has-text-centered">
-          <button @click="loadMorePosts" class="button is-primary">{{ loading ? loadingText : 'Muat lainnya' }}</button>
+          <button @click="loadMorePosts" :class="['button', loading ? 'is-active' : '']">{{ loading ? 'Loading' : 'Muat lainnya' }}</button>
         </div>
       </div>
     </section>
@@ -33,30 +33,13 @@ const Category = {
       posts: [],
       page: 1,
       perPage: 5,
-      totalPosts: null,
-      loadingText: 'Memuat.',
-      loadingDotCount: 1
+      totalPosts: null
     }
   },
   computed: {
     showLoadMoreButton() {
       return this.posts.length >= this.perPage && this.posts.length < this.totalPosts;
-    },
-    loadingText() {
-      // Membuat teks yang interaktif dengan titik-titik
-      const dots = '.'.repeat(this.loadingDotCount);
-      // Ubah jumlah titik secara dinamis
-      this.loadingDotCount = this.loadingDotCount % 3 + 1;
-      return `Memuat${dots}`;
-    },
-  },
-  mounted() {
-    // Menerapkan fungsi untuk mengubah teks setiap 0.1 detik
-    setInterval(() => {
-      if (this.loading) {
-        this.loadingText = this.loadingText === 'Memuat...' ? 'Memuat.' : this.loadingText + '.';
-      }
-    }, 100);
+    }
   },
   created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
@@ -108,12 +91,6 @@ const Category = {
       this.loading = true;
       this.page++;
       await this.getPostsByCategory();
-
-      setTimeout(() => {
-        // Contoh proses pengambilan data (digantikan dengan logika sesungguhnya)
-        this.loading = false;
-        this.loadingDotCount = 1;
-      }, 2000);
     }
   }
 }

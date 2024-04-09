@@ -41,7 +41,22 @@ const Category = {
   computed: {
     showLoadMoreButton() {
       return this.posts.length >= this.perPage && this.posts.length < this.totalPosts;
-    }
+    },
+    loadingText() {
+      // Membuat teks yang interaktif dengan titik-titik
+      const dots = '.'.repeat(this.loadingDotCount);
+      // Ubah jumlah titik secara dinamis
+      this.loadingDotCount = this.loadingDotCount % 3 + 1;
+      return `Memuat${dots}`;
+    },
+  },
+  mounted() {
+    // Menerapkan fungsi untuk mengubah teks setiap 0.1 detik
+    setInterval(() => {
+      if (this.loading) {
+        this.loadingText = this.loadingText === 'Memuat...' ? 'Memuat.' : this.loadingText + '.';
+      }
+    }, 100);
   },
   created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
@@ -99,14 +114,7 @@ const Category = {
         this.loading = false;
         this.loadingDotCount = 1;
       }, 2000);
-    },
-    loadingText() {
-      // Membuat teks yang interaktif dengan titik-titik
-      const dots = '.'.repeat(this.loadingDotCount);
-      // Ubah jumlah titik secara dinamis
-      this.loadingDotCount = this.loadingDotCount % 3 + 1;
-      return `Memuat${dots}`;
-    },
+    }
   }
 }
 

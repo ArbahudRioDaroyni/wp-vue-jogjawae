@@ -50,10 +50,10 @@ const Post = {
         </section>
       </article>
     </main>
-    <div v-else class="container is-fluid mt-6">
+    <div v-else class="mt-6">
       <section class="hero">
         <div class="hero-body">
-          <h1 class="title mb-1 is-skeleton">----- ----- ----- --------- ---, ----, - ------</h1>
+          <h1 class="title mb-1 is-skeleton">----- ----- ----- --------- ---, ----, - ------ ---- -- ---</h1>
           <p class="subtitle is-skeleton">-- ----- ----</p>
         </div>
       </section>

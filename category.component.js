@@ -5,22 +5,26 @@ const Category = {
       <div class="container">
         <div class="mb-6 columns is-multiline is-centered">
           <div class="column is-12 is-7-fullhd is-8-desktop has-text-centered">
-            <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">{{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }}</h2>
+            <h1 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">{{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }}</h1>
             <p class="subtitle has-text-grey">Dapatkan informasi wisata {{ $route.params.category.charAt(0).toUpperCase() + $route.params.category.slice(1) }} yang menarik di JogjaWae.com.</p>
           </div>
         </div>
-        <article class="columns is-multiline">
-          <div v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <article v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
             <div class="mb-4 is-flex">
               <img class="image" :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}" :style="index === 0 ? '' : 'max-height: 200px;'">
             </div>
-            <span><small class="has-text-grey-dark">10 jun 2021 19:40</small></span>
+            <span><small>10 jun 2021 19:40</small></span>
             <h2 v-html="post.title.rendered" class="my-2 is-size-3 is-size-4-mobile has-text-weight-bold"></h2>
-            <p class="subtitle has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
-          </div>
-        </article>
+            <p class="has-text-grey">{{ truncateText(post.excerpt.rendered, 200) }}</p>
+          </article>
+        </div>
         <div v-if="showLoadMoreButton" class="has-text-centered">
-          <button @click="loadMorePosts" :class="['button', loading ? 'is-loading' : '']">{{ loading ? 'Loading' : 'Muat lainnya' }}</button>
+          <button @click="loadMorePosts" :class="['button', loading ? 'is-loading' : '']">{{ loading ? 'Memuat' : 'Muat lainnya' }}</button>
         </div>
       </div>
     </section>

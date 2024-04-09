@@ -20,7 +20,7 @@ const Category = {
           </div>
         </article>
         <div v-if="showLoadMoreButton" class="has-text-centered">
-          <button @click="loadMorePosts" :class="['button', loading ? 'is-active' : '']">{{ loading ? 'Loading' : 'Muat lainnya' }}</button>
+          <button @click="loadMorePosts" :class="['button', loading ? 'is-loading' : '']">{{ loading ? 'Loading' : 'Muat lainnya' }}</button>
         </div>
       </div>
     </section>

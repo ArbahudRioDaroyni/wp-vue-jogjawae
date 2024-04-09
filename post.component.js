@@ -138,6 +138,7 @@ const Post = {
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
+        this.scrollToTop();
       }
     },
     async fetchCategories() {
@@ -167,6 +168,14 @@ const Post = {
         console.error('Error fetching related posts:', error);
       }
     },
+    scrollToTop() {
+      // Scroll ke atas dengan menggunakan metode scrollIntoView()
+      // yang diberikan pada elemen referensi scrollContainer
+      this.$refs.scrollContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
       //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');

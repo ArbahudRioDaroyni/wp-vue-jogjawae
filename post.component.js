@@ -63,14 +63,14 @@ const Post = {
           </figure>
         </div>
       </section>
-      <div class="skeleton-lines">
+      <div class="container is-fluid skeleton-lines">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="skeleton-lines mt-3">
+      <div class="container is-fluid skeleton-lines mt-3">
         <div></div>
         <div></div>
         <div></div>

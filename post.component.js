@@ -1,18 +1,29 @@
 const Post = {
   name: 'Post',
   template: `
-    <main v-if="!loading" v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post" :key="post.id" class="mt-6" ref="scrollContainer">
+    <main
+      v-if="!loading"
+      v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post"
+      :key="post.id"
+      class="mt-6">
       <article>
         <section class="hero">
           <div class="hero-body">
-            <h1 v-html="title.rendered" class="title mb-1"></h1>
-            <p class="subtitle"><time :datetime="modified_gmt">{{ formattedModified }}</time></p>
+            <h1
+              v-html="title.rendered"
+              class="title mb-1"></h1>
+            <p class="subtitle">
+              <time :datetime="modified_gmt">{{ formattedModified }}</time>
+            </p>
           </div>
         </section>
         <section class="hero">
           <div class="hero-body pt-0">
             <figure class="image is-16by9">
-              <img class="image" :src="yoast_head_json.og_image[0].url" :alt="title.rendered">
+              <img
+                class="image"
+                :src="yoast_head_json.og_image[0].url"
+                :alt="title.rendered">
             </figure>
           </div>
         </section>

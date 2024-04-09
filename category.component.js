@@ -14,13 +14,17 @@ const Category = {
     <section class="section pt-0">
       <div class="container">
         <div class="columns is-multiline">
-          <article v-for="(post, index) in posts" :key="post.id" :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'" @click="goToLink(post.slug)">
+          <article
+            v-for="(post, index) in posts"
+            :key="post.id"
+            :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'"
+            @click="goToLink(post.slug)">
             <div class="card">
               <div class="card-image">
-                <figure class="image is-4by3">
+                <figure :class="['image', index === 0 ? 'is-6by3' : 'is-4by3']">
                   <img
-                    :src="post.yoast_head_json.og_image[0].url" alt="{{ post.title.rendered }}"
-                    alt="{{ post.title.rendered }}"
+                    :src="post.yoast_head_json.og_image[0].url"
+                    :alt="post.title.rendered"
                   />
                 </figure>
               </div>
@@ -29,29 +33,40 @@ const Category = {
                   <div class="media-left">
                     <figure class="image is-48x48">
                       <img
-                        src="https://bulma.io/assets/images/placeholders/96x96.png"
-                        alt="Placeholder image"
+                        src="post.yoast_head_json.schema.@graph[last].image.contentUrl"
+                        :alt="post.yoast_head_json.author"
                       />
                     </figure>
                   </div>
                   <div class="media-content">
-                    <h2 v-html="post.title.rendered" class="title is-4"></h2>
+                    <h2
+                      v-html="post.title.rendered"
+                      class="title is-4">
+                    </h2>
                     <p class="subtitle is-6">{{ post.yoast_head_json.author }}.</p>
                   </div>
                 </div>
-
                 <div class="content">
-                  {{ truncateText(post.excerpt.rendered, 200) }}<a>@bulmaio</a>. <a href="#">#css</a>
+                  {{ truncateText(post.excerpt.rendered, 200) }} <a>@bulmaio</a>. <a href="#">#css</a>
                   <a href="#">#responsive</a>
                   <br />
-                  <time datetime="2016-1-1">{{post.yoast_head_json.article_published_time}}</time>
+                  <time
+                    :datetime="post.modified_gmt"
+                    v-html="post.yoast_head_json.article_published_time">
+                  </time>
                 </div>
               </div>
             </div>
           </article>
         </div>
-        <div v-if="showLoadMoreButton" class="has-text-centered">
-          <button @click="loadMorePosts" :class="['button', loading ? 'is-loading' : '']">{{ loading ? 'Memuat' : 'Muat lainnya' }}</button>
+        <div
+          v-if="showLoadMoreButton"
+          class="has-text-centered">
+          <button
+            @click="loadMorePosts"
+            :class="['button', loading ? 'is-loading' : '']">
+            {{ loading ? 'Memuat' : 'Muat lainnya' }}
+          </button>
         </div>
       </div>
     </section>

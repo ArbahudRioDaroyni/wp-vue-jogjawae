@@ -27,6 +27,7 @@ const Category = {
                     :alt="post.title.rendered"
                     loading="lazy"
                     decoding="async"
+                    class="cover"
                   />
                 </figure>
               </div>

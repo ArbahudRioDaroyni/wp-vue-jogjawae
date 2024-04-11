@@ -27,7 +27,8 @@ const Category = {
                     :alt="post.title.rendered"
                     loading="lazy"
                     decoding="async"
-                    :class="index === 0 ? '' : 'cover'"
+                    class="fit-cover"
+                    :style="index === 0 ? 'max-height=350px' : 'max-height=223px'"
                   />
                 </figure>
               </div>

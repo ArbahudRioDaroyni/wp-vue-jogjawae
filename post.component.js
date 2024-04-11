@@ -38,7 +38,7 @@ const Post = {
                   <h3>Kategori</h3>
                   <div v-if="categories.length">
                     <ul v-for="category in categories" :key="category.id">
-                      <router-link :to="'/' + 'category/' + category.name.toLowerCase()">{{ category.name }}</router-link>
+                      <router-link :to="'/' + 'category/' + category.name.toLowerCase() + '/'">{{ category.name }}</router-link>
                     </ul>
                   </div>
                   <div v-else>

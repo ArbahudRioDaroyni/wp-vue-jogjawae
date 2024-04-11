@@ -27,7 +27,7 @@ const Category = {
                     :alt="post.title.rendered"
                     loading="lazy"
                     decoding="async"
-                    :class="index === 0 ? 'cover' : ''"
+                    :class="index === 0 ? '' : 'cover'"
                   />
                 </figure>
               </div>

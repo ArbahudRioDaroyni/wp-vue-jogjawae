@@ -15,8 +15,8 @@ export const app = createApp({
 
 app.use(router)
 app.component('Navigation', Navigation)
-app.component('Home', Home)
-app.component('Post', Post)
-app.component('Category', Category)
-app.component('Footer', Footer)
+  .component('Home', Home)
+  .component('Post', Post)
+  .component('Category', Category)
+  .component('Footer', Footer)
 app.mount('#app')

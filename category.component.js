@@ -44,7 +44,7 @@ const Category = {
                       />
                     </figure>
                   </div>
-                  <div class="media-content">
+                  <div class="media-content" style="overflow: unset;">
                     <h2
                       v-html="post.title.rendered"
                       class="title is-4">

@@ -104,10 +104,10 @@ const Post = {
     }
   },
   created() {
-    this.watchSlug();
+    this.checkSlug();
   },
   methods: {
-    watchSlug() {
+    checkSlug() {
       this.$watch(
         function() {
           return this.$route.params.slug;
@@ -130,8 +130,7 @@ const Post = {
       this.scrollToTop();
       this.error = this.post = null
       this.loading = true
-      // const url = `${API_URL}${this.$route.params.slug}`
-      // this.post = await (await fetch(url)).json()
+
       try {
         const url = `${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}`;
         const postData = await (await fetch(url)).json();
@@ -148,7 +147,6 @@ const Post = {
         
         this.post = postData;
       } catch (error) {
-        // console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
@@ -187,12 +185,12 @@ const Post = {
         behavior: 'smooth'
       });
     },
-    
-    // Start Table 0f Contents
     createTableofContents() {
+      // Start Table 0f Contents
       // get ell h1-h6 in .content-article => store as array
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
       this.headings = headings.map(heading => {
+        const no = heading.id;
         const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
         heading.id = id; // Add id to the heading element
         let level = parseInt(heading.tagName.substring(1)); // Get the heading level (e.g., h1, h2, etc.)
@@ -207,6 +205,7 @@ const Post = {
         }
         
         return {
+          no: no,
           id: id,
           title: heading.textContent,
           level: level,
@@ -214,8 +213,8 @@ const Post = {
         };
       });
       console.log(this.headings);
+      // Start Table 0f Contents
     }
-    // Start Table 0f Contents
 
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {

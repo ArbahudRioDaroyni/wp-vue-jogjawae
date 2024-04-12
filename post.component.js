@@ -188,6 +188,18 @@ const Post = {
         top: 0,
         behavior: 'smooth'
       });
+    },
+    getTableofContents() {
+      // get ell h1-h6 in .content-article => store as array
+      const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
+      this.headings = headings.map(heading => {
+        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Membuat id dari judul dengan menghapus spasi dan mengganti dengan tanda '-' (strip)
+        heading.id = id; // Tambahkan id ke elemen heading
+        return {
+          id: id,
+          title: heading.textContent
+        };
+      });
     }
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
@@ -204,23 +216,15 @@ const Post = {
     // }
   },
   updated() {
-    // Table 0f Contents
-    // get ell h1-h6 in .content-article => store as array
-    const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
-    this.headings = headings.map(heading => {
-      const id = heading.textContent.trim().replace(/\s+/g, '-'); // Membuat id dari judul dengan menghapus spasi dan mengganti dengan tanda '-' (strip)
-      heading.id = id; // Tambahkan id ke elemen heading
-      return {
-        id: id,
-        title: heading.textContent
-      };
-    });
+    // Start Table 0f Contents
+    this.getTableofContents();
     // add attr id to ell h1-h6 in .article-content
     const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
     articleContentHeadings.forEach(heading => {
       const id = heading.textContent.trim().replace(/\s+/g, '-'); // Membuat id dari judul dengan menghapus spasi dan mengganti dengan tanda '-' (strip)
       heading.id = id; // Tambahkan id ke elemen heading
     });
+    // End Table 0f Contents
   }
 }
 

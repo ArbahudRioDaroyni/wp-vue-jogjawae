@@ -222,6 +222,7 @@ const Post = {
         const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
         heading.id = id; // Add id to the heading element
       });
+      console.log(this.heading);
     }
     // Start Table 0f Contents
 

@@ -197,10 +197,22 @@ const Post = {
       this.headings = headings.map(heading => {
         const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
         heading.id = id; // Add id to the heading element
+        let level = parseInt(heading.tagName.substring(1)); // Get the heading level (e.g., h1, h2, etc.)
+        let parentId = null; // Initialize parentId
+
+        // Find the closest parent heading with a lower level
+        for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
+          if (parseInt(headings[i].tagName.substring(1)) < level) {
+            parentId = headings[i].id; // Set parentId to the id of the parent heading
+            break; // Exit the loop after finding the parent heading
+          }
+        }
+        
         return {
           id: id,
           title: heading.textContent,
-          level: parseInt(heading.tagName.substring(1)) // Get the heading level (e.g., h1, h2, etc.)
+          level: level,
+          parentId: parentId // Add parentId to the heading object
         };
       });
 

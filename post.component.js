@@ -201,12 +201,12 @@ const Post = {
         let parentId = null; // Initialize parentId
 
         // Find the closest parent heading with a lower level
-        // for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
-        //   if (parseInt(headings[i].tagName.substring(1)) < level) {
-        //     parentId = headings[i].id; // Set parentId to the id of the parent heading
-        //     break; // Exit the loop after finding the parent heading
-        //   }
-        // }
+        for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
+          if (parseInt(headings[i].tagName.substring(1)) < level) {
+            parentId = headings[i].id; // Set parentId to the id of the parent heading
+            break; // Exit the loop after finding the parent heading
+          }
+        }
         
         return {
           id: id,
@@ -215,14 +215,6 @@ const Post = {
           parentId: parentId // Add parentId to the heading object
         };
       });
-
-      // add attr id to ell h1-h6 in .article-content
-      // const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
-      // articleContentHeadings.forEach(heading => {
-      //   const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
-      //   heading.id = id; // Add id to the heading element
-      // });
-      console.log(this.headings);
     }
     // Start Table 0f Contents
 
@@ -241,9 +233,25 @@ const Post = {
     // }
   },
   updated() {
-    // Start Table 0f Contents
+    // Simpan nilai headings sebelum pembaruan
+    const prevHeadings = JSON.stringify(this.headings);
+  
+    // Panggil createTableofContents()
     this.createTableofContents();
-    // End Table 0f Contents
+  
+    // Simpan nilai headings setelah pembaruan
+    const currentHeadings = JSON.stringify(this.headings);
+  
+    // Bandingkan nilai JSON dari kedua array headings
+    if (prevHeadings !== currentHeadings) {
+      // Jika ada perubahan, tambahkan atribut id ke elemen h1-h6 di .article-content
+      const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
+      articleContentHeadings.forEach(heading => {
+        const id = heading.textContent.trim().replace(/\s+/g, '-');  // Create an id from the title by removing spaces and replacing with '-' (dash)
+        heading.id = id; // Add id to the heading element
+      });
+      console.log(this.headings);
+    }
   }
 }
 

@@ -211,6 +211,7 @@ const Post = {
       id: heading.id,
       title: heading.textContent
     }));
+    console.log(this.headings);
   }
 }
 

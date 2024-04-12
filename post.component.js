@@ -240,7 +240,7 @@ const Post = {
       // }
     // }
   },
-  mounted() {
+  beforeUpdate() {
     // Start Table 0f Contents
     this.createTableofContents();
     // End Table 0f Contents

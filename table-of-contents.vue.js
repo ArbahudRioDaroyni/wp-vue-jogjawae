@@ -4,7 +4,8 @@ const TableOfContents = {
   <div class="table-of-contents">
     <ul>
       <li v-for="heading in headings" :key="heading.id">
-        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">Test
+        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+          {{ heading.title }}
         </a>
       </li>
     </ul>

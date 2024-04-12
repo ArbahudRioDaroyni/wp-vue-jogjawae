@@ -190,7 +190,6 @@ const Post = {
       // get ell h1-h6 in .content-article => store as array
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
       this.headings = headings.map((heading, index) => {
-        const no = index;
         const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
         heading.id = id; // Add id to the heading element
         let level = parseInt(heading.tagName.substring(1)); // Get the heading level (e.g., h1, h2, etc.)
@@ -205,7 +204,7 @@ const Post = {
         }
         
         return {
-          no: no,
+          index: index,
           id: id,
           title: heading.textContent,
           level: level,

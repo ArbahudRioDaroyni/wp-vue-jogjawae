@@ -26,19 +26,19 @@ const Footer = {
           <div class="py-2 is-hidden-tablet"></div>
           <div class="ml-auto">
             <a class="mr-4 is-inline-block" href="#">
-              <img src="bulma-plain-assets/socials/facebook.svg" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/facebook.svg" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img src="bulma-plain-assets/socials/twitter.svg" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/twitter.svg" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img :src="getURL + 'social-github.svg'" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img src="bulma-plain-assets/socials/instagram.svg" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/instagram.svg" alt="">
             </a>
             <a class="is-inline-block" href="#">
-              <img src="bulma-plain-assets/socials/linkedin.svg" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/linkedin.svg" alt="">
             </a>
           </div>
         </div>
@@ -47,7 +47,7 @@ const Footer = {
   `,
   data() {
     return {
-      getURL: require('@/assets/svg/'),
+      rootUrl: '',
       svgIcon: `<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
                 <metadata>Created by potrace 1.10, written by Peter Selinger 2001-2011</metadata>
                 <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -79,6 +79,9 @@ const Footer = {
                 <path d="M1650 952 c16 -11 296 -57 440 -74 47 -5 102 -13 123 -18 20 -4 39 -4 42 0 7 12 -44 29 -110 36 -33 3 -134 17 -225 31 -202 30 -291 38 -270 25z"/> </g>
                 </svg>`
     };
+  },
+  mounted() {
+    this.rootUrl = window.location.origin;
   }
 }
 

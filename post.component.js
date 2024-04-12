@@ -154,7 +154,7 @@ const Post = {
     },
     async fetchCategories() {
       try {
-        const url = '${window.location.origin}/wp-json/wp/v2/categories';
+        const url = `${window.location.origin}/wp-json/wp/v2/categories`;
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Failed to fetch categories');

@@ -1,15 +1,28 @@
 const TableOfContents = {
   name: 'TableOfContents',
   template: `
-  <div class="table-of-contents">
+  <template>
     <ul>
-      <li v-for="heading in headings" :key="heading.id">
-        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
-          {{ heading.title }}
-        </a>
-      </li>
+      <template v-for="(heading, index) in headings" :key="heading.id">
+        <template v-if="index === 0 || heading.level > headings[index - 1].level">
+          <ul>
+            <li>
+              <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+                {{ heading.title }}
+              </a>
+            </li>
+          </ul>
+        </template>
+        <template v-else>
+          <li>
+            <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+              {{ heading.title }}
+            </a>
+          </li>
+        </template>
+      </template>
     </ul>
-  </div>
+  </template>
   `,
   props: {
     headings: {

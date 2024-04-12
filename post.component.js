@@ -154,9 +154,6 @@ const Post = {
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
-        // Start Table 0f Contents
-        this.createTableofContents();
-        // End Table 0f Contents
       }
     },
     async fetchCategories() {
@@ -243,8 +240,10 @@ const Post = {
       // }
     // }
   },
-  updated() {
-    
+  mounted() {
+    // Start Table 0f Contents
+    this.createTableofContents();
+    // End Table 0f Contents
   }
 }
 

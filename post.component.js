@@ -126,6 +126,12 @@ const Post = {
     } else {
       this.$router.push({ path: '/' });
     }
+
+    const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
+    this.headings = headings.map(heading => ({
+      id: heading.id,
+      title: heading.textContent
+    }));
   },
   methods: {
     async fetchDataPost() {
@@ -203,16 +209,7 @@ const Post = {
       // }
     // }
   },
-  mounted() {
-    // Table 0f Contents
-    // Temukan semua elemen heading di dalam konten dan buat array headings
-    const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
-    this.headings = headings.map(heading => ({
-      id: heading.id,
-      title: heading.textContent
-    }));
-    console.log(this.headings);
-  }
+  mounted() {}
 }
 
 export default Post

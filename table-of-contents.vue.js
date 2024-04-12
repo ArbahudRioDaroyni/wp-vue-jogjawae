@@ -1,7 +1,7 @@
 const TableOfContents = {
   name: 'TableOfContents',
   template: `
-  <template>
+  <div>
     <ul>
       <template v-for="(heading, index) in headings" :key="heading.id">
         <template v-if="index === 0 || heading.level > headings[index - 1].level">
@@ -22,7 +22,7 @@ const TableOfContents = {
         </template>
       </template>
     </ul>
-  </template>
+  </div>
   `,
   props: {
     headings: {

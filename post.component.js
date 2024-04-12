@@ -33,7 +33,7 @@ const Post = {
           <div class="content content-single columns">
             <div class=" column is-8 is-offset-2">
               <table-of-contents :headings="headings"></table-of-contents>
-              <div v-html="content.rendered"></div>
+              <div class="content-article" v-html="content.rendered"></div>
               <aside>
                 <div>
                   <h3>Kategori</h3>
@@ -206,12 +206,11 @@ const Post = {
   mounted() {
     // Table 0f Contents
     // Temukan semua elemen heading di dalam konten dan buat array headings
-    const headings = Array.from(document.querySelectorAll(".content h1, .content h2, .content h3, .content h4, .content h5, .content h6"));
+    const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
     this.headings = headings.map(heading => ({
       id: heading.id,
       title: heading.textContent
     }));
-    console.log(this.headings)
   }
 }
 

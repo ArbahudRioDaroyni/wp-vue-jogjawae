@@ -3,15 +3,11 @@ const TableOfContents = {
   template: `
   <div class="table-of-contents">
     <ul>
-      <div v-for="heading in headings" :key="heading.id">
-        <div v-if="heading.level === 1">
-          <li>
-            <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
-              {{ heading.title }}
-            </a>
-          </li>
-        </div>
-      </div>
+      <li v-for="heading in headings" :key="heading.id">
+        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+          {{ heading.title }}
+        </a>
+      </li>
     </ul>
   </div>
   `,

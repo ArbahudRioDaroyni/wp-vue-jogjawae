@@ -216,7 +216,13 @@ const Post = {
         };
       });
 
-      
+      // add attr id to ell h1-h6 in .article-content
+      // const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
+      // articleContentHeadings.forEach(heading => {
+      //   const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
+      //   heading.id = id; // Add id to the heading element
+      // });
+      console.log(this.headings);
     }
     // Start Table 0f Contents
 
@@ -237,13 +243,6 @@ const Post = {
   updated() {
     // Start Table 0f Contents
     this.createTableofContents();
-    // add attr id to ell h1-h6 in .article-content
-    const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
-    articleContentHeadings.forEach(heading => {
-      const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
-      heading.id = id; // Add id to the heading element
-    });
-    console.log(this.headings);
     // End Table 0f Contents
   }
 }

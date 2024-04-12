@@ -208,12 +208,12 @@ const Post = {
         //   }
         // }
         
-        // return {
-        //   id: id,
-        //   title: heading.textContent,
-        //   level: level,
-        //   parentId: parentId // Add parentId to the heading object
-        // };
+        return {
+          id: id,
+          title: heading.textContent,
+          level: level,
+          parentId: parentId // Add parentId to the heading object
+        };
       });
 
       // add attr id to ell h1-h6 in .article-content

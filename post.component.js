@@ -193,36 +193,8 @@ const Post = {
     // Start Table 0f Contents
     createTableofContents() {
       // get ell h1-h6 in .content-article => store as array
-      const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
-      this.headings = headings.map(heading => {
-        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
-        heading.id = id; // Add id to the heading element
-        let level = parseInt(heading.tagName.substring(1)); // Get the heading level (e.g., h1, h2, etc.)
-        let parentId = null; // Initialize parentId
-
-        // Find the closest parent heading with a lower level
-        for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
-          if (parseInt(headings[i].tagName.substring(1)) < level) {
-            parentId = headings[i].id; // Set parentId to the id of the parent heading
-            break; // Exit the loop after finding the parent heading
-          }
-        }
-        
-        return {
-          id: id,
-          title: heading.textContent,
-          level: level,
-          parentId: parentId // Add parentId to the heading object
-        };
-      });
-
-      // add attr id to ell h1-h6 in .article-content
-      // const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
-      // articleContentHeadings.forEach(heading => {
-      //   const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
-      //   heading.id = id; // Add id to the heading element
-      // });
-      console.log(this.headings);
+      
+      console.log('this.headings');
     }
     // Start Table 0f Contents
 

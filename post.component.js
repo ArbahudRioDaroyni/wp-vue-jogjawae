@@ -195,19 +195,20 @@ const Post = {
       // get ell h1-h6 in .content-article => store as array
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
       this.headings = headings.map(heading => {
-        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Membuat id dari judul dengan menghapus spasi dan mengganti dengan tanda '-' (strip)
-        heading.id = id; // Tambahkan id ke elemen heading
+        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
+        heading.id = id; // Add id to the heading element
         return {
           id: id,
-          title: heading.textContent
+          title: heading.textContent,
+          level: parseInt(heading.tagName.substring(1)) // Get the heading level (e.g., h1, h2, etc.)
         };
       });
 
       // add attr id to ell h1-h6 in .article-content
       const articleContentHeadings = Array.from(document.querySelectorAll(".article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6"));
       articleContentHeadings.forEach(heading => {
-        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Membuat id dari judul dengan menghapus spasi dan mengganti dengan tanda '-' (strip)
-        heading.id = id; // Tambahkan id ke elemen heading
+        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
+        heading.id = id; // Add id to the heading element
       });
     }
     // Start Table 0f Contents

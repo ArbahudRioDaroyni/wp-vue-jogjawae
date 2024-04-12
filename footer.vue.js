@@ -26,19 +26,19 @@ const Footer = {
           <div class="py-2 is-hidden-tablet"></div>
           <div class="ml-auto">
             <a class="mr-4 is-inline-block" href="#">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/facebook.svg'" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/twitter.svg'" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-twitter.svg'" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
               <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/instagram.svg'" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-instagram.svg'" alt="">
             </a>
             <a class="is-inline-block" href="#">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/linkedin.svg'" alt="">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'" alt="">
             </a>
           </div>
         </div>

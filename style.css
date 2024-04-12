@@ -15,3 +15,7 @@ table {
 .fit-cover {
   object-fit: cover;
 }
+
+.navbar-burger:active, .navbar-burger:hover {
+  background-color: unset;
+}

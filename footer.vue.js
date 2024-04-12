@@ -32,7 +32,7 @@ const Footer = {
               <img src="bulma-plain-assets/socials/twitter.svg" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
-              <img :src="getURL + 'social-github.svg'')" alt="">
+              <img :src="getURL + 'social-github.svg')" alt="">
             </a>
             <a class="mr-4 is-inline-block" href="#">
               <img src="bulma-plain-assets/socials/instagram.svg" alt="">

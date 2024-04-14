@@ -246,9 +246,17 @@ const Post = {
       return this.$route.params.slug !== this.previousSlug;
     }
   },
+  watch: {
+    isSlugChanged(newValue, oldValue) {
+      // Panggil createTableofContents() jika slug berubah
+      if (newValue) {
+        this.createTableofContents();
+      }
+    }
+  },
   updated() {
     // Start Table 0f Contents
-    if (this.headings.length == 0 || this.isSlugChanged()) {
+    if (this.headings.length == 0) {
       this.createTableofContents();
     }
     // End Table 0f Contents

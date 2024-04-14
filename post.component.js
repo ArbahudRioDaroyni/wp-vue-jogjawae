@@ -185,60 +185,6 @@ const Post = {
         behavior: 'smooth'
       });
     },
-    transformJSON(inputJSON) {
-      let transformedJSON = [];
-      let currentParent = null;
-  
-      for (let i = 0; i < inputJSON.length; i++) {
-          const currentItem = inputJSON[i];
-  
-          if (currentItem.level === 2) {
-              // If level is 2, it's a parent item
-              transformedJSON.push({
-                  id: currentItem.id,
-                  title: currentItem.title,
-                  level: currentItem.level,
-                  parentId: currentItem.parentId,
-                  data: []
-              });
-              currentParent = transformedJSON[transformedJSON.length - 1];
-          } else {
-              // If level is greater than 2, it's a child item
-              const newItem = {
-                  id: currentItem.id,
-                  title: currentItem.title,
-                  level: currentItem.level,
-                  parentId: currentItem.parentId
-              };
-  
-              if (currentItem.level === 3) {
-                  // If level is 3, it's a direct child of the parent item
-                  if (!currentParent.data) {
-                    currentParent.data = []; // Pastikan currentParent.data didefinisikan sebagai array jika belum
-                  }
-                  currentParent.data.push(newItem);
-              } else {
-                  // If level is greater than 3, find the appropriate parent to attach the child
-                  let parentLevel = currentItem.level - 1;
-                  let currentData = currentParent.data;
-  
-                  while (parentLevel > 3) {
-                      const lastChild = currentData[currentData.length - 1];
-                      if (!lastChild.data) {
-                        lastChild.data = []; // Pastikan lastChild.data didefinisikan sebagai array jika belum
-                      }
-                      
-                      currentData = lastChild.data;
-                      parentLevel--;
-                  }
-  
-                  currentData[currentData.length - 1].data.push(newItem);
-              }
-          }
-      }
-  
-      return transformedJSON;
-    },
     createTableofContents() {
       // Start Table 0f Contents
       // get ell h1-h6 in .content-article => store as array
@@ -265,7 +211,6 @@ const Post = {
           parentId: parentId // Add parentId to the heading object
         };
       });
-      this.headings = this.transformJSON(this.headings);
       console.log(this.headings); // JSON yang telah diubah
 
       // Start Table 0f Contents

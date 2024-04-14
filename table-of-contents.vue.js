@@ -9,21 +9,21 @@ const TableOfContents = {
             <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
           </li>
         </template>
-
         <template v-else-if="heading.level > headings[index - 1].level">
-          <ul>
-            <li>
-              <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
-            </li>
-        </template>
-
-        <template v-else>
-          <!-- Close unnecessary <ul> tags -->
+          <template v-for="let i = 0; i < heading.level - headings[index - 1].level; i++">
+            <ul>
+          </template>
           <li>
             <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
           </li>
-          <!-- Close the <ul> tag -->
-          </ul>
+        </template>
+        <template v-else>
+          <template v-for="let i = 0; i < headings[index - 1].level - heading.level; i++">
+            </ul>
+          </template>
+          <li>
+            <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
+          </li>
         </template>
       </template>
     </ul>

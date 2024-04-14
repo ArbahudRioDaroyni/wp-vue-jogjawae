@@ -23,10 +23,21 @@ const ChildHeadings = {
 const TableOfContents = {
   name: 'TableOfContents',
   template: `
-    <div class="menu">
-      <button class="menu-label" aria-haspopup="true" aria-controls="toc" @click="toggleToc">Daftar Isi</button>
-      <div :class="{ 'toc': true, 'is-hidden': !showToc }" id="toc" role="menu">
-        <ChildHeadings :headings="headings" />
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">Daftar Isi</p>
+        <button class="card-header-icon" aria-label="more options" aria-haspopup="true" aria-controls="toc" @click="toggleToc">
+          <span class="icon">
+            <i aria-hidden="true">▼</i>
+          </span>
+        </button>
+      </header>
+      <div class="card-content">
+        <div class="menu">
+          <div :class="{ 'toc': true, 'is-hidden': !showToc }" id="toc" role="menu">
+            <ChildHeadings :headings="headings" />
+          </div>
+        </div>
       </div>
     </div>
   `,

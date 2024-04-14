@@ -104,7 +104,8 @@ const Post = {
       categories: [],
       latestposts: [],
       error: null,
-      headings: [] // table-of-contents
+      headings: [], // table-of-contents
+      slug: [] // table-of-contents
     }
   },
   created() {
@@ -228,6 +229,7 @@ const Post = {
     
       // Menghapus anak-anak dari array headings
       this.headings = this.headings.filter(heading => !heading.parentId);
+      this.slug = this.$route.params.slug;
     }    
     
     // async fetchRelatedPosts() {
@@ -246,9 +248,9 @@ const Post = {
   },
   updated() {
     // Start Table 0f Contents
-    // if (this.headings.length == 0) {
+    if (this.headings.length == 0 || this.slug !== this.$route.params.slug) {
       this.createTableofContents();
-    // }
+    }
     // End Table 0f Contents
   }
 }

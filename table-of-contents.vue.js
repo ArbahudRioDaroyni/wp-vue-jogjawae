@@ -4,27 +4,33 @@ const TableOfContents = {
   <div>
     <ul>
       <template v-for="(heading, index) in headings" :key="heading.id">
+        <!-- Added: Check if it's the first item or if the current level is the same as the previous one -->
         <template v-if="index === 0 || heading.level === headings[index - 1].level">
           <li>
             <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
           </li>
         </template>
+        <!-- Removed: <template v-else> -->
+
+        <!-- Added: Check if the current level is greater than the previous one -->
         <template v-else-if="heading.level > headings[index - 1].level">
-          <template v-for="let i = 0; i < heading.level - headings[index - 1].level; i++">
-            <ul>
-          </template>
-          <li>
-            <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
-          </li>
+          <ul>
+            <li>
+              <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
+            </li>
         </template>
+        <!-- Removed: <template v-else> -->
+
+        <!-- Added: Loop to close unnecessary <ul> tags -->
         <template v-else>
           <template v-for="let i = 0; i < headings[index - 1].level - heading.level; i++">
-            </ul>
+            <!-- Removed: </ul> -->
           </template>
           <li>
             <a :href="'#' + heading.id" @click="scrollToHeading(heading)">{{ heading.title }}</a>
           </li>
         </template>
+        <!-- Removed: </template> -->
       </template>
     </ul>
   </div>

@@ -186,7 +186,6 @@ const Post = {
       });
     },
     createTableofContents() {
-      // Start Table 0f Contents
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
     
       this.headings = headings.map((heading, index) => {
@@ -223,12 +222,12 @@ const Post = {
         }
       });
     
-      console.log(this.headings);
-      // Start Table 0f Contents
-    }
+      // Menghapus anak-anak dari array headings
+      this.headings = this.headings.filter(heading => !heading.parentId);
     
-  
-
+      console.log(this.headings);
+    }    
+    
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
       //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');

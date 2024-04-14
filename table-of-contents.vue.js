@@ -23,29 +23,11 @@ const ChildHeadings = {
 const TableOfContents = {
   name: 'TableOfContents',
   template: `
-    <div class="dropdown">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Dropdown button</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a href="#" class="dropdown-item"> Dropdown item </a>
-          <a class="dropdown-item"> Other dropdown item </a>
-          <a href="#" class="dropdown-item is-active"> Active dropdown item </a>
-          <a href="#" class="dropdown-item"> Other dropdown item </a>
-          <hr class="dropdown-divider" />
-          <a href="#" class="dropdown-item"> With a divider </a>
-        </div>
-      </div>
-    </div>
     <div class="menu">
-      <p class="menu-label">Daftar Isi</p>
-      <ChildHeadings :headings="headings" />
+      <button class="menu-label" aria-haspopup="true" aria-controls="toc" @click="toggleToc">Daftar Isi</button>
+      <div :class="{ 'toc': true, 'is-hidden': !showToc }" id="toc" role="menu">
+        <ChildHeadings :headings="headings" />
+      </div>
     </div>
   `,
   props: {
@@ -56,6 +38,16 @@ const TableOfContents = {
   },
   components: {
     ChildHeadings
+  },
+  data() {
+    return {
+      showToc: false
+    };
+  },
+  methods: {
+    toggleToc() {
+      this.showToc = !this.showToc;
+    }
   }
 }
 

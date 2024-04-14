@@ -32,11 +32,9 @@ const TableOfContents = {
           </span>
         </button>
       </header>
-      <div class="card-content">
+      <div :class="{ 'toc card-content': true, 'is-hidden': !showToc }" id="toc" role="menu">
         <div class="menu">
-          <div :class="{ 'toc': true, 'is-hidden': !showToc }" id="toc" role="menu">
-            <ChildHeadings :headings="headings" />
-          </div>
+          <ChildHeadings :headings="headings" />
         </div>
       </div>
     </div>

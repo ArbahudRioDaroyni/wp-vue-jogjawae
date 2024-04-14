@@ -3,7 +3,7 @@ const ChildHeadings = {
   template: `
     <ul>
       <li v-for="(heading, index) in headings" :key="heading.id">
-        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+        <a :href="'#' + heading.id">
           {{ heading.title }}
         </a>
         <template v-if="heading.data && heading.data.length > 0">

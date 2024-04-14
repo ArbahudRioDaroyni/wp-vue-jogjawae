@@ -187,34 +187,46 @@ const Post = {
     },
     createTableofContents() {
       // Start Table 0f Contents
-      // get ell h1-h6 in .content-article => store as array
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
+    
       this.headings = headings.map((heading, index) => {
-        const id = heading.textContent.trim().replace(/\s+/g, '-'); // Create an id from the title by removing spaces and replacing with '-' (dash)
-        heading.id = id; // Add id to the heading element
-        let level = parseInt(heading.tagName.substring(1)); // Get the heading level (e.g., h1, h2, etc.)
-        let parentId = null; // Initialize parentId
-
+        const id = heading.textContent.trim().replace(/\s+/g, '-');
+        heading.id = id;
+        const level = parseInt(heading.tagName.substring(1));
+        let parentId = null;
+    
         // Find the closest parent heading with a lower level
         for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
           if (parseInt(headings[i].tagName.substring(1)) < level) {
-            parentId = headings[i].id; // Set parentId to the id of the parent heading
-            break; // Exit the loop after finding the parent heading
+            parentId = headings[i].id;
+            break;
           }
         }
-        
+    
         return {
           index: index,
           id: id,
           title: heading.textContent,
           level: level,
-          parentId: parentId // Add parentId to the heading object
+          parentId: parentId,
+          data: [] // Menambahkan properti data untuk menyimpan anak-anak heading
         };
       });
-      console.log(this.headings); // JSON yang telah diubah
-
+    
+      // Menyusun headings ke headings.parent.data jika parentId tidak null
+      this.headings.forEach(heading => {
+        if (heading.parentId) {
+          const parentHeading = this.headings.find(h => h.id === heading.parentId);
+          if (parentHeading) {
+            parentHeading.data.push(heading);
+          }
+        }
+      });
+    
+      console.log(this.headings);
       // Start Table 0f Contents
     }
+    
   
 
     // async fetchRelatedPosts() {

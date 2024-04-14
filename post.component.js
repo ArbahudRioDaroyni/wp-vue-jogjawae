@@ -258,7 +258,7 @@ const Post = {
           parentId: parentId // Add parentId to the heading object
         };
       });
-      this.headings = transformJSON(this.headings);
+      this.headings = this.transformJSON(this.headings);
       console.log(this.headings); // JSON yang telah diubah
 
       // Start Table 0f Contents

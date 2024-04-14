@@ -104,14 +104,15 @@ const Post = {
       categories: [],
       latestposts: [],
       error: null,
-      headings: [] // table-of-contents
+      headings: [], // table-of-contents
+      previousSlug: null // table-of-contents
     }
   },
   created() {
-    this.checkSlug();
+    this.loadPost();
   },
   methods: {
-    checkSlug() {
+    loadPost() {
       this.$watch(
         function() {
           return this.$route.params.slug;
@@ -131,7 +132,6 @@ const Post = {
       )
     },
     async fetchDataPost() {
-      this.scrollToTop();
       this.error = this.post = null
       this.loading = true
 
@@ -154,6 +154,7 @@ const Post = {
         this.error = 'Error fetching data.';
       } finally {
         this.loading = false;
+        window.scrollTo(0, 0);
       }
     },
     async fetchCategories() {
@@ -182,12 +183,6 @@ const Post = {
       } catch (error) {
         console.error('Error fetching related posts:', error);
       }
-    },
-    scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
     },
     createTableofContents() {
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
@@ -228,6 +223,7 @@ const Post = {
     
       // Menghapus anak-anak dari array headings
       this.headings = this.headings.filter(heading => !heading.parentId);
+      this.previousSlug = this.$route.params.slug;
     }    
     
     // async fetchRelatedPosts() {
@@ -243,6 +239,20 @@ const Post = {
         // }
       // }
     // }
+  },
+  computed: {
+    isSlugChanged() {
+      // Cek apakah slug berubah dari nilai sebelumnya
+      return this.$route.params.slug !== this.previousSlug;
+    }
+  },
+  watch: {
+    isSlugChanged(newValue, oldValue) {
+      // Panggil createTableofContents() jika slug berubah
+      if (newValue) {
+        this.createTableofContents();
+      }
+    }
   },
   updated() {
     // Start Table 0f Contents

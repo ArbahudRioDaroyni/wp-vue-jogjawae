@@ -213,6 +213,9 @@ const Post = {
   
               if (currentItem.level === 3) {
                   // If level is 3, it's a direct child of the parent item
+                  if (!currentParent.data) {
+                    currentParent.data = []; // Pastikan currentParent.data didefinisikan sebagai array jika belum
+                  }
                   currentParent.data.push(newItem);
               } else {
                   // If level is greater than 3, find the appropriate parent to attach the child
@@ -221,6 +224,10 @@ const Post = {
   
                   while (parentLevel > 3) {
                       const lastChild = currentData[currentData.length - 1];
+                      if (!lastChild.data) {
+                        lastChild.data = []; // Pastikan lastChild.data didefinisikan sebagai array jika belum
+                      }
+                      
                       currentData = lastChild.data;
                       parentLevel--;
                   }

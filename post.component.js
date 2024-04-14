@@ -256,9 +256,9 @@ const Post = {
   },
   updated() {
     // Start Table 0f Contents
-    if (this.headings.length == 0) {
+    // if (this.headings.length == 0) {
       this.createTableofContents();
-    }
+    // }
     // End Table 0f Contents
   }
 }

@@ -30,7 +30,7 @@ const Post = {
           </div>
         </section>
         <section class="container is-fluid">
-          <div class="content content-single columns">
+          <div class="columns">
             <div class="column is-8 is-offset-2">
               <table-of-contents :headings="headings"></table-of-contents>
             </div>

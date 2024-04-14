@@ -31,8 +31,12 @@ const Post = {
         </section>
         <section class="container is-fluid">
           <div class="content content-single columns">
-            <div class=" column is-8 is-offset-2">
+            <div class="column is-8 is-offset-2">
               <table-of-contents :headings="headings"></table-of-contents>
+            <div>
+          <div>
+          <div class="content content-single columns">
+            <div class="column is-8 is-offset-2">
               <div class="content-article" v-html="content.rendered"></div>
               <aside>
                 <div>
@@ -224,8 +228,6 @@ const Post = {
     
       // Menghapus anak-anak dari array headings
       this.headings = this.headings.filter(heading => !heading.parentId);
-    
-      console.log(this.headings);
     }    
     
     // async fetchRelatedPosts() {

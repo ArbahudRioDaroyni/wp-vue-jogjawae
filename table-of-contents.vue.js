@@ -10,7 +10,7 @@ const TableOfContents = {
           </li>
         </template>
         <template v-else-if="heading.level > headings[index - 1].level">
-          <template v-for="let i = 0; i < heading.level - headings[index - 1].level; i++">
+          <template v-for="let i = 0; i < 3; i++">
             <ul>
             </ul>
           </template>
@@ -19,7 +19,7 @@ const TableOfContents = {
           </li>
         </template>
         <template v-else>
-          <template v-for="let i = 0; i < headings[index - 1].level - heading.level; i++">
+          <template v-for="let i = 0; i < 3; i++">
             <ul>
             </ul>
           </template>

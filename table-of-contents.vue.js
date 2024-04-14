@@ -1,26 +1,16 @@
-const TableOfContents = {
-  name: 'TableOfContents',
+const ChildHeadings = {
+  name: 'ChildHeadings',
   template: `
-  <div>
-    <template v-for="(heading, index) in headings" :key="heading.id">
-      <template v-if="index === 0 || heading.level > headings[index - 1].level">
-        <ul>
-          <li>
-            <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
-              {{ heading.title }}
-            </a>
-          </li>
-        </ul>
-      </template>
-      <template v-else>
-        <li>
-          <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
-            {{ heading.title }}
-          </a>
-        </li>
-      </template>
-    </template>
-  </div>
+    <ul>
+      <li v-for="(heading, index) in headings" :key="heading.id">
+        <a :href="'#' + heading.id" @click="scrollToHeading(heading)">
+          {{ heading.title }}
+        </a>
+        <template v-if="heading.data && heading.data.length > 0">
+          <ChildHeadings :headings="heading.data" />
+        </template>
+      </li>
+    </ul>
   `,
   props: {
     headings: {
@@ -35,6 +25,24 @@ const TableOfContents = {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  }
+}
+
+const TableOfContents = {
+  name: 'TableOfContents',
+  template: `
+    <div>
+      <ChildHeadings :headings="headings" />
+    </div>
+  `,
+  props: {
+    headings: {
+      type: Array,
+      required: true
+    }
+  },
+  components: {
+    ChildHeadings
   }
 }
 

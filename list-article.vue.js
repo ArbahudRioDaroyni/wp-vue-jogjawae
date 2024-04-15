@@ -53,7 +53,7 @@ const ListArticle = {
     </article>
   `,
   props: {
-    post: {
+    posts: {
       type: Object,
       required: true
     }

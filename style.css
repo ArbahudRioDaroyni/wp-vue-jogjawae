@@ -22,3 +22,7 @@ table {
 .navbar-burger:active, .navbar-burger:hover {
   background-color: unset;
 }
+
+.rotated180 {
+  transform: rotate(180deg);
+}

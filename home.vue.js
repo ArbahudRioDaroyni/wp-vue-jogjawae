@@ -23,9 +23,7 @@ const Home = {
     }
   },
   created() {
-    if (this.posts.length === 0) {
-      this.fetchData();
-    }
+    this.fetchData();
   },
   components: {
     ListArticle

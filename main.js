@@ -25,6 +25,4 @@ app.config.globalProperties.$goToLink = function(route) {
   this.$router.push('/' + route);
 }
 
-app.config.globalProperties.$homeURL = window.location.origin;
-  
 app.mount('#app')

@@ -6,10 +6,7 @@ const Navigation = {
       <!-- Start Nav -->
       <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <router-link to="/" class="">
-            <svg v-html="svgIcon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet"></svg>
-          </router-link>
-          <a class="navbar-item" :href="$homeURL" @click="$goToLink($homeURL)">
+          <a class="navbar-item" @click="$goToLink($homeURL)">
             <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae">
           </a> 
 

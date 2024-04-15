@@ -1,3 +1,5 @@
+import ListArticle from './components/list-article.vue.js'
+
 const Category = {
   name: 'Category',
   template: `
@@ -51,6 +53,9 @@ const Category = {
   created() {
     // Mendapatkan ID kategori berdasarkan nama kategori
     this.getCategoryId();
+  },
+  components: {
+    ListArticle
   },
   methods: {
     async getCategoryId() {

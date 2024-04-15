@@ -30,7 +30,6 @@ const Home = {
   },
   methods: {
     async fetchData() {
-      this.error = this.posts = null
       this.loading = true
       try {
         const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image";

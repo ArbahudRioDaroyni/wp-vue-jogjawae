@@ -36,16 +36,15 @@ const ListArticle = {
                 v-html="post.title.rendered"
                 class="title is-4">
               </h2>
-              <p class="subtitle is-6">{{ post.yoast_head_json.author }}.</p>
+              <a class="subtitle is-6">@{{ post.yoast_head_json.author }}.</a>
             </div>
           </div>
           <div class="content">
-            {{ truncateText(post.excerpt.rendered, 200) }} <a>@bulmaio</a>. <a href="#">#css</a>
-            <a href="#">#responsive</a>
+            {{ truncateText(post.excerpt.rendered, 200) }}
             <br />
             <time
-              :datetime="post.modified_gmt"
-              v-html="post.yoast_head_json.article_published_time">
+                :datetime="post.modified_gmt"
+                v-html="new Date(post.modified_gmt).toLocaleString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})">
             </time>
           </div>
         </div>

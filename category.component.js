@@ -14,9 +14,9 @@ const Category = {
     <section class="section pt-0">
       <div class="container">
         <div class="columns is-multiline">
-        <!-- card.vue.js -->
+        <!-- list-article.vue.js -->
           <ListArticle :posts="posts" />
-        <!-- card.vue.js -->
+        <!-- list-article.vue.js -->
         </div>
         <div
           v-if="showLoadMoreButton"
@@ -67,8 +67,8 @@ const Category = {
     async getPostsByCategory() {
       try {
         this.loading = true;
-        const field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.article_published_time,yoast_head_json.og_image,yoast_head_json.schema.@graph";
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${field}`);
+        const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image,yoast_head_json.schema.@graph";
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${API_field}`);
         const newPosts = await response.json();
         this.posts = [...this.posts, ...newPosts];
         // Update totalPosts setelah menerima data

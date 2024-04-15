@@ -13,7 +13,7 @@ const Post = {
               v-html="title.rendered"
               class="title mb-1"></h1>
             <p class="subtitle">
-              <time :datetime="modified_gmt">{{ formattedModified }}</time>
+              time :datetime="modified_gmt">{{ formattedModified }}</time>
             </p>
           </div>
         </section>
@@ -32,7 +32,7 @@ const Post = {
         <section class="container is-fluid">
           <div class="columns">
             <div class="column is-8 is-offset-2">
-              <table-of-contents :headings="headings"></table-of-contents>
+              <table-of-contents :headings="headings" />
             </div>
           </div>
           <div class="content content-single columns">

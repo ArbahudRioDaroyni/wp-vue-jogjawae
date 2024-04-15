@@ -1,5 +1,5 @@
-const Category = {
-  name: 'Category',
+const CategoryComponent = {
+  name: 'CategoryComponent',
   template: `
     <section class="section mt-6">
       <div class="container">
@@ -87,4 +87,4 @@ const Category = {
   }
 }
 
-export default Category
+export default CategoryComponent

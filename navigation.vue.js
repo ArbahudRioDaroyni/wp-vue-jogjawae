@@ -10,7 +10,7 @@ const Navigation = {
             <svg v-html="svgIcon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet"></svg>
           </router-link>
           <a class="navbar-item" :href="window.location.origin" @click="$goToLink(window.location.origin)">
-            <img :src="window.location.origin + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="Find us on LinkedIn">
+            <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae">
           </a>
 
           <ButtonBurger

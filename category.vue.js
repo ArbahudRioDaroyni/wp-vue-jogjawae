@@ -1,13 +1,13 @@
-import Category from './category.component.js'
+import CategoryComponent from './category.component.js'
 
 const Category = {
   template: /*html*/`
     <Navigation />
-    <Category />
+    <CategoryComponent />
     <Footer />
   `,
   components: {
-    Category
+    CategoryComponent
   },
 }
 

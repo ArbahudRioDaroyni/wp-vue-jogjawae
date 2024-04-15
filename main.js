@@ -1,4 +1,4 @@
-const { createApp } = Vue
+const { createApp } = 'vue'
 
 import router from './router.js'
 import Navigation from './navigation.vue.js'
@@ -10,13 +10,19 @@ import Footer from './footer.vue.js'
 
 
 export const app = createApp({
-// root elements
+  methods: {
+    goToLink(route) {
+      this.$router.push('/' + route);
+    }
+  }
 })
 
 app.use(router)
+
 app.component('Navigation', Navigation)
   .component('Post', Post)
   .component('ListArticle', ListArticle)
   .component('TableOfContents', TableOfContents)
   .component('Footer', Footer)
+
 app.mount('#app')

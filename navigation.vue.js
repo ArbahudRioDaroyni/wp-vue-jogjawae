@@ -16,11 +16,11 @@ const Navigation = {
             @click="toggleNavbar"
             aria-label="menu"
             aria-expanded="false"
-            data-target="navbarBasicExample">
+            data-target="navbarMenu">
           />
         </div>
 
-        <div :class="['navbar-menu', isOpen ? 'is-active' : '']" id="navbarBasicExample">
+        <div :class="['navbar-menu', isOpen ? 'is-active' : '']" id="navbarMenu">
           <div class="navbar-start">
             <a class="navbar-item">
               Home

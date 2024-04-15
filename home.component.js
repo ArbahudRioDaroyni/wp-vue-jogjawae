@@ -1,15 +1,15 @@
 const Home = {
   name: 'Home',
   template: `
-  <main class="container">
-    <section class="articles">
-      <div class="column is-8 is-offset-2">
-        <!-- list-article.vue.js -->
-          <ListArticle :posts="posts" />
-        <!-- list-article.vue.js -->
-      </div>
-    </section>
-  </main>
+    <main class="section pt-0">
+      <secrion class="container">
+        <div class="columns is-multiline">
+          <!-- list-article.vue.js -->
+            <ListArticle :posts="posts" />
+          <!-- list-article.vue.js -->
+        </div>
+      </secrion>
+    </main>
   `,
   data() {
     return {
@@ -26,7 +26,7 @@ const Home = {
       this.error = this.posts = null
       this.loading = true
       try {
-        const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image,yoast_head_json.schema.@graph";
+        const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image";
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?_fields=${API_field}`);
         this.posts = await response.json();
       } catch (error) {

@@ -21,27 +21,17 @@ const ListArticle = {
         </div>
         <div class="card-content">
           <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img
-                  :src="post.yoast_head_json.schema['@graph'][post.yoast_head_json.schema['@graph'].length - 1].image.contentUrl"
-                  :alt="post.yoast_head_json.author"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            </div>
             <div class="media-content" style="overflow: unset;">
               <h2
                 v-html="post.title.rendered"
                 class="title is-4">
               </h2>
-              <a class="subtitle is-6">@{{ post.yoast_head_json.author }}.</a>
+              <a class="subtitle is-6">@{{ post.yoast_head_json.author }}</a>
             </div>
           </div>
           <div class="content">
             {{ truncateText(post.excerpt.rendered, 200) }}
-            <br />
+            <br><br>
             <time
                 :datetime="post.modified_gmt"
                 v-html="new Date(post.modified_gmt).toLocaleString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})">

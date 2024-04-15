@@ -1,3 +1,5 @@
+import ListArticle from './components/list-article.vue.js'
+
 const Home = {
   name: 'Home',
   template: `
@@ -22,6 +24,9 @@ const Home = {
   },
   created() {
     this.fetchData();
+  },
+  components: {
+    ListArticle
   },
   methods: {
     async fetchData() {

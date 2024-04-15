@@ -6,7 +6,7 @@ const Navigation = {
       <!-- Start Nav -->
       <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <router-link to="/" class="">
+          <router-link to="/" class="navbar-item">
             <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae">
           </router-link>
 

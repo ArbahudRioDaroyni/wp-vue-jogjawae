@@ -78,9 +78,6 @@ const Category = {
         this.loading = false;
       }
     },
-    goToLink(route) {
-      this.$router.push('/' + route);
-    },
     async loadMorePosts() {
       this.loading = true;
       this.page++;

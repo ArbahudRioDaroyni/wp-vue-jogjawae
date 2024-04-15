@@ -1,4 +1,4 @@
-const { createApp } = 'vue'
+const { createApp } = Vue
 
 import router from './router.js'
 import Navigation from './navigation.vue.js'
@@ -24,5 +24,5 @@ app.component('Navigation', Navigation)
   .component('ListArticle', ListArticle)
   .component('TableOfContents', TableOfContents)
   .component('Footer', Footer)
-
+  
 app.mount('#app')

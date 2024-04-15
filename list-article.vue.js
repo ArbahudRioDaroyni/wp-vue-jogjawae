@@ -1,7 +1,11 @@
 const ListArticle = {
   name: 'ListArticle',
   template: `
-    <article :post="post">
+    <article
+      v-for="(post, index) in posts"
+      :key="post.id"
+      :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'"
+      @click="goToLink(post.slug)">
       <div class="card">
         <div class="card-image">
           <figure class="image is-6by3">
@@ -49,7 +53,7 @@ const ListArticle = {
     </article>
   `,
   props: {
-    post: {
+    posts: {
       type: Object,
       required: true
     },

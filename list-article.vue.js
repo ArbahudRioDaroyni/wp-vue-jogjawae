@@ -24,7 +24,7 @@ const ListArticle = {
             <div class="media-left">
               <figure class="image is-48x48">
                 <img
-                  src="post.yoast_head_json.schema.@graph[last].image.contentUrl"
+                  :src="post.yoast_head_json.schema['@graph'][post.yoast_head_json.schema['@graph'].length - 1].image.contentUrl"
                   :alt="post.yoast_head_json.author"
                   loading="lazy"
                   decoding="async"

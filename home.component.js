@@ -1,14 +1,14 @@
 const Home = {
   name: 'Home',
   template: `
-    <main class="section pt-0">
-      <secrion class="container">
+    <main class="section mt-6">
+      <section class="container">
         <div class="columns is-multiline">
           <!-- list-article.vue.js -->
             <ListArticle :posts="posts" />
           <!-- list-article.vue.js -->
         </div>
-      </secrion>
+      </section>
     </main>
   `,
   data() {
@@ -27,7 +27,7 @@ const Home = {
       this.loading = true
       try {
         const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image";
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?_fields=${API_field}`);
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?_fields=${API_field}&per_page=8`);
         this.posts = await response.json();
       } catch (error) {
         console.error('Error fetching data:', error);

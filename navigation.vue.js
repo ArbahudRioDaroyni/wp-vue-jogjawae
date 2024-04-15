@@ -1,4 +1,4 @@
-import ButtonBurger from './elements/button-burger.vue'
+import ButtonBurger from './elements/button-burger.vue.js'
 const Navigation = {
   name: 'Navigation',
   template: /*html*/`

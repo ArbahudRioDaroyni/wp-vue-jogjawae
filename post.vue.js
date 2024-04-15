@@ -104,7 +104,7 @@ const Post = {
   data() {
     return {
       loading: false,
-      post: null,
+      post: [],
       categories: [],
       latestposts: [],
       error: null,

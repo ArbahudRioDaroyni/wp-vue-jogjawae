@@ -18,7 +18,7 @@ const Home = {
   data() {
     return {
       loading: false,
-      posts: null,
+      posts: [],
       error: null,
     }
   },

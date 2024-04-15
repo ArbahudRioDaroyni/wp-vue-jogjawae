@@ -16,10 +16,11 @@ const Category = {
         <div class="columns is-multiline">
         <!-- card.vue.js -->
           <ListArticle
+            :post="post"
+            :index="index"
             v-for="(post, index) in posts"
             :key="post.id"
             :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'"
-            :post="post"
             @click="goToLink(post.slug)"
           />
         <!-- card.vue.js -->
@@ -82,17 +83,6 @@ const Category = {
         console.error('Error fetching posts by category:', error);
       } finally {
         this.loading = false;
-      }
-    },
-    truncateText(text, maxLength) {
-      const withoutTags = text.replace(/<[^>]+>/g, ''); // Hapus tag HTML
-      if (withoutTags.length <= maxLength) {
-        return withoutTags;
-      } else {
-        // Menghapus spasi ekstra jika kata terakhir terputus
-        let truncatedText = withoutTags.substr(0, maxLength);
-        truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
-        return truncatedText + '';
       }
     },
     goToLink(route) {

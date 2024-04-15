@@ -58,9 +58,6 @@ const ListArticle = {
         truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
         return truncatedText + '';
       }
-    },
-    goToLink(route) {
-      this.$router.push('/' + route);
     }
   }
 }

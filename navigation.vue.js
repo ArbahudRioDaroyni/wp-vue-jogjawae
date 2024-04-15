@@ -16,7 +16,7 @@ const Navigation = {
             @click="toggleNavbar"
             aria-label="menu"
             aria-expanded="false"
-            data-target="navbarMenu">
+            data-target="navbarMenu"
           />
         </div>
 

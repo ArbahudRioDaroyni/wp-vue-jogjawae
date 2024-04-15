@@ -24,7 +24,7 @@
     <?php wp_head(); ?>
 
     <script src="<?= get_template_directory_uri() . '/assets/vue@3/vue.global.prod.js' ?>"></script>
-    <script src="<?= get_template_directory_uri() . '/assets/vue-router/vue-router.prod.global.js' ?>"></script>
+    <script src="<?= get_template_directory_uri() . '/assets/vue-router/vue-router.global.prod.js' ?>"></script>
     <script type="module" src="<?= get_template_directory_uri() . '/main.js' ?>"></script>
   </head>
   <body>

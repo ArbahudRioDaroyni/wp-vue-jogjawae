@@ -53,7 +53,7 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/categories?search=${this.categoryName}`);
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`);
         const data = await response.json();
         if (data.length > 0) {
           this.categoryId = data[0].id;
@@ -67,7 +67,8 @@ const Category = {
     async getPostsByCategory() {
       try {
         this.loading = true;
-        const response = await fetch(`https://jogjawae.com/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}`);
+        const field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.article_published_time,yoast_head_json.og_image,yoast_head_json.schema.@graph";
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${field}`);
         const newPosts = await response.json();
         this.posts = [...this.posts, ...newPosts];
         // Update totalPosts setelah menerima data

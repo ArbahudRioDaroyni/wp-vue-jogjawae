@@ -13,7 +13,7 @@ const Post = {
               v-html="title.rendered"
               class="title mb-1"></h1>
             <p class="subtitle">
-              time :datetime="modified_gmt">{{ formattedModified }}</time>
+              <time :datetime="modified_gmt">{{ formattedModified }}</time>
             </p>
           </div>
         </section>

@@ -1,5 +1,5 @@
 const { watchEffect } = Vue
-const API_URL = `https://jogjawae.com/wp-json/wp/v2/posts?_fields=slug,title,content,yoast_head_json,excerpt,modified_gmt`
+const API_URL = `${window.location.origin}/wp-json/wp/v2/posts?_fields=slug,title,content,yoast_head_json,excerpt,modified_gmt`
 
 const Home = {
   name: 'Home',
@@ -34,7 +34,7 @@ const Home = {
   data() {
     return {
       loading: false,
-      post: null,
+      posts: null,
       error: null,
     }
   },
@@ -43,9 +43,9 @@ const Home = {
   },
   methods: {
     async fetchData() {
-      this.error = this.post = null
+      this.error = this.posts = null
       this.loading = true
-      // this.post = await (await fetch(API_URL)).json()
+      // this.posts = await (await fetch(API_URL)).json()
       try {
         // const url = `${API_URL}${this.$route.params.slug}`;
         const postData = await (await fetch(API_URL)).json()
@@ -60,7 +60,7 @@ const Home = {
           }
         }
   
-        this.post = postData;
+        this.posts = postData;
       } catch (error) {
         console.error('Error fetching data:', error);
         this.error = 'Error fetching data.';

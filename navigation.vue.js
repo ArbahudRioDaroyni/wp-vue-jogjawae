@@ -11,7 +11,7 @@ const Navigation = {
           </router-link>
           <a class="navbar-item" :href="window.location.origin" @click="$goToLink(window.location.origin)">
             <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae">
-          </a>
+          </a> 
 
           <ButtonBurger
             role="button"

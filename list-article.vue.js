@@ -5,7 +5,7 @@ const ListArticle = {
       v-for="(post, index) in posts"
       :key="post.id"
       :class="index === 0 ? 'pointer column is-8 mb-5' : 'pointer column is-4 mb-5'"
-      @click="goToLink(post.slug)">
+      @click="$goToLink(post.slug)">
       <div class="card">
         <div class="card-image">
           <figure class="image is-6by3">

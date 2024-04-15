@@ -10,11 +10,7 @@ import Footer from './footer.vue.js'
 
 
 export const app = createApp({
-  methods: {
-    goToLink(route) {
-      this.$router.push('/' + route);
-    }
-  }
+
 })
 
 app.use(router)
@@ -24,5 +20,9 @@ app.component('Navigation', Navigation)
   .component('ListArticle', ListArticle)
   .component('TableOfContents', TableOfContents)
   .component('Footer', Footer)
+
+app.config.globalProperties.$goToLink = function(route) {
+  this.$router.push('/' + route);
+}
   
 app.mount('#app')

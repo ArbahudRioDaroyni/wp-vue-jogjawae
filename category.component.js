@@ -15,7 +15,14 @@ const Category = {
       <div class="container">
         <div class="columns is-multiline">
         <!-- card.vue.js -->
-          <ListArticle :posts="posts" />
+          <ListArticle
+            :post="post"
+            :index="index"
+            v-for="(post, index) in posts"
+            :key="post.id"
+            :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'"
+            @click="goToLink(post.slug)"
+          />
         <!-- card.vue.js -->
         </div>
         <div
@@ -77,6 +84,9 @@ const Category = {
       } finally {
         this.loading = false;
       }
+    },
+    goToLink(route) {
+      this.$router.push('/' + route);
     },
     async loadMorePosts() {
       this.loading = true;

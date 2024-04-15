@@ -1,11 +1,7 @@
 const ListArticle = {
   name: 'ListArticle',
   template: `
-    <article
-      v-for="(post, index) in posts"
-      :key="post.id"
-      :class="index === 0 ? 'column is-8 mb-5' : 'column is-4 mb-5'"
-      @click="goToLink(post.slug)">
+    <article>
       <div class="card">
         <div class="card-image">
           <figure class="image is-6by3">
@@ -53,7 +49,7 @@ const ListArticle = {
     </article>
   `,
   props: {
-    posts: {
+    post: {
       type: Object,
       required: true
     },
@@ -73,9 +69,6 @@ const ListArticle = {
         truncatedText = truncatedText.substr(0, Math.min(truncatedText.length, truncatedText.lastIndexOf(" ")));
         return truncatedText + '';
       }
-    },
-    goToLink(route) {
-      this.$router.push('/' + route);
     }
   }
 }

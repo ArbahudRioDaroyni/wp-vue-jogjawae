@@ -1,3 +1,4 @@
+import ButtonBurger from './elements/button-burger.vue'
 const Navigation = {
   name: 'Navigation',
   template: /*html*/`
@@ -9,12 +10,14 @@ const Navigation = {
             <svg v-html="svgIcon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet"></svg>
           </router-link>
 
-          <a role="button" :class="['navbar-burger has-text-primary-dark', isOpen ? 'is-active' : '']" @click="toggleNavbar" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+          <ButtonBurger
+            role="button"
+            :class="['navbar-burger has-text-primary-dark', isOpen ? 'is-active' : '']"
+            @click="toggleNavbar"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample">
+          />
         </div>
 
         <div :class="['navbar-menu', isOpen ? 'is-active' : '']" id="navbarBasicExample">
@@ -98,6 +101,9 @@ const Navigation = {
                 <path d="M1701 1129 c-7 -51 -15 -98 -18 -105 -2 -7 11 -14 34 -18 21 -4 50 -9 64 -12 22 -4 27 -1 31 20 4 22 1 26 -18 26 -38 0 -52 10 -47 31 5 17 11 20 39 14 31 -5 34 -4 34 20 0 21 -4 25 -31 25 -24 0 -30 4 -27 18 4 18 7 18 51 8 24 -6 27 -4 27 18 0 25 -2 26 -90 41 l-36 6 -13 -92z"/>
                 <path d="M1650 952 c16 -11 296 -57 440 -74 47 -5 102 -13 123 -18 20 -4 39 -4 42 0 7 12 -44 29 -110 36 -33 3 -134 17 -225 31 -202 30 -291 38 -270 25z"/> </g>`
     };
+  },
+  components: {
+    ButtonBurger
   },
   mounted() {
     this.checkTime();

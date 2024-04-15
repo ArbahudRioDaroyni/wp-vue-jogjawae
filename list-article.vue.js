@@ -1,4 +1,4 @@
-const TableOfContents = {
+const ListArticle = {
   name: 'ListArticle',
   template: `
     <article :post="post">

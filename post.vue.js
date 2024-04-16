@@ -48,17 +48,15 @@ const Post = {
                   <h3>Kategori</h3>
                   <div class="menu">
                     <template v-if="categories.length">
-                      <ul
-                        v-for="category in categories"
-                        :key="category.id"
-                        class="menu-list"
-                        style="list-style: none;">
-                          <li>
-                            <router-link
-                              :to="'/' + 'category/' + category.name.toLowerCase() + '/'">
-                              {{ category.name }}
-                            </router-link>
-                          </li>
+                      <ul class="menu-list mx-0" style="list-style: none;">
+                        <li
+                          v-for="category in categories"
+                          :key="category.id">
+                          <router-link
+                            :to="'/' + 'category/' + category.name.toLowerCase() + '/'">
+                            {{ category.name }}
+                          </router-link>
+                        </li>
                       </ul>
                     </template>
                     <template v-else>
@@ -66,21 +64,19 @@ const Post = {
                     </template>
                   </div>
                 </div>
-
+                
                 <div class="section">
                   <h3>Artikel Terbaru</h3>
                   <div class="menu">
                     <template v-if="latestposts.length">
-                      <ul
-                        v-for="latestpost in latestposts"
-                        :key="latestposts.id"
-                        class="menu-list"
-                        style="list-style: none;">
-                          <li>
-                            <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                              {{ latestpost.title.rendered }}
-                            </router-link>
-                          </li>
+                      <ul class="menu-list mx-0" style="list-style: none;">
+                        <li
+                          v-for="latestpost in latestposts"
+                          :key="latestposts.id">
+                          <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                            {{ latestpost.title.rendered }}
+                          </router-link>
+                        </li>
                       </ul>
                     </template>
                     <template v-else>

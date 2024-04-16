@@ -47,7 +47,7 @@ const Category = {
   },
   computed: {
     showLoadMoreButton() {
-      return this.posts.length >= this.perPage && this.posts.length < this.totalPosts;
+      return this.posts.length >= this.perPage && this.posts.length < this.totalPosts
     }
   },
   created() {

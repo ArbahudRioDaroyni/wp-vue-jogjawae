@@ -41,31 +41,56 @@ const Post = {
           <div class="content content-single columns">
             <div class="column is-8 is-offset-2">
               <div class="content-article" v-html="content.rendered"></div>
+
               <aside>
-                <div>
+
+                <div class="section px-0">
                   <h3>Kategori</h3>
-                  <div v-if="categories.length">
-                    <ul v-for="category in categories" :key="category.id">
-                      <router-link :to="'/' + 'category/' + category.name.toLowerCase() + '/'">{{ category.name }}</router-link>
-                    </ul>
-                  </div>
-                  <div v-else>
-                    No categories found.
+                  <div class="menu">
+                    <template v-if="categories.length">
+                      <ul
+                        v-for="category in categories"
+                        :key="category.id"
+                        class="menu-list"
+                        style="list-style: none;">
+                          <li>
+                            <router-link
+                              :to="'/' + 'category/' + category.name.toLowerCase() + '/'">
+                              {{ category.name }}
+                            </router-link>
+                          </li>
+                      </ul>
+                    </template>
+                    <template v-else>
+                      <p class="menu-label">No categories found.</p>
+                    </template>
                   </div>
                 </div>
-                <div v-if="latestposts && latestposts.length">
+
+                <div class="section">
                   <h3>Artikel Terbaru</h3>
-                  <div class="content-body" v-for="latestpost in latestposts" :key="latestposts.id">
-                    <ul style="padding: 0;list-style: none;">
-                      <li>
-                        <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                          <span v-html="latestpost.title.rendered"></span>
-                        </router-link>
-                      </li>
-                    </ul>
+                  <div class="menu">
+                    <template v-if="latestposts.length">
+                      <ul
+                        v-for="latestpost in latestposts"
+                        :key="latestposts.id"
+                        class="menu-list"
+                        style="list-style: none;">
+                          <li>
+                            <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                              {{ latestpost.title.rendered }}
+                            </router-link>
+                          </li>
+                      </ul>
+                    </template>
+                    <template v-else>
+                      <p class="menu-label">No posts found.</p>
+                    </template>
                   </div>
                 </div>
+
               </aside>
+
             </div>
           </div>
         </section>
@@ -91,6 +116,7 @@ const Post = {
         <div></div>
         <div></div>
       </div>
+      </br>
       <div class="container is-fluid skeleton-lines mt-3">
         <div></div>
         <div></div>

@@ -24,9 +24,9 @@ const TableOfContents = {
   name: 'TableOfContents',
   template: `
     <div class="card">
-      <header class="card-header pointer" aria-label="more options" aria-haspopup="true" aria-controls="toc" @click="toggleToc">
+      <header class="card-header pointer" @click="toggleToc">
         <p class="card-header-title">Daftar Isi</p>
-        <button class="card-header-icon">
+        <button class="card-header-icon" aria-label="Daftar Isi" aria-haspopup="true" aria-controls="toc">
           <span class="icon" :class="{ 'rotated180': showToc }">
             <i aria-hidden="true">▼</i>
           </span>

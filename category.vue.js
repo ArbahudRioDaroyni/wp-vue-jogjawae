@@ -4,6 +4,7 @@ const Category = {
   name: 'Category',
   template: `
     <Navigation />
+
     <section class="section mt-6">
       <div class="container">
         <div class="mb-6 columns is-multiline is-centered">
@@ -14,12 +15,11 @@ const Category = {
         </div>
       </div>
     </section>
+
     <section class="section pt-0">
       <div class="container">
         <div class="columns is-multiline">
-        <!-- list-article.vue.js -->
           <ListArticle :posts="posts" />
-        <!-- list-article.vue.js -->
         </div>
         <div
           v-if="showLoadMoreButton"
@@ -32,6 +32,7 @@ const Category = {
         </div>
       </div>
     </section>
+    
     <Footer />
   `,
   data() {

@@ -26,19 +26,19 @@ const Footer = {
           <div class="py-2 is-hidden-tablet"></div>
           <div class="ml-auto">
             <a class="mr-4 is-inline-block" href="https://www.facebook.com/arbahudrio.daroyni/" rel="me nofollow">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'" alt="Find us on Facebook" width="40" height="40">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'" alt="Find us on Facebook" width="20" height="20">
             </a>
             <a class="mr-4 is-inline-block" href="https://twitter.com/arbahud" rel="me nofollow">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-twitter.svg'" alt="Find us on Twitter" width="40" height="40">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-twitter.svg'" alt="Find us on Twitter" width="20" height="20">
             </a>
             <a class="mr-4 is-inline-block" href="https://github.com/ArbahudRioDaroyni" rel="me nofollow">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'" alt="Find us on Github" width="40" height="40">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'" alt="Find us on Github" width="20" height="20">
             </a>
             <a class="mr-4 is-inline-block" href="https://www.instagram.com/arbahud_rio_/" rel="me nofollow">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-instagram.svg'" alt="Find us on Instagram" width="40" height="40">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-instagram.svg'" alt="Find us on Instagram" width="20" height="20">
             </a>
             <a class="is-inline-block" href="https://id.linkedin.com/in/arbahud-rio-daroyni-062100146" rel="me nofollow">
-              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'" alt="Find us on LinkedIn" width="40" height="40">
+              <img :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'" alt="Find us on LinkedIn" width="20" height="20">
             </a>
           </div>
         </div>

@@ -1,3 +1,20 @@
+/*
+
+Theme Name: WP Vue JogjaWae
+Theme URI: https://jogjawae.com/
+Author: Arbahud Rio Daroyni
+Author URI: https://github.com/ArbahudRioDaroyni/
+Description: Membuat wp-theme dengan Vue.js yang interaktif dengan tema wisata
+Version: 1.0.3
+Requires at least: 4.7
+Requires PHP: 5.2.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blog, news, two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, footer-widgets, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain: jogjawae
+
+*/
+
 html {
   scroll-behavior: smooth;
 }

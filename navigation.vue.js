@@ -7,7 +7,7 @@ const Navigation = {
       <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item" aria-label="Logo SVG JogjaWae">
-            <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae" width="40" height="40">
+            <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae" width="28" height="28">
           </router-link>
 
           <ButtonBurger

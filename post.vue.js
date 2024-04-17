@@ -4,94 +4,100 @@ const Post = {
   name: 'Post',
   template: `
     <Navigation />
+
     <main
       v-if="!loading"
       v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post"
       :key="post.id"
       class="mt-6">
-      <article>
-        <section class="hero">
-          <div class="hero-body">
-            <h1
-              v-html="title.rendered"
-              class="title mb-1"></h1>
-            <p class="subtitle">
-              <time :datetime="modified_gmt">{{ formattedModified }}</time>
-            </p>
-          </div>
-        </section>
-        <section class="hero">
-          <div class="hero-body pt-0">
-            <figure class="image is-16by9">
-              <img
-                :src="yoast_head_json.og_image[0].url"
-                :alt="title.rendered"
-                class="image"
-                loading="lazy"
-                decoding="async">
-            </figure>
-          </div>
-        </section>
-        <section class="container is-fluid">
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-              <table-of-contents :headings="headings" />
+
+        <article>
+
+          <section class="hero">
+            <div class="hero-body">
+              <h1 v-html="title.rendered" class="title mb-1"></h1>
+              <p class="subtitle">
+                <time :datetime="modified_gmt">{{ formattedModified }}</time>
+              </p>
             </div>
-          </div>
-          <div class="content content-single columns">
-            <div class="column is-8 is-offset-2">
-              <div class="content-article" v-html="content.rendered"></div>
+          </section>
 
-              <aside>
-
-                <div class="section px-0">
-                  <h3>Kategori</h3>
-                  <div class="menu">
-                    <template v-if="categories.length">
-                      <ul class="menu-list mx-0" style="list-style: none;">
-                        <li
-                          v-for="category in categories"
-                          :key="category.id">
-                          <router-link
-                            :to="'/' + 'category/' + category.name.toLowerCase() + '/'">
-                            {{ category.name }}
-                          </router-link>
-                        </li>
-                      </ul>
-                    </template>
-                    <template v-else>
-                      <p class="menu-label">No categories found.</p>
-                    </template>
-                  </div>
-                </div>
-                
-                <div class="section">
-                  <h3>Artikel Terbaru</h3>
-                  <div class="menu">
-                    <template v-if="latestposts.length">
-                      <ul class="menu-list mx-0" style="list-style: none;">
-                        <li
-                          v-for="latestpost in latestposts"
-                          :key="latestposts.id">
-                          <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                            {{ latestpost.title.rendered }}
-                          </router-link>
-                        </li>
-                      </ul>
-                    </template>
-                    <template v-else>
-                      <p class="menu-label">No posts found.</p>
-                    </template>
-                  </div>
-                </div>
-
-              </aside>
-
+          <section class="hero">
+            <div class="hero-body pt-0">
+              <figure class="image is-16by9">
+                <img
+                  :src="yoast_head_json.og_image[0].url"
+                  :alt="title.rendered"
+                  class="image"
+                  loading="lazy"
+                  decoding="async">
+              </figure>
             </div>
-          </div>
-        </section>
-      </article>
+          </section>
+          
+          <section class="container is-fluid">
+            <div class="columns">
+              <div class="column is-8 is-offset-2">
+                <table-of-contents :headings="headings" />
+              </div>
+            </div>
+            <div class="content content-single columns">
+              <div class="column is-8 is-offset-2">
+
+                <div class="content-article" v-html="content.rendered"></div>
+
+                <aside>
+
+                  <div class="section px-0">
+                    <h3>Kategori</h3>
+                    <div class="menu">
+                      <template v-if="categories.length">
+                        <ul class="menu-list mx-0" style="list-style: none;">
+                          <li
+                            v-for="category in categories"
+                            :key="category.id">
+                            <router-link
+                              :to="'/' + 'category/' + category.name.toLowerCase() + '/'">
+                              {{ category.name }}
+                            </router-link>
+                          </li>
+                        </ul>
+                      </template>
+                      <template v-else>
+                        <p class="menu-label">No categories found.</p>
+                      </template>
+                    </div>
+                  </div>
+                  
+                  <div class="section px-0">
+                    <h3>Artikel Terbaru</h3>
+                    <div class="menu">
+                      <template v-if="latestposts.length">
+                        <ul class="menu-list mx-0" style="list-style: none;">
+                          <li
+                            v-for="latestpost in latestposts"
+                            :key="latestposts.id">
+                            <router-link :to="'/' + latestpost.slug.toLowerCase()">
+                              {{ latestpost.title.rendered }}
+                            </router-link>
+                          </li>
+                        </ul>
+                      </template>
+                      <template v-else>
+                        <p class="menu-label">No posts found.</p>
+                      </template>
+                    </div>
+                  </div>
+
+                </aside>
+
+              </div>
+            </div>
+          </section>
+        </article>
+
     </main>
+
     <div v-else class="mt-6">
       <section class="hero">
         <div class="hero-body">
@@ -121,6 +127,7 @@ const Post = {
         <div></div>
       </div>
     </div>
+    
     <Footer />
   `,
   data() {
@@ -214,10 +221,7 @@ const Post = {
       }
     },
     scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0 });
     },
     createTableofContents() {
       const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));

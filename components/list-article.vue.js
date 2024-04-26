@@ -6,7 +6,7 @@ const ListArticle = {
       :key="post.id"
       :class="index === 0 ? 'pointer column is-8 mb-5' : 'pointer column is-4 mb-5'"
       @click="$goToLink(post.slug)">
-        <a :href="$goToLink(post.slug)">
+        <router-link :to="'/' + post.slug">
           <div class="card">
             <div class="card-image">
               <figure class="image is-6by3">
@@ -40,7 +40,7 @@ const ListArticle = {
               </div>
             </div>
           </div>
-        </a>
+        </router-link>
     </article>
   `,
   props: {

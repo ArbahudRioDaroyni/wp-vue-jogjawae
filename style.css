@@ -24,6 +24,7 @@ figure {
 img {
   width: 100% !important;
   height: auto;
+  border-radius: 1rem;
 }
 iframe {
   width: 100% !important;

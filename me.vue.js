@@ -3,7 +3,7 @@ const Me = {
   template: `
     <main id="me">
 
-      <section class="hero is-fullheight has-text-centered section-scroll-snapping">
+      <section class="hero is-fullheight has-text-centered">
         <div class="hero-body is-justify-content-center">
           <div class="">
             <span class="subtitle">Hey world! I'm</span>
@@ -14,7 +14,7 @@ const Me = {
       </section>
 
       <!-- About -->
-      <section class="section section-scroll-snapping" id="about">
+      <section class="section" id="about">
         <!-- Title -->
         <div class="section-heading">
           <h3 class="title is-2">About Me</h3>

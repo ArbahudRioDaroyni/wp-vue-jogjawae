@@ -1,19 +1,21 @@
 const Me = {
   name: 'Me',
   template: `
-    <Navigation />
-    <main class="header-wrapper" id="home">
+    <main id="me">
 
-      <section class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="subtitle">Hey there, I'm</h1>
-          <h2 class="title">Ashley</h2>
-          <h1 class="subtitle profession">A UI/UX Designer</h1>
+      <section class="hero is-fullheight has-text-centered section-scroll-snapping">
+        <div class="hero-body is-justify-content-center">
+          <div class="">
+            <span class="subtitle">Hey world! I'm</span>
+            <h1 class="title">Roy</h1>
+            <h2 class="subtitle">A Website Developer | SEO Enthusiast | Blogger</h2>
+          </div>
         </div>
+        <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/scroll-down.svg'" alt="JogjaWae" width="28" height="28">
       </section>
 
       <!-- About -->
-      <section class="section" id="about">
+      <section class="section section-scroll-snapping" id="about">
         <!-- Title -->
         <div class="section-heading">
           <h3 class="title is-2">About Me</h3>

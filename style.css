@@ -47,3 +47,18 @@ table {
 .pointer {
   cursor: pointer;
 }
+
+#me {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-snap-type: y mandatory; /* Aktifkan scroll snapping */
+}
+
+.section-scroll-snapping {
+  height: 100vh; /* Gunakan viewport height untuk memenuhi seluruh layar */
+  scroll-snap-align: start; /* Mulai scroll snap dari bagian atas setiap section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

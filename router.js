@@ -18,7 +18,7 @@ const routes = [
     path: '/category/:category',
     component: () => import("./category.vue.js")
   }, {
-    path: '/me/',
+    path: '/me',
     component: () => import("./me.vue.js")
   }, {
     path: '/:pathMatch(.*)*',

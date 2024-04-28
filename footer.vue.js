@@ -11,7 +11,7 @@ const Footer = {
           </div>
           <div>
             <ul class="is-flex is-flex-wrap-wrap is-align-items-center is-justify-content-center">
-              <li class="mr-4"><a class="button is-white" href="#">About</a></li>
+              <li class="mr-4"><router-link to="'/' + me" class="button is-white">Me</router-link></li>
               <li class="mr-4"><a class="button is-white" href="#">Company</a></li>
               <li class="mr-4"><a class="button is-white" href="#">Services</a></li>
               <li><a class="button is-white" href="#">Testimonials</a></li>

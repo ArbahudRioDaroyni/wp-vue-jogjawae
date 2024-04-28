@@ -15,9 +15,9 @@ const Me = {
 
       <section class="section">
 
-        <div class="mb-5">
+        <div class="mb-5 has-text-centered">
           <h2 class="title is-2">About Me</h2>
-          <span class="subtitle is-5">Arbahud Rio Daroyni, IT Enthusiast</span>
+          <span class="subtitle is-5 mb-3">Arbahud Rio Daroyni, IT Enthusiast</span>
           <p>
             Blogger and a Web developer with more than <strong>4 years</strong> of well-rounded experience with a degree in the
             field of
@@ -28,11 +28,14 @@ const Me = {
           </p>
         </div>
 
+        </br>
+        
         <div class="columns">
           <div class="column">
             <!-- Profile -->
             <div class="card">
               <div class="card-content">
+
                 <h3 class="title is-4">Bio:</h3>
                 <div class="content">
                   <table class="table-profile">
@@ -51,6 +54,7 @@ const Me = {
                   </table>
                 </div>
                 <br>
+
                 <h3 class="title is-4">Find me on:</h3>
                 <div class="buttons has-addons is-centered">
                   <a href="https://github.com/ArbahudRioDaroyni" class="button">
@@ -75,6 +79,15 @@ const Me = {
                       height="20">
                   </a>
                 </div>
+
+                <h3 class="title is-4">Education:</h3>
+                <p>
+                  <span class="is-6"><strong>17 Agustus Surabaya University</strong> - 2015 - 2020</span>
+                </p>
+                <p>
+                  Bachelor of Informatic Engineering</p>
+                </p>
+                
               </div>
             </div>
           </div>

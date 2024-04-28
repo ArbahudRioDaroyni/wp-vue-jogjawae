@@ -78,7 +78,7 @@ const Navigation = {
     ButtonBurger
   },
   mounted() {
-    // this.checkTime();
+    this.checkTime();
   },
   methods: {
     toggleNavbar() {
@@ -95,6 +95,8 @@ const Navigation = {
       // Periksa apakah waktu saat ini berada di antara batas waktu
       if (hour >= startTime && hour < endTime) {
         // Jika tema saat ini adalah mode terang, tambahkan atribut data-theme ke tag html
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
         document.documentElement.setAttribute('data-theme', 'light');
       }
     }

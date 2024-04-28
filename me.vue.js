@@ -28,7 +28,7 @@ const Me = {
           </p>
         </div>
 
-        <div class="columns has-same-height is-gapless">
+        <div class="columns">
           <div class="column">
             <!-- Profile -->
             <div class="card">
@@ -55,21 +55,21 @@ const Me = {
                 <div class="buttons has-addons is-centered">
                   <a href="https://github.com/ArbahudRioDaroyni" class="button">
                     <img
-                      :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">
                   </a>
                   <a href="https://www.linkedin.com/in/arbahud-rio-daroyni-062100146/" class="button">
                     <img
-                      :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">
                   </a>
                   <a href="https://www.facebook.com/arbahudrio.daroyni" class="button">
                     <img
-                      :src="rootUrl + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">

@@ -18,6 +18,9 @@ const routes = [
     path: '/category/:category',
     component: () => import("./category.vue.js")
   }, {
+    path: '/me',
+    component: () => import("./me.vue.js")
+  }, {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: { template: '<Navigation /><div>Not Found</div>' }

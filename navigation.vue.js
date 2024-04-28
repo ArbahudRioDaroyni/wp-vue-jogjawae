@@ -78,7 +78,7 @@ const Navigation = {
     ButtonBurger
   },
   mounted() {
-    this.checkTime();
+    // this.checkTime();
   },
   methods: {
     toggleNavbar() {

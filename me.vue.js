@@ -11,7 +11,6 @@ const Me = {
             <h2 class="subtitle">A Website Developer | SEO Enthusiast | Blogger</h2>
           </div>
         </div>
-        <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/scroll-down.svg'" alt="JogjaWae" width="28" height="28">
       </section>
 
       <!-- About -->

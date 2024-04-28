@@ -17,7 +17,7 @@ const Me = {
 
         <div class="mb-5 has-text-centered">
           <h2 class="title is-2">About Me</h2>
-          <span class="subtitle is-5 mb-3">Arbahud Rio Daroyni, IT Enthusiast</span>
+          <p class="subtitle is-5">Arbahud Rio Daroyni, IT Enthusiast</p>
           <p>
             Blogger and a Web developer with more than <strong>4 years</strong> of well-rounded experience with a degree in the
             field of
@@ -29,7 +29,7 @@ const Me = {
         </div>
 
         </br>
-        
+
         <div class="columns">
           <div class="column">
             <!-- Profile -->

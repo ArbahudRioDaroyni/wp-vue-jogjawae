@@ -61,7 +61,7 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const url = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`);
+        const url = `${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`;
         const data = await (await fetch(url)).json();
         if (data.length > 0) {
           this.categoryId = data[0].id;

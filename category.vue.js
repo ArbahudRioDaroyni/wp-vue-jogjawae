@@ -61,8 +61,8 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`);
-        const data = await response.json();
+        const url = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`);
+        const data = await (await fetch(url)).json();
         if (data.length > 0) {
           this.categoryId = data[0].id;
           // Memuat daftar post berdasarkan kategori setelah mendapatkan ID kategori
@@ -76,12 +76,12 @@ const Category = {
       try {
         this.loading = true;
         const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image";
-        const response = `${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${API_field}`;
+        const url = `${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${API_field}`;
         const newPosts = await (await fetch(url)).json();
         this.posts = [...this.posts, ...newPosts];
         
         // Update totalPosts setelah menerima data
-        this.totalPosts = response.headers.get('X-WP-Total');
+        this.totalPosts = url.headers.get('X-WP-Total');
       } catch (error) {
         console.error('Error fetching posts by category:', error);
       } finally {

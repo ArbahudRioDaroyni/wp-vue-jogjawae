@@ -186,7 +186,7 @@ const Post = {
       } catch (error) {
         this.error = 'Error fetching data.'
       } finally {
-        fetchFeatureImage()
+        this.fetchFeatureImage()
         this.loading = false
       }
     },

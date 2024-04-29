@@ -25,7 +25,7 @@ const Post = {
           <section class="hero">
             <div class="hero-body pt-0">
               <figure
-                v-for="(image, index) in featureimage"
+                v-for="image in featureimage"
                 :key="image.id"
                 class="image is-16by9">
                   <img

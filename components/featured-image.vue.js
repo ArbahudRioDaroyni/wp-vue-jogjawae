@@ -23,7 +23,7 @@ const FeaturedImage = {
   },
   props: {
     id: {
-      type: Object,
+      type: Number,
       required: true
     }
   },

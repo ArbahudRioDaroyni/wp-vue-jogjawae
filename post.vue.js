@@ -27,7 +27,7 @@ const Post = {
               <figure class="image is-16by9">
                 <img
                   :src="p.yoast_head_json.og_image[0].url"
-                  :alt="title.rendered"
+                  :alt="p.title.rendered"
                   class="image fit-cover"
                   loading="lazy"
                   decoding="async">

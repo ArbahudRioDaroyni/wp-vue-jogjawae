@@ -28,11 +28,15 @@ const Post = {
                 v-for="image in featureimage"
                 :key="image.id"
                 class="image is-16by9">
-                <img
-                  :src="image.media_details.sizes.full.source_url"
-                  class="image fit-cover"
-                  loading="lazy"
-                  decoding="async">
+                  <img
+                    decoding="async"
+                    width="1024"
+                    height="1024"
+                    :src="image.media_details.sizes.full.source_url"
+                    :alt="image.alt_text"
+                    :class="'wp-image-' + image.id"
+                    :srcset="generateSrcset(image.media_details.sizes)"
+                    sizes="(max-width: 1024px) 100vw, 1024px">
               </figure>
             </div>
           </section>
@@ -269,7 +273,17 @@ const Post = {
       // Menghapus anak-anak dari array headings
       this.headings = this.headings.filter(heading => !heading.parentId)
       this.slug = this.$route.params.slug
-    }    
+    },
+    generateSrcset(sizes) {
+      let srcset = '';
+      for (const key in sizes) {
+        if (sizes.hasOwnProperty(key)) {
+          const size = sizes[key];
+          srcset += `${size.source_url} ${size.width}w, `;
+        }
+      }
+      return srcset.trim().slice(0, -1);
+    }
     
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {

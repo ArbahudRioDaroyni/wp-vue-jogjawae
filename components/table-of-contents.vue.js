@@ -39,12 +39,6 @@ const TableOfContents = {
       </div>
     </div>
   `,
-  props: {
-    headings: {
-      type: Array,
-      required: true
-    }
-  },
   components: {
     ChildHeadings
   },

@@ -223,7 +223,7 @@ const Post = {
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].featured_media}/?_fields=${API_field}`)
         const image = await response.json()
         // store data
-        this.featureimage = image
+        this.featureimage[0] = image
       } catch (error) {
         console.error('Error fetching image:', error)
       }

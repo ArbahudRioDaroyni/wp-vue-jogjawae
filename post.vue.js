@@ -162,7 +162,7 @@ const Post = {
       )
     },
     async fetchPostBySlug() {
-      // this.scrollToTop();
+      this.scrollToTop();
       this.error = this.post = null
       this.loading = true
       try {
@@ -203,10 +203,9 @@ const Post = {
         console.error('Error fetching latest posts:', error);
       }
     },
-    
-    // scrollToTop() {
-    //   window.scrollTo({ top: 0 });
-    // },
+    scrollToTop() {
+      window.scrollTo({ top: 0 });
+    },
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
       //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');

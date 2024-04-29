@@ -38,7 +38,7 @@ const Category = {
   data() {
     return {
       loading: false,
-      categoryName: this.$route.params.category, // Nama kategori yang ingin Anda dapatkan
+      categoryName: this.$route.params.category, // Nama kategori yang ingin didapatkan
       categoryId: null,
       posts: [],
       page: 1,
@@ -61,7 +61,7 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}`);
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}&_fields=id`);
         const data = await response.json();
         if (data.length > 0) {
           this.categoryId = data[0].id;

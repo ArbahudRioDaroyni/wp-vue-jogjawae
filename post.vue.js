@@ -132,50 +132,50 @@ const Post = {
   `,
   data() {
     return {
+      error: null,
       loading: false,
       post: [],
       categories: [],
       latestposts: [],
-      error: null,
       headings: [], // table-of-contents
       slug: [] // table-of-contents
     }
   },
-  created() {
-    this.checkSlug();
-  },
   components: {
     TableOfContents
   },
+  created() {
+    this.fetchData()
+  },
   methods: {
-    checkSlug() {
+    fetchData() {
       this.$watch(
         function() {
-          return this.$route.params.slug;
+          return this.$route.params.slug
         },
         function() {
-          const isValidSlug = /^[a-zA-Z0-9-]+$/.test(this.$route.params.slug);
+          const isValidSlug = /^[a-zA-Z0-9-]+$/.test(this.$route.params.slug)
           if (isValidSlug) {
-            this.loading = true;
-            this.fetchDataPost();
-            this.fetchCategories();
-            this.fetchLatestPosts();
+            this.loading = true
+            this.fetchPostBySlug()
+            this.fetchCategories()
+            this.fetchLatestPosts()
           } else {
-            this.$router.push({ path: '/' });
+            this.$router.push({ path: '/' })
           }
         },
         { immediate: true }
       )
     },
-    async fetchDataPost() {
-      this.scrollToTop();
+    async fetchPostBySlug() {
+      // this.scrollToTop();
       this.error = this.post = null
       this.loading = true
 
       try {
-        const API_field = "id,modified_gmt,title,content,yoast_head_json.og_image";
-        const url = `${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`;
-        const postData = await (await fetch(url)).json();
+        const API_field = "id,modified_gmt,title,content,featured_media,yoast_head_json.og_image"
+        const url = `${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`
+        const postData = await (await fetch(url)).json()
         
         // Memformat tanggal modified_gmt
         for (let index = 0; index < postData.length; index++) {

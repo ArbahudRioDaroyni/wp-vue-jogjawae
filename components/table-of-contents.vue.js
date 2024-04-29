@@ -50,13 +50,64 @@ const TableOfContents = {
   },
   data() {
     return {
+      headings: [], // table-of-contents
+      slug: [], // table-of-contents
       showToc: false
     };
   },
   methods: {
     toggleToc() {
       this.showToc = !this.showToc;
+    },
+    createTableofContents() {
+      const selector = ".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"
+      const headings = Array.from(document.querySelectorAll(selector))
+    
+      this.headings = headings.map((heading, index) => {
+        const id = heading.textContent.trim().replace(/\s+/g, '-')
+        heading.id = id
+        const level = parseInt(heading.tagName.substring(1))
+        let parentId = null
+    
+        // Find the closest parent heading with a lower level
+        for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
+          if (parseInt(headings[i].tagName.substring(1)) < level) {
+            parentId = headings[i].id
+            break
+          }
+        }
+    
+        return {
+          index: index,
+          id: id,
+          title: heading.textContent,
+          level: level,
+          parentId: parentId,
+          data: [] // add prop data[] to store childs heading
+        };
+      });
+    
+      // headings to headings.parent.data if parentId != null
+      this.headings.forEach(heading => {
+        if (heading.parentId) {
+          const parentHeading = this.headings.find(h => h.id === heading.parentId)
+          if (parentHeading) {
+            parentHeading.data.push(heading)
+          }
+        }
+      });
+    
+      // remove childs array headings
+      this.headings = this.headings.filter(heading => !heading.parentId)
+      this.slug = this.$route.params.slug
     }
+  },
+  updated() {
+    // Start Table 0f Contents
+    if (this.headings.length == 0 || this.slug !== this.$route.params.slug) {
+      this.createTableofContents()
+    }
+    // End Table 0f Contents
   }
 }
 

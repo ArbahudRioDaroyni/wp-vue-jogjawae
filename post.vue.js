@@ -85,7 +85,7 @@ const Post = {
                         </ul>
                       </template>
                       <template v-else>
-                        <p class="menu-label">No posts found.</p>
+                        <p class="menu-label">No latest posts found.</p>
                       </template>
                     </div>
                   </div>
@@ -135,6 +135,7 @@ const Post = {
       error: null,
       loading: false,
       post: [],
+      featureimage: [],
       categories: [],
       latestposts: [],
       headings: [], // table-of-contents
@@ -184,6 +185,7 @@ const Post = {
       } catch (error) {
         this.error = 'Error fetching data.'
       } finally {
+        this.fetchFeatureImage()
         this.loading = false
       }
     },
@@ -208,6 +210,17 @@ const Post = {
         this.latestposts = data
       } catch (error) {
         console.error('Error fetching latest posts:', error);
+      }
+    },
+    async fetchFeatureImage() {
+      try {
+        const API_field = "id,alt_text,media_details"
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].featured_media}/?_fields=${API_field}`)
+        const image = await response.json()
+        // store data
+        this.featureimage[0] = image
+      } catch (error) {
+        console.error('Error fetching image:', error)
       }
     },
     // scrollToTop() {

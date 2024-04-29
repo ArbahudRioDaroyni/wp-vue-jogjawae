@@ -24,10 +24,12 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <figure class="image is-16by9">
+              <figure
+                v-for="image in featureimage"
+                :key="image.id"
+                class="image is-16by9">
                 <img
-                  :src="p.yoast_head_json.og_image[0].url"
-                  :alt="p.title.rendered"
+                  :src="image.media_details.sizes.full.source_url"
                   class="image fit-cover"
                   loading="lazy"
                   decoding="async">

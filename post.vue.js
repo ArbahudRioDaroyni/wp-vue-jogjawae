@@ -24,17 +24,6 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <figure
-                v-for="image in featureimage"
-                :key="image.id"
-                class="image is-16by9">
-                  <img
-                    :src="image.media_details.sizes.full.source_url"
-                    :alt="image.alt_text"
-                    class="image fit-cover"
-                    loading="lazy"
-                    decoding="async">
-              </figure>
             </div>
           </section>
           

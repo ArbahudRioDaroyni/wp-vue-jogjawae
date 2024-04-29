@@ -1,23 +1,31 @@
 const FeaturedImage = {
   name: 'FeaturedImage',
   template: `
-    <figure
-      v-for="image in featureimage"
-      :key="image.id"
-      class="image is-16by9">
-        <img
-          decoding="async"
-          :width="image.media_details.width"
-          height="image.media_details.height"
-          :src="image.media_details.sizes.full.source_url"
-          :alt="image.alt_text"
-          :class="'image fit-cover wp-image-' + image.id"
-          :srcset="generateSrcset(image.media_details.sizes)"
-          :sizes="'(max-width: ' + image.media_details.width + 'px) 100vw, ' + image.media_details.width + 'px'">
-    </figure>
+    <template v-if="!loading">
+      <figure
+        v-for="image in featureimage"
+        :key="image.id"
+        class="image is-16by9">
+          <img
+            decoding="async"
+            :width="image.media_details.width"
+            height="image.media_details.height"
+            :src="image.media_details.sizes.full.source_url"
+            :alt="image.alt_text"
+            :class="'image fit-cover wp-image-' + image.id"
+            :srcset="generateSrcset(image.media_details.sizes)"
+            :sizes="'(max-width: ' + image.media_details.width + 'px) 100vw, ' + image.media_details.width + 'px'">
+      </figure>
+    </template>
+
+    <template v-else>
+      <figure class="image is-16by9 is-skeleton">
+      </figure>
+    </template>
   `,
   data() {
     return {
+      loading: false,
       featureimage: []
     }
   },
@@ -32,6 +40,7 @@ const FeaturedImage = {
   },
   methods: {
     async fetchFeatureImage() {
+      this.loading = true
       try {
         const API_field = "id,alt_text,media_details"
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.$props.id}/?_fields=${API_field}`)
@@ -40,6 +49,8 @@ const FeaturedImage = {
         this.featureimage[0] = image
       } catch (error) {
         console.error('Error fetching image:', error)
+      } finally {
+        this.loading = false
       }
     },
     generateSrcset(sizes) {

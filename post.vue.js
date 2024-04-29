@@ -220,7 +220,7 @@ const Post = {
     async fetchFeatureImage() {
       try {
         const API_field = "id,alt_text,media_details"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].id}/?_fields=${API_field}`)
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].featured_media}/?_fields=${API_field}`)
         const image = await response.json()
         // store data
         this.featureimage = image

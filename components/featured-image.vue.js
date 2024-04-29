@@ -7,13 +7,13 @@ const FeaturedImage = {
       class="image is-16by9">
         <img
           decoding="async"
-          width="1024"
-          height="1024"
+          :width="image.media_details.width"
+          height="image.media_details.height"
           :src="image.media_details.sizes.full.source_url"
           :alt="image.alt_text"
           :class="'image fit-cover wp-image-' + image.id"
           :srcset="generateSrcset(image.media_details.sizes)"
-          sizes="(max-width: 1024px) 100vw, 1024px">
+          :sizes="'(max-width: ' + image.media_details.width + 'px) 100vw, ' + image.media_details.width + 'px'">
     </figure>
   `,
   data() {

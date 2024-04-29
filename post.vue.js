@@ -7,17 +7,17 @@ const Post = {
 
     <main
       v-if="!loading"
-      v-for="{ modified_gmt, yoast_head_json, title, content, formattedModified } in post"
-      :key="post.id"
+      v-for="(p, index) in post"
+      :key="p.id"
       class="mt-6">
 
         <article>
 
           <section class="hero">
             <div class="hero-body">
-              <h1 v-html="title.rendered" class="title mb-1"></h1>
+              <h1 v-html="p.title.rendered" class="title mb-1"></h1>
               <p class="subtitle">
-                <time :datetime="modified_gmt">{{ formattedModified }}</time>
+                <time :datetime="p.modified_gmt">{{ p.formattedModified }}</time>
               </p>
             </div>
           </section>
@@ -26,7 +26,7 @@ const Post = {
             <div class="hero-body pt-0">
               <figure class="image is-16by9">
                 <img
-                  :src="yoast_head_json.og_image[0].url"
+                  :src="p.yoast_head_json.og_image[0].url"
                   :alt="title.rendered"
                   class="image fit-cover"
                   loading="lazy"
@@ -36,18 +36,19 @@ const Post = {
           </section>
           
           <section class="container is-fluid">
+
             <div class="columns">
               <div class="column is-8 is-offset-2">
                 <table-of-contents :headings="headings" />
               </div>
             </div>
+
             <div class="content content-single columns">
               <div class="column is-8 is-offset-2">
 
-                <div class="content-article" v-html="content.rendered"></div>
+                <div class="content-article" v-html="p.content.rendered"></div>
 
                 <aside>
-
                   <div class="section px-0">
                     <h3>Kategori</h3>
                     <div class="menu">
@@ -88,7 +89,6 @@ const Post = {
                       </template>
                     </div>
                   </div>
-
                 </aside>
 
               </div>
@@ -173,7 +173,8 @@ const Post = {
       this.loading = true
 
       try {
-        const url = `${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}`;
+        const API_field = "id,modified_gmt,title,content,yoast_head_json.og_image";
+        const url = `${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`;
         const postData = await (await fetch(url)).json();
         
         // Memformat tanggal modified_gmt

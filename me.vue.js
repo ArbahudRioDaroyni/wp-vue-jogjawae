@@ -19,7 +19,7 @@ const Me = {
           <h2 class="title is-2">About Me</h2>
           <p class="subtitle is-5">Arbahud Rio Daroyni, IT Enthusiast</p>
           <p>
-            Blogger and a Web developer with more than <strong>4 years</strong> of well-rounded experience with a degree in the
+            A Web developer with more than <strong>4 years</strong> of well-rounded experience with a degree in the
             field of
             <strong>Informatic Engineering</strong>, extensive knowledge of modern Web techniques and also interest in <strong>SEO</strong>.
             Looking for an opportunity to work and upgrade, as well as being involved in an organization that
@@ -59,21 +59,21 @@ const Me = {
                 <div class="buttons has-addons is-centered">
                   <a href="https://github.com/ArbahudRioDaroyni" class="button">
                     <img
-                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github-light.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-github.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">
                   </a>
                   <a href="https://www.linkedin.com/in/arbahud-rio-daroyni-062100146/" class="button">
                     <img
-                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin-light.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-linkedin.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">
                   </a>
                   <a href="https://www.facebook.com/arbahudrio.daroyni" class="button">
                     <img
-                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook-light.svg'"
+                      :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/social-facebook.svg'"
                       alt="Find us on Instagram"
                       width="20"
                       height="20">
@@ -85,7 +85,7 @@ const Me = {
                   <span class="is-6"><strong>17 Agustus Surabaya University</strong> - 2015 - 2020</span>
                 </p>
                 <p>
-                  Bachelor of Informatic Engineering</p>
+                  Bachelor of Informatic Engineering
                 </p>
                 
               </div>
@@ -173,6 +173,9 @@ const Me = {
       loading: false,
       error: null,
     }
+  },
+  mounted() {
+    document.documentElement.setAttribute('data-theme', 'light');
   }
 }
 

@@ -25,7 +25,7 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <featured-image :id="p.id" />
+              <featured-image :id="p.featured_media" />
             </div>
           </section>
           

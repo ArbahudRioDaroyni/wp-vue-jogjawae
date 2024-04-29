@@ -26,8 +26,9 @@ const Post = {
             <div class="hero-body pt-0">
               <figure class="image is-16by9">
                 <img
-                  :src="p.yoast_head_json.og_image[0].url"
-                  :alt="p.title.rendered"
+                  v-for="(image, index) in featureimage"
+                  :src="image.media_details.sizes.full.source_url"
+                  :alt="image.alt_text"
                   class="image fit-cover"
                   loading="lazy"
                   decoding="async">
@@ -85,7 +86,7 @@ const Post = {
                         </ul>
                       </template>
                       <template v-else>
-                        <p class="menu-label">No posts found.</p>
+                        <p class="menu-label">No latest posts found.</p>
                       </template>
                     </div>
                   </div>
@@ -135,6 +136,7 @@ const Post = {
       error: null,
       loading: false,
       post: [],
+      featureimage: [],
       categories: [],
       latestposts: [],
       headings: [], // table-of-contents
@@ -184,13 +186,15 @@ const Post = {
       } catch (error) {
         this.error = 'Error fetching data.'
       } finally {
+        fetchFeatureImage()
         this.loading = false
       }
     },
     async fetchCategories() {
+      this.error = this.categories = null
       try {
         const API_field = "id,name,slug"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories&_fields=${API_field}`)
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?_fields=${API_field}`)
         const data = await response.json()
         // store data
         this.categories = data
@@ -200,6 +204,7 @@ const Post = {
       }
     },
     async fetchLatestPosts() {
+      this.error = this.latestposts = null
       try {
         const API_field = "id,slug,title"
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?per_page=3&_fields=${API_field}`)
@@ -207,9 +212,21 @@ const Post = {
         // store data
         this.latestposts = data
       } catch (error) {
-        console.error('Error fetching latest posts:', error);
+        console.error('Error fetching latest posts:', error)
       }
     },
+    async fetchFeatureImage() {
+      try {
+        const API_field = "alt_text,media_details"
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].id}?_fields=${API_field}`)
+        const image = await response.json()
+        // store data
+        this.featureimage = image
+      } catch (error) {
+        console.error('Error fetching image:', error)
+      }
+    },
+
     // scrollToTop() {
     //   window.scrollTo({ top: 0 });
     // },

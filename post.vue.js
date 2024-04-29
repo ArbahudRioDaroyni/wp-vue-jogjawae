@@ -24,14 +24,16 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <figure class="image is-16by9">
-                <img
-                  v-for="(image, index) in featureimage"
-                  :src="image.media_details.sizes.full.source_url"
-                  :alt="image.alt_text"
-                  class="image fit-cover"
-                  loading="lazy"
-                  decoding="async">
+              <figure
+                v-for="(image, index) in featureimage"
+                :key="image.id"
+                class="image is-16by9">
+                  <img
+                    :src="image.media_details.sizes.full.source_url"
+                    :alt="image.alt_text"
+                    class="image fit-cover"
+                    loading="lazy"
+                    decoding="async">
               </figure>
             </div>
           </section>
@@ -217,7 +219,7 @@ const Post = {
     },
     async fetchFeatureImage() {
       try {
-        const API_field = "alt_text,media_details"
+        const API_field = "id,alt_text,media_details"
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].id}?_fields=${API_field}`)
         const image = await response.json()
         // store data

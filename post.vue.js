@@ -189,48 +189,45 @@ const Post = {
     },
     async fetchCategories() {
       try {
-        const url = `${window.location.origin}/wp-json/wp/v2/categories`
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Failed to fetch categories');
-        }
-        const categories = await response.json();
-        // Lakukan sesuatu dengan data kategori, misalnya simpan dalam properti di komponen
-        this.categories = categories;
+        const API_field = "id,name,slug"
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?_fields=${API_field}`)
+        const data = await response.json()
+        // store data
+        this.categories = data
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error('Error fetching categories:', error)
         // Handle error
       }
     },
     async fetchLatestPosts() {
       try {
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?per_page=3&_embed`);
-        if (response.ok) {
-          this.latestposts = await response.json();
-        } else {
-          console.error('Failed to fetch related posts');
-        }
+        const API_field = "id,slug,title"
+        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?per_page=3&_fields=${API_field}`)
+        const data = await response.json()
+        // store data
+        this.latestposts = data
       } catch (error) {
-        console.error('Error fetching related posts:', error);
+        console.error('Error fetching latest posts:', error);
       }
     },
-    scrollToTop() {
-      window.scrollTo({ top: 0 });
-    },
+    // scrollToTop() {
+    //   window.scrollTo({ top: 0 });
+    // },
     createTableofContents() {
-      const headings = Array.from(document.querySelectorAll(".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"));
+      const selector = ".content-article h1, .content-article h2, .content-article h3, .content-article h4, .content-article h5, .content-article h6"
+      const headings = Array.from(document.querySelectorAll(selector))
     
       this.headings = headings.map((heading, index) => {
-        const id = heading.textContent.trim().replace(/\s+/g, '-');
-        heading.id = id;
-        const level = parseInt(heading.tagName.substring(1));
-        let parentId = null;
+        const id = heading.textContent.trim().replace(/\s+/g, '-')
+        heading.id = id
+        const level = parseInt(heading.tagName.substring(1))
+        let parentId = null
     
         // Find the closest parent heading with a lower level
         for (let i = headings.indexOf(heading) - 1; i >= 0; i--) {
           if (parseInt(headings[i].tagName.substring(1)) < level) {
-            parentId = headings[i].id;
-            break;
+            parentId = headings[i].id
+            break
           }
         }
     
@@ -247,16 +244,16 @@ const Post = {
       // Menyusun headings ke headings.parent.data jika parentId tidak null
       this.headings.forEach(heading => {
         if (heading.parentId) {
-          const parentHeading = this.headings.find(h => h.id === heading.parentId);
+          const parentHeading = this.headings.find(h => h.id === heading.parentId)
           if (parentHeading) {
-            parentHeading.data.push(heading);
+            parentHeading.data.push(heading)
           }
         }
       });
     
       // Menghapus anak-anak dari array headings
-      this.headings = this.headings.filter(heading => !heading.parentId);
-      this.slug = this.$route.params.slug;
+      this.headings = this.headings.filter(heading => !heading.parentId)
+      this.slug = this.$route.params.slug
     }    
     
     // async fetchRelatedPosts() {
@@ -276,7 +273,7 @@ const Post = {
   updated() {
     // Start Table 0f Contents
     if (this.headings.length == 0 || this.slug !== this.$route.params.slug) {
-      this.createTableofContents();
+      this.createTableofContents()
     }
     // End Table 0f Contents
   }

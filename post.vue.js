@@ -1,4 +1,5 @@
 import TableOfContents from './components/table-of-contents.vue.js'
+import FeaturedImage from './components/featured-image.vue.js'
 
 const Post = {
   name: 'Post',
@@ -24,20 +25,7 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <figure
-                v-for="image in featureimage"
-                :key="image.id"
-                class="image is-16by9">
-                  <img
-                    decoding="async"
-                    width="1024"
-                    height="1024"
-                    :src="image.media_details.sizes.full.source_url"
-                    :alt="image.alt_text"
-                    :class="'wp-image-' + image.id"
-                    :srcset="generateSrcset(image.media_details.sizes)"
-                    sizes="(max-width: 1024px) 100vw, 1024px">
-              </figure>
+              <featured-image :id="p.id" />
             </div>
           </section>
           
@@ -141,7 +129,6 @@ const Post = {
       error: null,
       loading: false,
       post: [],
-      featureimage: [],
       categories: [],
       latestposts: [],
       headings: [], // table-of-contents
@@ -149,7 +136,8 @@ const Post = {
     }
   },
   components: {
-    TableOfContents
+    TableOfContents,
+    FeaturedImage
   },
   created() {
     this.fetchData()
@@ -191,7 +179,6 @@ const Post = {
       } catch (error) {
         this.error = 'Error fetching data.'
       } finally {
-        this.fetchFeatureImage()
         this.loading = false
       }
     },
@@ -218,17 +205,7 @@ const Post = {
         console.error('Error fetching latest posts:', error);
       }
     },
-    async fetchFeatureImage() {
-      try {
-        const API_field = "id,alt_text,media_details"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.post[0].featured_media}/?_fields=${API_field}`)
-        const image = await response.json()
-        // store data
-        this.featureimage[0] = image
-      } catch (error) {
-        console.error('Error fetching image:', error)
-      }
-    },
+    
     // scrollToTop() {
     //   window.scrollTo({ top: 0 });
     // },
@@ -274,16 +251,7 @@ const Post = {
       this.headings = this.headings.filter(heading => !heading.parentId)
       this.slug = this.$route.params.slug
     },
-    generateSrcset(sizes) {
-      let srcset = '';
-      for (const key in sizes) {
-        if (sizes.hasOwnProperty(key)) {
-          const size = sizes[key];
-          srcset += `${size.source_url} ${size.width}w, `;
-        }
-      }
-      return srcset.trim().slice(0, -1);
-    }
+    
     
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {

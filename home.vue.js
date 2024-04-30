@@ -32,7 +32,7 @@ const Home = {
     async fetchData() {
       this.loading = true
       try {
-        const API_field = "id,modified_gmt,slug,title,excerpt,yoast_head_json.author,yoast_head_json.og_image";
+        const API_field = "id,modified_gmt,slug,title,excerpt,featured_media,yoast_head_json.author";
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?_fields=${API_field}&per_page=8`);
         this.posts = await response.json();
       } catch (error) {

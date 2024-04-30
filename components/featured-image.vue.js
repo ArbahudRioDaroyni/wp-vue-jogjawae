@@ -35,7 +35,7 @@ const FeaturedImage = {
       required: true
     },
     hasclass: {
-      type: Array,
+      type: Object,
       required: false,
       default: null
     },

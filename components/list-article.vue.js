@@ -1,4 +1,4 @@
-import FeaturedImage from './components/featured-image.vue.js'
+import FeaturedImage from './featured-image.vue'
 
 const ListArticle = {
   name: 'ListArticle',

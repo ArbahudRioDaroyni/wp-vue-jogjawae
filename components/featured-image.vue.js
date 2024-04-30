@@ -5,7 +5,7 @@ const FeaturedImage = {
       <figure
         v-for="image in featureimage"
         :key="image.id"
-        :class="['image', hasclass['figure'] ? 'hasclass['figure']' : '']">
+        :class="hasclass['figure'] + ' image'">
           <img
             decoding="async"
             :width="image.media_details.width"

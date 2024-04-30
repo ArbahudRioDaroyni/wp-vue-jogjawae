@@ -19,7 +19,7 @@ const FeaturedImage = {
     </template>
 
     <template v-else>
-      <figure :class="['image is-skeleton', hasclass['figure'] ? 'hasclass['figure']' : '']">
+      <figure class="image is-16by9 is-skeleton">
       </figure>
     </template>
   `,

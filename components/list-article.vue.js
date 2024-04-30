@@ -10,7 +10,7 @@ const ListArticle = {
       @click="$goToLink(post.slug)">
       <div class="card">
         <div class="card-image">
-          <featured-image :id="post.featured_media" :hasclass="{ hasclass: { 'figure': 'is-6by3', 'img': '350px' } }" />
+          <featured-image :id="post.featured_media" :hasclass="{ class: { 'figure': 'is-6by3', 'img': '350px' } }" />
         </div>
         <div class="card-content">
           <div class="media">

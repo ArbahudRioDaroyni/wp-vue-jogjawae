@@ -25,7 +25,7 @@ const Post = {
 
           <section class="hero">
             <div class="hero-body pt-0">
-              <featured-image :id="p.featured_media" />
+              <featured-image :id="p.featured_media" :hasclass="{ hasclass: { 'figure': 'is-16by9' } }" />
             </div>
           </section>
           

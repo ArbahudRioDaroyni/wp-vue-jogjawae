@@ -5,11 +5,11 @@ const FeaturedImage = {
       <figure
         v-for="image in featureimage"
         :key="image.id"
-        class="image is-16by9">
+        :class="['image', hasclass['figure'] ? 'hasclass['figure']' : '']">
           <img
             decoding="async"
             :width="image.media_details.width"
-            height="image.media_details.height"
+            :height="image.media_details.height"
             :src="image.media_details.sizes.full.source_url"
             :alt="image.alt_text"
             :class="'image fit-cover wp-image-' + image.id"
@@ -19,7 +19,7 @@ const FeaturedImage = {
     </template>
 
     <template v-else>
-      <figure class="image is-16by9 is-skeleton">
+      <figure :class="['image is-skeleton', hasclass['figure'] ? 'hasclass['figure']' : '']">
       </figure>
     </template>
   `,

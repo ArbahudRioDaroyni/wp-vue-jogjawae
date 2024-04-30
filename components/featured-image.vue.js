@@ -33,7 +33,12 @@ const FeaturedImage = {
     id: {
       type: Number,
       required: true
-    }
+    },
+    hasclass: {
+      type: Array,
+      required: false,
+      default: null
+    },
   },
   created() {
     this.fetchFeatureImage()

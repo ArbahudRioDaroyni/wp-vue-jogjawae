@@ -1,3 +1,5 @@
+import FeaturedImage from './components/featured-image.vue.js'
+
 const ListArticle = {
   name: 'ListArticle',
   template: `
@@ -8,16 +10,7 @@ const ListArticle = {
       @click="$goToLink(post.slug)">
       <div class="card">
         <div class="card-image">
-          <figure class="image is-6by3">
-            <img
-              :src="post.yoast_head_json.og_image[0].url"
-              :alt="post.title.rendered"
-              loading="lazy"
-              decoding="async"
-              class="fit-cover"
-              :style="index === 0 ? 'max-height: 350px' : 'max-height: 350px'"
-            />
-          </figure>
+          <featured-image :id="post.featured_media" :hasclass="{ hasclass: { 'figure': 'is-6by3', 'img': '350px' } }" />
         </div>
         <div class="card-content">
           <div class="media">
@@ -46,6 +39,9 @@ const ListArticle = {
       type: Object,
       required: true
     }
+  },
+  components: {
+    FeaturedImage
   },
   methods: {
     truncateText(text, maxLength) {

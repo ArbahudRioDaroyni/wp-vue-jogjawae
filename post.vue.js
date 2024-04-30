@@ -166,7 +166,7 @@ const Post = {
       this.error = this.post = null
       this.loading = true
       try {
-        const API_field = "id,modified_gmt,title,content,featured_media,yoast_head_json.og_image"
+        const API_field = "id,modified_gmt,title,content,featured_media"
         const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`)
         const data = await response.json();
         // reformating gmt to date

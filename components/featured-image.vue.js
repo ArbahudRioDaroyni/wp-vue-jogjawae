@@ -5,7 +5,7 @@ const FeaturedImage = {
       <figure
         v-for="image in featureimage"
         :key="image.id"
-        :class="['image', class.figure ? class.figure : '']">
+        :class="['image', hasclass.figure ? hasclass.figure : '']">
           <img
             decoding="async"
             :width="image.media_details.width"
@@ -19,7 +19,7 @@ const FeaturedImage = {
     </template>
 
     <template v-else>
-      <figure class="['image is-skeleton', class.figure ? class.figure : '']">
+      <figure class="['image is-skeleton', hasclass.figure ? hasclass.figure : '']">
       </figure>
     </template>
   `,

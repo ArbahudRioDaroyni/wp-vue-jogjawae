@@ -42,6 +42,7 @@ const FeaturedImage = {
   },
   created() {
     this.fetchFeatureImage()
+    console.log(this.hasclass)
   },
   methods: {
     async fetchFeatureImage() {

@@ -61,7 +61,7 @@ const Category = {
   methods: {
     async getCategoryId() {
       try {
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?search=${this.categoryName}&_fields=id`);
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/categories?search=${this.categoryName}&_fields=id`);
         const data = await response.json();
         if (data.length > 0) {
           this.categoryId = data[0].id;
@@ -76,7 +76,7 @@ const Category = {
       try {
         this.loading = true;
         const API_field = "id,modified_gmt,slug,title,excerpt,featured_media,yoast_head_json.author";
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${API_field}`);
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/posts?categories=${this.categoryId}&per_page=${this.perPage}&page=${this.page}&_fields=${API_field}`);
         const newPosts = await response.json();
         this.posts = [...this.posts, ...newPosts];
         // Update totalPosts setelah menerima data

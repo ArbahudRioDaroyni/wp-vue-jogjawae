@@ -1,4 +1,5 @@
 const { createRouter, createWebHistory } = VueRouter
+// const { createRouter, createWebHashHistory } = VueRouter // for local only
 
 const routes = [
   {
@@ -24,13 +25,19 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: { template: '<Navigation /><div>Not Found</div>' }
+  }, {
+    path: '/404',
+    name: '404',
+    component: { template: '<Navigation /><div>Not Found</div><Footer />' },
+    meta: { title: '404' }
   }
   
 ]
 
 const router = createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+  // Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHistory(),
+  // history: createWebHashHistory(), // for local only
   mode: "history",
   base: "/",
   routes, // short for `routes: routes`

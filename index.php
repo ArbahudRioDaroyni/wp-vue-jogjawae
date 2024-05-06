@@ -16,20 +16,19 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="https://jogjawae.com/wp-content/uploads/2021/01/cropped-Favicon-Jogjawae.png">
     
-    <link rel="preload" media="screen" href="<?= get_template_directory_uri() . '/bulma/css/bulma.min.css?ver=1.0.0' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="<?= get_template_directory_uri() . '/bulma/css/bulma.min.css?ver=1.0.0' ?>"></noscript>
+    <link rel="preload" media="screen" href="<?= get_template_directory_uri() . '/assets/bulma/css/bulma.min.css?ver=1.0.0' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="<?= get_template_directory_uri() . '/assets/bulma/css/bulma.min.css?ver=1.0.0' ?>"></noscript>
     <link rel="preload" media="screen" href="<?= get_template_directory_uri() . '/style.css?ver=0.0.1' ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="<?= get_template_directory_uri() . '/style.css?ver=0.0.1' ?>"></noscript>
 
     <?php wp_head(); ?>
-
-    <script src="<?= get_template_directory_uri() . '/assets/vue@3/vue.global.js' ?>"></script>
-    <script src="<?= get_template_directory_uri() . '/assets/vue-router/vue-router.global.js' ?>"></script>
-    <script type="module" src="<?= get_template_directory_uri() . '/main.js' ?>"></script>
   </head>
   <body>
     <div id="app">
       <router-view></router-view>
     </div>
+    <script defer src="<?= get_template_directory_uri() . '/assets/vue@3/vue.global.prod.js' ?>"></script>
+    <script defer src="<?= get_template_directory_uri() . '/assets/vue-router/vue-router.global.prod.js' ?>"></script>
+    <script defer type="module" src="<?= get_template_directory_uri() . '/main.js' ?>"></script>
   </body>
 </html>

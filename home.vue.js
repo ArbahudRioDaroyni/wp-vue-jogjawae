@@ -33,7 +33,7 @@ const Home = {
       this.loading = true
       try {
         const API_field = "id,modified_gmt,slug,title,excerpt,featured_media,yoast_head_json.author";
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?_fields=${API_field}&per_page=8`);
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/posts?_fields=${API_field}&per_page=8`);
         this.posts = await response.json();
       } catch (error) {
         console.error('Error fetching data:', error);

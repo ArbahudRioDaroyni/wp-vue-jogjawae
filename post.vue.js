@@ -72,8 +72,7 @@ const Post = {
                           <li
                             v-for="latestpost in latestposts"
                             :key="latestposts.id">
-                            <router-link :to="'/' + latestpost.slug.toLowerCase()">
-                              {{ latestpost.title.rendered }}
+                            <router-link :to="'/' + latestpost.slug.toLowerCase()" v-html="latestpost.title.rendered">
                             </router-link>
                           </li>
                         </ul>
@@ -162,28 +161,52 @@ const Post = {
       )
     },
     async fetchPostBySlug() {
-      this.scrollToTop();
       this.error = this.post = null
       this.loading = true
+      let API_field = "id,modified_gmt,title,content,featured_media"
+      let response = null
+      let data = null
+      
+      // Mencoba mengambil post berdasarkan slug
       try {
-        const API_field = "id,modified_gmt,title,content,featured_media"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`)
-        const data = await response.json();
+        response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/posts?slug=${this.$route.params.slug}&_fields=${API_field}`);
+        data = await response.json();
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      }
+
+      // Jika tidak ada post ditemukan, coba untuk mengambil halaman
+      if (data.length === 0) {
+        try {
+          response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/pages?slug=${this.$route.params.slug}&_fields=${API_field}`);
+          data = await response.json();
+        } catch (error) {
+          console.error("Error fetching page:", error);
+        }
+      }
+
+      // Menangani respons
+      if (data.length !== 0) {
         // reformating gmt to date
-        const modifiedDate = new Date(data[0].modified_gmt)
+        let modifiedDate = new Date(data[0].modified_gmt)
         data[0].formattedModified = modifiedDate.toLocaleString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'}) // weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
+        // Set document title to post title
+        if (data && data.length > 0 && data[0].title && data[0].title.rendered) {
+          document.title = data[0].title.rendered;
+        }
         // store all
         this.post = data;
-      } catch (error) {
-        this.error = 'Error fetching data.'
-      } finally {
         this.loading = false
+        this.scrollToTop();
+      } else {
+        // console.error("No post or page found");
+        this.$router.push('/404');
       }
     },
     async fetchCategories() {
       try {
         const API_field = "id,name,slug"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/categories?_fields=${API_field}`)
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/categories?_fields=${API_field}`)
         const data = await response.json()
         // store data
         this.categories = data
@@ -195,7 +218,7 @@ const Post = {
     async fetchLatestPosts() {
       try {
         const API_field = "id,slug,title"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?per_page=3&_fields=${API_field}`)
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/posts?per_page=3&_fields=${API_field}`)
         const data = await response.json()
         // store data
         this.latestposts = data
@@ -209,7 +232,7 @@ const Post = {
     // async fetchRelatedPosts() {
       // if (this.post && this.post[0] && this.post[0].tags && this.post[0].tags.length > 0) {
       //   const tagIds = this.post[0].tags.map(tag => tag.id).join(',');
-      //   const response = await fetch(`${window.location.origin}/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
+      //   const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/posts?tags=${tagIds}&per_page=3`);
         // if (response.ok) {
         // if (this.post) {
           // this.relatedPosts = await response.json();

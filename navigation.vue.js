@@ -7,7 +7,7 @@ const Navigation = {
       <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <router-link to="/" class="navbar-item" aria-label="Logo SVG JogjaWae">
-            <img :src="$homeURL + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae" width="28" height="28">
+            <img :src="$rootlocal + '/wp-content/themes/wp-vue-jogjawae/assets/svg/jogjawae.svg'" alt="JogjaWae" width="28" height="28">
           </router-link>
 
           <ButtonBurger
@@ -97,7 +97,7 @@ const Navigation = {
         // Jika tema saat ini adalah mode terang, tambahkan atribut data-theme ke tag html
         document.documentElement.setAttribute('data-theme', 'light');
       } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
     }
   }

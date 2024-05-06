@@ -1,3 +1,4 @@
+import { generateSrcset } from '../functions/imageUtils.min.js'
 const FeaturedImage = {
   name: 'FeaturedImage',
   template: `
@@ -41,14 +42,18 @@ const FeaturedImage = {
     },
   },
   created() {
-    this.fetchFeatureImage()
+    if (this.$props.id !== undefined && this.$props.id !== null && this.$props.id !== 0) {
+      this.fetchFeatureImage()
+    } else {
+      this.loading = true
+    }
   },
   methods: {
     async fetchFeatureImage() {
       this.loading = true
       try {
         const API_field = "id,alt_text,media_details"
-        const response = await fetch(`${window.location.origin}/wp-json/wp/v2/media/${this.$props.id}/?_fields=${API_field}`)
+        const response = await fetch(`${this.$rootlocal}/wp-json/wp/v2/media/${this.$props.id}/?_fields=${API_field}`)
         const image = await response.json()
         // store data
         this.featureimage[0] = image
@@ -59,14 +64,7 @@ const FeaturedImage = {
       }
     },
     generateSrcset(sizes) {
-      let srcset = '';
-      for (const key in sizes) {
-        if (sizes.hasOwnProperty(key)) {
-          const size = sizes[key];
-          srcset += `${size.source_url} ${size.width}w, `;
-        }
-      }
-      return srcset.trim().slice(0, -1);
+      return generateSrcset(sizes);
     }
   }
 }
